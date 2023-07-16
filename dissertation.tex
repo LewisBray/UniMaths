@@ -1,30 +1,20 @@
 \documentclass[a4paper,12pt,draft]{report}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Loads some packages - just ignore this
+
 \usepackage{amsmath}
-\usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathrsfs}
-\usepackage{bm}
-\usepackage{graphics,color}
-\usepackage{quotes}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%creates the following environments:
+
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
-\newtheorem{cor}{Corollary}
-\newtheorem{prop}{Proposition}
-\newtheorem{conj}{Conjecture}
-\theoremstyle{remark}
+\newtheorem{corollary}{Corollary}
 \newtheorem{remark}{Remark}
-\theoremstyle{definition}
-\newtheorem{assume}{Assumption}
-\newtheorem{defn}{Definition}
-\newtheorem{eg}{Example}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+
 \setlength{\unitlength}{10mm}
 \renewcommand{\baselinestretch}{1.5}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
 \title{Semiclassical Asymptotics for the Heat Equation Using the Stochastic Elementary Formula}
@@ -86,32 +76,32 @@ $$
 $$
 This can also be extended to include higher order terms in $\mu^2$.
 
-In the final chapter, we will expand on the ideas of Chapter 2 and consider a heat equation with a vector potential $\bold{a}(x, t)$ given by,
+In the final chapter, we will expand on the ideas of Chapter 2 and consider a heat equation with a vector potential $\mathbf{a}(x, t)$ given by,
 $$
 \left\{
 \begin{aligned}
-& \frac{\partial u^\mu}{\partial t}(x, t) = \frac{\mu^2}{2}\Delta u^\mu(x, t) + \bold{a}(x, t)\cdot\nabla u^\mu(x, t) + \frac{1}{\mu^2}\bar{V}(x, t)u^\mu(x, t),\\ \label{VPHE}
+& \frac{\partial u^\mu}{\partial t}(x, t) = \frac{\mu^2}{2}\Delta u^\mu(x, t) + \mathbf{a}(x, t)\cdot\nabla u^\mu(x, t) + \frac{1}{\mu^2}\bar{V}(x, t)u^\mu(x, t),\\
 & u^\mu(x, 0) = T_0(x)\exp\left(-\frac{S_0(x)}{\mu^2}\right),
 \end{aligned}
 \right.
 $$
-where $\bar{V}(x, t) = \frac{1}{2}\|\bold{a}(x, t)\|^2 + \frac{\mu^2}{2}\nabla\cdot\bold{a}(x, t) + V(x)$ is our new time dependent potential.  The inclusion of a vector potential is based on the Schr$\ddot{\text{o}}$dinger equation for a charged particle in an electromagnetic field.  The Hamiltonian for a particle of unit mass and unit charge acted on by a vector potential $\bold{a}$ and an electric potential $V$ is given by,
+where $\bar{V}(x, t) = \frac{1}{2}\|\mathbf{a}(x, t)\|^2 + \frac{\mu^2}{2}\nabla\cdot\mathbf{a}(x, t) + V(x)$ is our new time dependent potential.  The inclusion of a vector potential is based on the Schr$\ddot{\text{o}}$dinger equation for a charged particle in an electromagnetic field.  The Hamiltonian for a particle of unit mass and unit charge acted on by a vector potential $\mathbf{a}$ and an electric potential $V$ is given by,
 $$
-H(\bold{q}, \bold{p}, t) = \frac{1}{2}\|\bold{p} - \bold{a}(\bold{q}, t)\|^2 + V(\bold{q}).
+H(\mathbf{q}, \mathbf{p}, t) = \frac{1}{2}\|\mathbf{p} - \mathbf{a}(\mathbf{q}, t)\|^2 + V(\mathbf{q}).
 $$
-Switching to quantum mechanics we make the operator substitutions, $\bold{p} \mapsto \frac{\hbar}{i}\nabla$ and $\bold{q} \mapsto x$, where $x$ denotes the operator "multiply by $x$".  Then,
+Switching to quantum mechanics we make the operator substitutions, $\mathbf{p} \mapsto \frac{\hbar}{i}\nabla$ and $\mathbf{q} \mapsto x$, where $x$ denotes the operator "multiply by $x$".  Then,
 \begin{align}
 i\hbar\frac{\partial\psi}{\partial t}(x, t) & = H\psi(x, t)\nonumber\\
-& = \frac{1}{2}\left\|\frac{\hbar}{i}\nabla - \bold{a}(x, t)\right\|^2\psi(x, t) + V(x)\psi(x, t)\nonumber\\
-& = -\frac{\hbar^2}{2}\Delta\psi(x, t) + i\hbar\bold{a}(x, t)\cdot\nabla\psi(x, t)\nonumber\\
-& \hspace{0.5cm} + \left(\frac{1}{2}\|\bold{a}(x, t)\|^2 + \frac{1}{2}i\hbar\nabla\cdot\bold{a}(x, t) + V(x)\right)\psi(x, t).\nonumber
+& = \frac{1}{2}\left\|\frac{\hbar}{i}\nabla - \mathbf{a}(x, t)\right\|^2\psi(x, t) + V(x)\psi(x, t)\nonumber\\
+& = -\frac{\hbar^2}{2}\Delta\psi(x, t) + i\hbar\mathbf{a}(x, t)\cdot\nabla\psi(x, t)\nonumber\\
+& \hspace{0.5cm} + \left(\frac{1}{2}\|\mathbf{a}(x, t)\|^2 + \frac{1}{2}i\hbar\nabla\cdot\mathbf{a}(x, t) + V(x)\right)\psi(x, t).\nonumber
 \end{align}
 To get to the heat equation with vector potential we make again the formal substitution $i\hbar \mapsto \mu^2 > 0$.  We can then use the same methods as before, now using the classical mechanics,
 $$
 \left\{
 \begin{aligned}
-\ddot{\Phi}_t(x) & = -\nabla V(\Phi_t(x)) - \frac{\partial \bold{a}}{\partial t}(\Phi_t(x), t) - (\nabla \times \bold{a}(\Phi_t(x), t))\times\dot{\Phi}_t(x),\\ \label{CMFM2}
-\dot{\Phi}_0(x) & = \nabla S_0(x) - \bold{a}(x, 0),\\
+\ddot{\Phi}_t(x) & = -\nabla V(\Phi_t(x)) - \frac{\partial \mathbf{a}}{\partial t}(\Phi_t(x), t) - (\nabla \times \mathbf{a}(\Phi_t(x), t))\times\dot{\Phi}_t(x),\\
+\dot{\Phi}_0(x) & = \nabla S_0(x) - \mathbf{a}(x, 0),\\
 \Phi_0(x) & = x,
 \end{aligned}
 \right.
@@ -139,7 +129,7 @@ where $L$ is the operator,
 $$
 L = \frac{1}{2}\sum_{i, j = 1}^n a_{ij}(x)\frac{\partial^2}{\partial x_i \partial x_j} + \sum_{i = 1}^n b_i(x)\frac{\partial}{\partial x_i}.
 $$
-\assume
+\assumption
 {
 We assume that:
 \begin{enumerate}
@@ -159,7 +149,7 @@ X_0^x & = x \in \mathbb{R}^n,
 \right.
 \end{equation}
 where $B_t$ is an n-dimensional Brownian Motion, $b$ is the n-dimensional vector with elements $b_i$ and $X_t^x$ is a stochastic process defined on a probability space $(\Omega, \mathscr{F}, \mathbb{P})$ with filtration $(\mathscr{F}_t)_{t \in [0, \infty)}$.
-\defn
+\definition
 {
 Let $X_t^x(\omega)$, $t \ge 0$ be an n-dimensional stochastic process satisfying \eqref{SDE} on a probability space $(\Omega, \mathscr{F}, P)$ with filtration $(\mathscr{F}_t)_{t \in [0, \infty)}$.  The pair $(X_t^x, P)$ is called a \emph{Markov family} if, for all $\Gamma \in \mathscr{B}^n$:
 \begin{enumerate}
@@ -169,7 +159,7 @@ Let $X_t^x(\omega)$, $t \ge 0$ be an n-dimensional stochastic process satisfying
 \end{enumerate}
 where $\mathscr{B}^n$ denotes the Borel $\sigma$-algebra on $\mathbb{R}^n$.
 }
-\defn
+\definition
 {
 Let $C_{0, \infty}(\mathbb{R}^n$) be the space of all continuous functions on $[0, \infty)$ that take values in $\mathbb{R}^n$ and let $\Sigma$ be the $\sigma$-algebra of all the cylinder sets of $C_{0, \infty}(\mathbb{R}^n)$. On the measurable space $(C_{0, \infty}(\mathbb{R}^n), \Sigma)$, we define a family of probability measures $P_x$, for $x \in \mathbb{R}^n$ by $P_x\{\Sigma\} = P\{X_\cdot^x \in \Sigma\}$, where $X_\cdot^x$ satisfies \eqref{SDE}.  We also define a random process $X_t(\omega) = \omega_t$, for all $\omega \in C_{0, \infty}(\mathbb{R}^n)$.  The collection $(X_t(\omega), P_x)$ is called the \emph{Markov process} corresponding to \eqref{SDE}.
 }
@@ -525,7 +515,7 @@ $$
 where $S_{0}, T_{0}, V:\mathbb{R}^n \to \mathbb{R}$.
 Before moving on we will present the typical solution using the Feynman-Kac Formula.
 
-\assume
+\assumption
 {
 We assume that:
 \begin{enumerate}
@@ -552,11 +542,11 @@ To move forward, we introduce the mapping $\Phi_t :\mathbb{R}^n \to \mathbb{R}^n
 \right.
 \end{equation}
 where $\tilde{T}$ is a fixed, positive and finite terminal time.  From a mechanics perspective, $\Phi_t$ is the classical mechanical flow map of a particle of unit mass under the influence of a potential $V$ (it is easy to see that this is Newton's second law of motion).  Assuming $\Phi_t$ is uniquely determined for all $t$ up to the termination time $\tilde{T}$, we introduce some definitions to define the most crucial property of this flow map for what is to follow.
-\defn
+\definition
 {
 A differentiable and bijective mapping $f :\mathbb{R}^m \to \mathbb{R}^n$ is called a \emph{diffeomorphism} if its inverse $f^{-1}:\mathbb{R}^n \to \mathbb{R}^m$ is differentiable also.
 }
-\defn
+\definition
 {
 We say that $\Phi_t$ (as in \eqref{CMFMD}) satisfies the \emph{no-caustic condition} if there exists a \emph{caustic time} $T \in (0, \tilde{T}]$ such that $\Phi_t :\mathbb{R}^n \to \mathbb{R}^n$ is a diffeomorphism for all $t \in [0, T)$.
 }
@@ -628,7 +618,7 @@ $$
 \hspace{3mm}
 \mu_{\mathrm{min}} = \sup_{x_0}\mu_{\mathrm{min}}(x_0),
 \hspace{3mm}
-\lambda^2 = \sup_{s \in [0, \tilde{T}) \atop x_0 \in \mathbb{R}^n}\|D^2V(\Phi_s(x_0))\|
+\lambda^2 = \sup_{\substack{s \in [0, \tilde{T})\\x_0 \in \mathbb{R}^n}}\|D^2V(\Phi_s(x_0))\|
 $$
 where $\|\cdot\|$ denotes the spectral norm (i.e. the largest eigenvalue of the matrix).  Then, under Assumption 2, $\Phi_t$ satisfies the no-caustic condition with the caustic time $T > 0$ given by the least positive solution to,
 $$
@@ -953,7 +943,7 @@ Or in a more familiar form $S''(s)J(s) = \frac{\mathrm{d}}{\mathrm{d}s}J(s)$.  S
 }
 
 Some corollaries follow from these theorems, the first being the asymptotic behaviour we have strived to achieve in this chapter.
-\cor
+\corollary
 {
 Given that $\Delta S(x, t)$ is bounded below for all $t \in [0, T)$, where $T$ is our caustic time for which the no-caustic condition holds.  Then
 $$
@@ -1009,12 +999,12 @@ So in vector calculus notation $S^\mu$ satisfies the Hamilton-Jacobi-Bellman equ
 \begin{equation}
 \left\{
 \begin{aligned}
-& \frac{\partial S^\mu}{\partial t}(x, t) + \frac{1}{2}\|\nabla S^\mu(x, t)\|^2 + V(x) = \frac{\mu^2}{2}\Delta S^\mu(x, t),\\ \label{HJE2}
+& \frac{\partial S^\mu}{\partial t}(x, t) + \frac{1}{2}\|\nabla S^\mu(x, t)\|^2 + V(x) = \frac{\mu^2}{2}\Delta S^\mu(x, t),\\ \label{HJBE}
 & S^\mu(x, 0) = S_0(x) - \mu^2\ln T_0(x).
 \end{aligned}
 \right.
 \end{equation}
-If we define $v^\mu(x, t) = \nabla S^\mu(x, t)$ and we take the gradient of \eqref{HJE2},
+If we define $v^\mu(x, t) = \nabla S^\mu(x, t)$ and we take the gradient of \eqref{HJBE},
 $$
 \nabla\frac{\partial S^\mu}{\partial t} + \frac{1}{2}\nabla\|\nabla S^\mu\|^2 + \nabla V(x) = \frac{\mu^2}{2}\nabla(\Delta S^\mu)
 $$
@@ -1039,7 +1029,7 @@ which is known as the viscous Burgers' equation.  Similarly, if we define $v = \
 \begin{equation}
 \left\{
 \begin{aligned}
-& \frac{\partial v}{\partial t}(x, t) + (v\cdot \nabla)v(x, t) + \nabla V(x) = 0,\\ \label{IBE}
+& \frac{\partial v}{\partial t}(x, t) + (v\cdot \nabla)v(x, t) + \nabla V(x) = 0,\\
 & v(x, 0) = \nabla S_0(x),
 \end{aligned}
 \right.
@@ -1047,7 +1037,7 @@ which is known as the viscous Burgers' equation.  Similarly, if we define $v = \
 the inviscid Burgers' equation.
 
 Given our work on the heat equation we can investigate the asymptotic behaviour of the Burgers' equations.
-\cor
+\corollary
 {
 Given the no-caustic condition holds with a caustic time $T$, then for all $t \in [0, T)$ we get,
 $$
@@ -1105,23 +1095,23 @@ $$
 $$
 We now introduce a vector field in order to use the divergence theorem,
 $$
-\bold{j}(x, s) = T_0^2(\Phi_t^{-1}(x))|\det D\Phi_t^{-1}(x)|(\nabla S(x, t), 1), \hspace{0.4cm}(x, s) \in \mathbb{R}^n \times \mathbb{R}^+.
+\mathbf{j}(x, s) = T_0^2(\Phi_t^{-1}(x))|\det D\Phi_t^{-1}(x)|(\nabla S(x, t), 1), \hspace{0.4cm}(x, s) \in \mathbb{R}^n \times \mathbb{R}^+.
 $$
 We now integrate over the boundary of the tube,
 \begin{align}
-\int_{\partial \tau_F} \bold{j}(x, s)\cdot \mathrm{d}\Sigma & = \int_F \bold{j}(x, 0)\cdot(\bold{0}, -1)\,\mathrm{d}x + \int_{\Phi_t(F)} \bold{j}(x, t)\cdot(\bold{0}, 1)\,\mathrm{d}x \nonumber\\
-& \hspace{0.4cm} + \int_{\tau_F} \bold{j}(x, s)\cdot \bold{n}\,\mathrm{d}\Sigma \nonumber\\
+\int_{\partial \tau_F} \mathbf{j}(x, s)\cdot \mathrm{d}\Sigma & = \int_F \mathbf{j}(x, 0)\cdot(\mathbf{0}, -1)\,\mathrm{d}x + \int_{\Phi_t(F)} \mathbf{j}(x, t)\cdot(\mathbf{0}, 1)\,\mathrm{d}x \nonumber\\
+& \hspace{0.4cm} + \int_{\tau_F} \mathbf{j}(x, s)\cdot \mathbf{n}\,\mathrm{d}\Sigma \nonumber\\
 & = -\int_F T_0^2(x)\,\mathrm{d}x + \int_{\Phi_t(F)} T_0^2(\Phi_t^{-1}(x))|\det D\Phi_t^{-1}(x)|\,\mathrm{d}x\nonumber\\
 & = -\int_F T_0^2(x)\,\mathrm{d}x + \int_F T_0^2(x_0)\,\mathrm{d}x_0\nonumber\\
 & = 0\nonumber
 \end{align}
-where $\bold{0} \in \mathbb{R}^n$ is the n-dimensional zero vector and $\bold{n}$ is the unit normal vector to the curved surface of $\tau_F$.  This integral is $0$ since the curved surface is parallel to $\nabla S(x, t)$.  Now by the divergence theorem,
+where $\mathbf{0} \in \mathbb{R}^n$ is the n-dimensional zero vector and $\mathbf{n}$ is the unit normal vector to the curved surface of $\tau_F$.  This integral is $0$ since the curved surface is parallel to $\nabla S(x, t)$.  Now by the divergence theorem,
 $$
-\int_{\partial \tau_F} \bold{j}(x, s)\cdot \mathrm{d}\Sigma = \int_{\tau_F} \nabla^* \cdot \bold{j}(x, s)\,\mathrm{d}x\,\mathrm{d}s = 0
+\int_{\partial \tau_F} \mathbf{j}(x, s)\cdot \mathrm{d}\Sigma = \int_{\tau_F} \nabla^* \cdot \mathbf{j}(x, s)\,\mathrm{d}x\,\mathrm{d}s = 0
 $$
-where $\nabla^*\bold{j} \cdot = \left(\nabla, \frac{\partial}{\partial s}\right) \cdot\bold{j}$.  Finally, since $F$ was arbitrary we can conclude that,
+where $\nabla^*\mathbf{j} \cdot = \left(\nabla, \frac{\partial}{\partial s}\right) \cdot\mathbf{j}$.  Finally, since $F$ was arbitrary we can conclude that,
 \begin{align}
-0 & = \nabla^* \cdot \bold{j}(x, s)\nonumber\\
+0 & = \nabla^* \cdot \mathbf{j}(x, s)\nonumber\\
 & = \nabla^* \cdot (\rho(x, s)(\nabla S(x, s), 1))\nonumber\\
 & = \nabla^* \cdot ((\rho(x, s)\nabla S(x, s), \rho(x, s)))\nonumber\\
 & = \left(\nabla, \frac{\partial}{\partial s}\right)\cdot((\rho(x, s)\nabla S(x, s), \rho(x, s)))\nonumber\\
@@ -1201,7 +1191,7 @@ u^\mu(x, t) & = \mathbb{E}\left(T_0(X_t^\mu)\exp\left(-\frac{1}{\mu^2}S_0(X_t^\m
 \qedhere
 }
 
-\cor
+\corollary
 {
 Given that the no-caustic condition holds for the caustic time $T$ as before and that $\frac{\Delta \rho_0}{\rho_0}(x, t)$ is bounded for $t \in (0, T)$, then we have,
 \begin{align}
@@ -1236,28 +1226,28 @@ This corollary gives us an extension to Corollary 1 in terms of order $\mu^2$.  
 
 \chapter{Heat Equation with Vector Potential}
 
-In this chapter we are going to apply the methods used in Chapter 2 to a new heat equation with vector potential $\bold{a} : \mathbb{R}^3 \times [0, \infty) \to \mathbb{R}^3$.  Let $u^\mu : \mathbb{R}^3 \times [0, \infty) \to \mathbb{R}$ be the solution to,
+In this chapter we are going to apply the methods used in Chapter 2 to a new heat equation with vector potential $\mathbf{a} : \mathbb{R}^3 \times [0, \infty) \to \mathbb{R}^3$.  Let $u^\mu : \mathbb{R}^3 \times [0, \infty) \to \mathbb{R}$ be the solution to,
 \begin{equation}
 \left\{
 \begin{aligned}
-& \frac{\partial u^\mu}{\partial t}(x, t) = \frac{\mu^2}{2}\Delta u^\mu(x, t) + \bold{a}(x, t)\cdot\nabla u^\mu(x, t) + \frac{1}{\mu^2}\bar{V}(x, t)u^\mu(x, t),\\ \label{VPHE}
+& \frac{\partial u^\mu}{\partial t}(x, t) = \frac{\mu^2}{2}\Delta u^\mu(x, t) + \mathbf{a}(x, t)\cdot\nabla u^\mu(x, t) + \frac{1}{\mu^2}\bar{V}(x, t)u^\mu(x, t),\\ \label{VPHE}
 & u^\mu(x, 0) = T_0(x)\exp\left(-\frac{S_0(x)}{\mu^2}\right).
 \end{aligned}
 \right.
 \end{equation}
 Note here our new potential $\bar{V}$ depends on time as well as our standard spacial variable $x$, given explicitly
 $$
-\bar{V}(x, t) = \frac{1}{2}\|\bold{a}(x, t)\|^2 + \frac{\mu^2}{2}\nabla\cdot\bold{a}(x, t) + V(x)
+\bar{V}(x, t) = \frac{1}{2}\|\mathbf{a}(x, t)\|^2 + \frac{\mu^2}{2}\nabla\cdot\mathbf{a}(x, t) + V(x)
 $$
 where $S_{0}, T_{0}, V:\mathbb{R}^3  \to \mathbb{R}$ and $\|\cdot\|$ denotes the Euclidean norm on $\mathbb{R}^3$.
-\assume
+\assumption
 {
 We assume that:
 \begin{enumerate}
-\item $V$, $S_0$, $T_0$ and the elements of $\bold{a}$ are real-valued.
-\item $V$ and $\bold{a}$ are globally Lipschitz in the spatial variable.
-\item $V$ is bounded below, $S_0$ is bounded above, $T_0$ is positive and bounded and $\bold{a}$ is bounded.
-\item The first and second order partial derivatives of $V$, $S_0$ and the elements of $\bold{a}$ are uniformly bounded on $\mathbb{R}^3$.
+\item $V$, $S_0$, $T_0$ and the elements of $\mathbf{a}$ are real-valued.
+\item $V$ and $\mathbf{a}$ are globally Lipschitz in the spatial variable.
+\item $V$ is bounded below, $S_0$ is bounded above, $T_0$ is positive and bounded and $\mathbf{a}$ is bounded.
+\item The first and second order partial derivatives of $V$, $S_0$ and the elements of $\mathbf{a}$ are uniformly bounded on $\mathbb{R}^3$.
 \end{enumerate}
 }
 
@@ -1265,7 +1255,7 @@ Due to the time dependency of the new potential we cannot use our standard solut
 $$
 \left\{
 \begin{aligned}
-& \mathrm{d}X_s^\mu = \bold{a}(X_s^\mu, T_s^t)\,\mathrm{d}s + \mu\,\mathrm{d}B_s, \hspace{0.3cm} T_s^t = t - s, \hspace{0.3cm} s \in [0, t],\\
+& \mathrm{d}X_s^\mu = \mathbf{a}(X_s^\mu, T_s^t)\,\mathrm{d}s + \mu\,\mathrm{d}B_s, \hspace{0.3cm} T_s^t = t - s, \hspace{0.3cm} s \in [0, t],\\
 & \hspace{0.2cm} X_0^\mu = x,
 \end{aligned}
 \right.
@@ -1287,13 +1277,13 @@ $$
 Now,
 \begin{align}
 \mathrm{d}\tilde{X}_s^\mu & = \begin{pmatrix} \mathrm{d}X_s^\mu \\  \mathrm{d}T_s^t \end{pmatrix}\nonumber\\
-& = \begin{pmatrix} \bold{a}(\tilde{X}_s^\mu)\,\mathrm{d}s + \mu\,\mathrm{d}B_s \\  -\mathrm{d}s\end{pmatrix}\nonumber\\
-& = \begin{pmatrix} \bold{a}(\tilde{X}_s^\mu) \\ -1 \end{pmatrix}\mathrm{d}s + \mu\begin{pmatrix} I_3 & 0 \\ 0 & 0 \end{pmatrix}\begin{pmatrix} \mathrm{d}B_s \\ \mathrm{d}B_s^T \end{pmatrix}\nonumber\\
-& = \tilde{\bold{a}}(\tilde{X}_s^\mu)\,\mathrm{d}s + \tilde{\mu}\,\mathrm{d}\tilde{B}_s\nonumber
+& = \begin{pmatrix} \mathbf{a}(\tilde{X}_s^\mu)\,\mathrm{d}s + \mu\,\mathrm{d}B_s \\  -\mathrm{d}s\end{pmatrix}\nonumber\\
+& = \begin{pmatrix} \mathbf{a}(\tilde{X}_s^\mu) \\ -1 \end{pmatrix}\mathrm{d}s + \mu\begin{pmatrix} I_3 & 0 \\ 0 & 0 \end{pmatrix}\begin{pmatrix} \mathrm{d}B_s \\ \mathrm{d}B_s^T \end{pmatrix}\nonumber\\
+& = \tilde{\mathbf{a}}(\tilde{X}_s^\mu)\,\mathrm{d}s + \tilde{\mu}\,\mathrm{d}\tilde{B}_s\nonumber
 \end{align}
 where $B_s^T$ is a 1-dimensional Brownian Motion, $I_3$ is the $3 \times 3$ identity matrix and,
 $$
-\tilde{\bold{a}}(\tilde{X}_s^\mu) = \begin{pmatrix} \bold{a}(\tilde{X}_s^\mu) \\ -1 \end{pmatrix}, \hspace{0.3cm} \tilde{\mu} = \mu\begin{pmatrix} I_3 & 0 \\ 0 & 0 \end{pmatrix}, \hspace{0.3cm} \tilde{B}_s = \begin{pmatrix} B_s \\  B_s^T \end{pmatrix}.
+\tilde{\mathbf{a}}(\tilde{X}_s^\mu) = \begin{pmatrix} \mathbf{a}(\tilde{X}_s^\mu) \\ -1 \end{pmatrix}, \hspace{0.3cm} \tilde{\mu} = \mu\begin{pmatrix} I_3 & 0 \\ 0 & 0 \end{pmatrix}, \hspace{0.3cm} \tilde{B}_s = \begin{pmatrix} B_s \\  B_s^T \end{pmatrix}.
 $$
 We now call upon the result of Theorem 3.  We define our domain as $D = \mathbb{R}^3 \times \mathbb{R}^+$ and clearly this has boundary $\partial D = \mathbb{R}^3 \times \{0\}$.  Assuming $X_s^\mu$ is bounded and well-defined for $s \in [0, t]$, we also have,
 $$
@@ -1305,7 +1295,7 @@ $$
 $$
 Finally, if we define $\tilde{x} = (x, t)$, we can re-write \eqref{VPHE} as,
 $$
-\frac{\partial u^\mu}{\partial t}(\tilde{x}) = \frac{\mu^2}{2}\Delta u^\mu(\tilde{x}) + \bold{a}(\tilde{x})\cdot\nabla u^\mu(\tilde{x}) + \frac{1}{\mu^2}\bar{V}(\tilde{x})u^\mu(\tilde{x}).
+\frac{\partial u^\mu}{\partial t}(\tilde{x}) = \frac{\mu^2}{2}\Delta u^\mu(\tilde{x}) + \mathbf{a}(\tilde{x})\cdot\nabla u^\mu(\tilde{x}) + \frac{1}{\mu^2}\bar{V}(\tilde{x})u^\mu(\tilde{x}).
 $$
 or,
 $$
@@ -1329,13 +1319,13 @@ As in the previous chapter, we take advantage of the underlying mechanical syste
 \begin{equation}
 \left\{
 \begin{aligned}
-\ddot{\Phi}_t(x) & = -\nabla V(\Phi_t(x)) - \frac{\partial \bold{a}}{\partial t}(\Phi_t(x), t) - (\nabla \times \bold{a}(\Phi_t(x), t))\times\dot{\Phi}_t(x),\\ \label{CMFM2}
-\dot{\Phi}_0(x) & = \nabla S_0(x) - \bold{a}(x, 0),\\
+\ddot{\Phi}_t(x) & = -\nabla V(\Phi_t(x)) - \frac{\partial \mathbf{a}}{\partial t}(\Phi_t(x), t) - (\nabla \times \mathbf{a}(\Phi_t(x), t))\times\dot{\Phi}_t(x),\\ \label{CMFM2}
+\dot{\Phi}_0(x) & = \nabla S_0(x) - \mathbf{a}(x, 0),\\
 \Phi_0(x) & = x.
 \end{aligned}
 \right.
 \end{equation}
-This can be thought of as the classical mechanical flow map describing the position of a charged particle moving under an electric potential $V$ and a vector potential $\bold{a}$ giving rise to an electric field $\bold{E}(x, t) = -\nabla V(x) - \frac{\partial \bold{a}}{\partial t}(x, t)$ and a magnetic field $\bold{B}(x, t) = \nabla \times \bold{a}(x, t)$.
+This can be thought of as the classical mechanical flow map describing the position of a charged particle moving under an electric potential $V$ and a vector potential $\mathbf{a}$ giving rise to an electric field $\mathbf{E}(x, t) = -\nabla V(x) - \frac{\partial \mathbf{a}}{\partial t}(x, t)$ and a magnetic field $\mathbf{B}(x, t) = \nabla \times \mathbf{a}(x, t)$.
 
 \theorem
 {
@@ -1349,8 +1339,8 @@ Then, $\Phi_t$ satisfies the no-caustic condition for the caustic time $T > 0$.
 {
 Similarly to Theorem 9, from the definition of $\Phi_t$ \eqref{CMFM2} we get,
 \begin{align}
-\Phi_t(x) & = x + t(\nabla S_0(x) - \bold{a}(x, 0)) - \int_0^t\int_0^s\nabla V(\Phi_r(x))\,\mathrm{d}r\,\mathrm{d}s\nonumber\\
-& \hspace{0.1cm} - \int_0^t\int_0^s\frac{\partial \bold{a}}{\partial r}(\Phi_r(x), r)\,\mathrm{d}r\,\mathrm{d}s - \int_0^t\int_0^s\nabla\times(\bold{a}(\Phi_r(x), r)\times\dot{\Phi}_r(x))\,\mathrm{d}r\,\mathrm{d}s.\nonumber
+\Phi_t(x) & = x + t(\nabla S_0(x) - \mathbf{a}(x, 0)) - \int_0^t\int_0^s\nabla V(\Phi_r(x))\,\mathrm{d}r\,\mathrm{d}s\nonumber\\
+& \hspace{0.1cm} - \int_0^t\int_0^s\frac{\partial \mathbf{a}}{\partial r}(\Phi_r(x), r)\,\mathrm{d}r\,\mathrm{d}s - \int_0^t\int_0^s\nabla\times(\mathbf{a}(\Phi_r(x), r)\times\dot{\Phi}_r(x))\,\mathrm{d}r\,\mathrm{d}s.\nonumber
 \end{align}
 Taking the Fr$\mathrm{\acute{e}}$chet derivative leaves us with,
 \begin{align}
@@ -1392,30 +1382,30 @@ Our condition \eqref{MFC} gives us,
 $$
 \frac{\partial^2 a_i}{\partial x_j \partial x_k} = \frac{\partial^2 a_k}{\partial x_i \partial x_j}, \hspace{0.3cm} \text{for } i, j, k \in \{1, 2, 3\}.
 $$
-Assuming $\bold{a}$ is sufficiently well-behaved we can change the order of differentiation to get,
+Assuming $\mathbf{a}$ is sufficiently well-behaved we can change the order of differentiation to get,
 $$
 \frac{\partial}{\partial x_j}\left(\frac{\partial a_i}{\partial x_k} - \frac{\partial a_k}{\partial x_i}\right) = 0
 $$
 which is equivalent to,
 $$
-\nabla\cdot\left(\nabla\times\bold{a}\right) = 0 \hspace{0.3cm} \Leftrightarrow \hspace{0.3cm} \nabla\cdot\bold{B} = 0
+\nabla\cdot\left(\nabla\times\mathbf{a}\right) = 0 \hspace{0.3cm} \Leftrightarrow \hspace{0.3cm} \nabla\cdot\mathbf{B} = 0
 $$
-where $\bold{B}$ is our magnetic field.  This shows that the condition imposed is equivalent to the magnetic field being divergence free which includes the case of $\bold{B}$ being constant.
+where $\mathbf{B}$ is our magnetic field.  This shows that the condition imposed is equivalent to the magnetic field being divergence free which includes the case of $\mathbf{B}$ being constant.
 }
 \end{remark}
 
-Following Chapter 2 we want to define our new action functional but incorporating our vector potential $\bold{a}$.  Define,
+Following Chapter 2 we want to define our new action functional but incorporating our vector potential $\mathbf{a}$.  Define,
 \begin{align}
 \mathscr{A}(x, t) & = S_0(x) + \int_0^t\mathscr{L}(\Phi_s(x), \dot{\Phi}_s(x))\,\mathrm{d}s\nonumber\\
 & = S_0(x) + \frac{1}{2}\int_0^t\|\dot{\Phi}_s(x)\|^2\,\mathrm{d}s\nonumber\\
-& \hspace{1.6cm} + \int_0^t\dot{\Phi}_s(x)\cdot\bold{a}(\Phi_s(x), s)\,\mathrm{d}s - \int_0^tV(\Phi_s(x))\,\mathrm{d}s\nonumber
+& \hspace{1.6cm} + \int_0^t\dot{\Phi}_s(x)\cdot\mathbf{a}(\Phi_s(x), s)\,\mathrm{d}s - \int_0^tV(\Phi_s(x))\,\mathrm{d}s\nonumber
 \end{align}
 where $\mathscr{L}$ is this system's Lagrangian.  Before moving on we need some properties of $\mathscr{A}$ and $\Phi_t$ presented in the following lemmas.
 \lemma
 {
 Given that the no-caustic condition holds for a caustic time $T$, we have that for all $t \in [0, T)$,
 $$
-\nabla\mathscr{A}(x, t) = (D\Phi_t(x))^*(\dot{\Phi}_t(x) + \bold{a}(\Phi_t(x), t))
+\nabla\mathscr{A}(x, t) = (D\Phi_t(x))^*(\dot{\Phi}_t(x) + \mathbf{a}(\Phi_t(x), t))
 $$
 where * denotes matrix transpose.
 }
@@ -1423,47 +1413,47 @@ where * denotes matrix transpose.
 {
 Firstly,
 \begin{align}
-\nabla\mathscr{A}(x, t) & = \nabla S_0(x) + \int_0^t(D\Phi_s(x))^*(\dot{\Phi}_s(x) + \bold{a}(\Phi_s(x), s))\,\mathrm{d}s\nonumber\\
-& \hspace{0.5cm} + \int_0^t(D\bold{a}(\Phi_s(x), s))^*\dot{\Phi}_s(x)\,\mathrm{d}s - \int_0^t(D\Phi_s(x))^*\nabla V(\Phi_s(x))\,\mathrm{d}s.\nonumber
+\nabla\mathscr{A}(x, t) & = \nabla S_0(x) + \int_0^t(D\Phi_s(x))^*(\dot{\Phi}_s(x) + \mathbf{a}(\Phi_s(x), s))\,\mathrm{d}s\nonumber\\
+& \hspace{0.5cm} + \int_0^t(D\mathbf{a}(\Phi_s(x), s))^*\dot{\Phi}_s(x)\,\mathrm{d}s - \int_0^t(D\Phi_s(x))^*\nabla V(\Phi_s(x))\,\mathrm{d}s.\nonumber
 \end{align}
 Using integration by parts,
 \begin{align}
-\int_0^t\frac{\mathrm{d}}{\mathrm{d}s}(D\Phi_s&(x))^*(\dot{\Phi}_s(x) + \bold{a}(\Phi_s(x), s))\,\mathrm{d}s\nonumber\\
-& = \left.(D\Phi_s(x))^*(\dot{\Phi}_s(x) + \bold{a}(\Phi_s(x), s))\right|_{s = 0}^{s = t}\nonumber\\
-& \hspace{0.4cm} - \int_0^t(D\Phi_s(x))^*\left(\ddot{\Phi}_s + \frac{\mathrm{d}}{\mathrm{d}s}\bold{a}(\Phi_s(x), s)\right)\mathrm{d}s\nonumber\\
-& = (D\Phi_t(x))^*(\dot{\Phi}_t(x) + \bold{a}(\Phi_t(x), t)) - \nabla S_0(x)\nonumber\\
-& \hspace{0.4cm} - \int_0^t(D\Phi_s(x))^*\left(\ddot{\Phi}_s + D\bold{a}(\Phi_s(x), s)\dot{\Phi}_s(y) + \frac{\partial\bold{a}}{\partial s}(\Phi_s(x), s)\right)\mathrm{d}s\nonumber
+\int_0^t\frac{\mathrm{d}}{\mathrm{d}s}(D\Phi_s&(x))^*(\dot{\Phi}_s(x) + \mathbf{a}(\Phi_s(x), s))\,\mathrm{d}s\nonumber\\
+& = \left.(D\Phi_s(x))^*(\dot{\Phi}_s(x) + \mathbf{a}(\Phi_s(x), s))\right|_{s = 0}^{s = t}\nonumber\\
+& \hspace{0.4cm} - \int_0^t(D\Phi_s(x))^*\left(\ddot{\Phi}_s + \frac{\mathrm{d}}{\mathrm{d}s}\mathbf{a}(\Phi_s(x), s)\right)\mathrm{d}s\nonumber\\
+& = (D\Phi_t(x))^*(\dot{\Phi}_t(x) + \mathbf{a}(\Phi_t(x), t)) - \nabla S_0(x)\nonumber\\
+& \hspace{0.4cm} - \int_0^t(D\Phi_s(x))^*\left(\ddot{\Phi}_s + D\mathbf{a}(\Phi_s(x), s)\dot{\Phi}_s(y) + \frac{\partial\mathbf{a}}{\partial s}(\Phi_s(x), s)\right)\mathrm{d}s\nonumber
 \end{align}
 and so,
 \begin{align}
-\nabla S_0(x) & = (D\Phi_t(x))^*(\dot{\Phi}_t(x) + \bold{a}(\Phi_t(x), t))\nonumber\\
-& \hspace{0.5cm} - \int_0^t(D\Phi_s(x))^*\left(\ddot{\Phi}_s + D\bold{a}(\Phi_s(x), s)\dot{\Phi}_s(y) + \frac{\partial\bold{a}}{\partial s}(\Phi_s(x), s)\right)\mathrm{d}s\nonumber\\
-& \hspace{0.5cm} - \int_0^t(D\dot{\Phi}_s(x))^*(\dot{\Phi}_s(x) + \bold{a}(\Phi_s(x), s))\,\mathrm{d}s\nonumber
+\nabla S_0(x) & = (D\Phi_t(x))^*(\dot{\Phi}_t(x) + \mathbf{a}(\Phi_t(x), t))\nonumber\\
+& \hspace{0.5cm} - \int_0^t(D\Phi_s(x))^*\left(\ddot{\Phi}_s + D\mathbf{a}(\Phi_s(x), s)\dot{\Phi}_s(y) + \frac{\partial\mathbf{a}}{\partial s}(\Phi_s(x), s)\right)\mathrm{d}s\nonumber\\
+& \hspace{0.5cm} - \int_0^t(D\dot{\Phi}_s(x))^*(\dot{\Phi}_s(x) + \mathbf{a}(\Phi_s(x), s))\,\mathrm{d}s\nonumber
 \end{align}
 hence,
 \begin{align}
-\nabla\mathscr{A} & (x, t) = (D\Phi_t(y))^*(\dot{\Phi}_t(x) + \bold{a}(\Phi_t(x), t))\nonumber\\
-& - \int_0^t(D\Phi_s(y))^*\left(\ddot{\Phi}_s(x) + \frac{\partial\bold{a}}{\partial s}(\Phi_s(x), s) + D\bold{a}(\Phi_s(x), s)\dot{\Phi}_s(x)\right)\,\mathrm{d}s\nonumber\\
-& + \int_0^t(D\bold{a}(\Phi_s(x), s))^*\dot{\Phi}_s(x)\,\mathrm{d}s - \int_0^t\nabla V(\Phi_s(x))\,\mathrm{d}s.\nonumber
+\nabla\mathscr{A} & (x, t) = (D\Phi_t(y))^*(\dot{\Phi}_t(x) + \mathbf{a}(\Phi_t(x), t))\nonumber\\
+& - \int_0^t(D\Phi_s(y))^*\left(\ddot{\Phi}_s(x) + \frac{\partial\mathbf{a}}{\partial s}(\Phi_s(x), s) + D\mathbf{a}(\Phi_s(x), s)\dot{\Phi}_s(x)\right)\,\mathrm{d}s\nonumber\\
+& + \int_0^t(D\mathbf{a}(\Phi_s(x), s))^*\dot{\Phi}_s(x)\,\mathrm{d}s - \int_0^t\nabla V(\Phi_s(x))\,\mathrm{d}s.\nonumber
 \end{align}
 Now,
 $$
-\ddot{\Phi}_s(x) = -\nabla V(\Phi_s(x)) - \frac{\partial \bold{a}}{\partial s}(\Phi_s(x), s) - (\nabla \times \bold{a}(\Phi_s(x), s))\times\dot{\Phi}_s(x)
+\ddot{\Phi}_s(x) = -\nabla V(\Phi_s(x)) - \frac{\partial \mathbf{a}}{\partial s}(\Phi_s(x), s) - (\nabla \times \mathbf{a}(\Phi_s(x), s))\times\dot{\Phi}_s(x)
 $$
 thus,
 \begin{align}
-\nabla\mathscr{A} & (x, t) = (D\Phi_t(y))^*(\dot{\Phi}_t(x) + \bold{a}(\Phi_t(x), t))\nonumber\\
-& - \int_0^t(D\Phi_s(y))^*(- (\nabla \times \bold{a}(\Phi_s(x), s))\times\dot{\Phi}_s(x) + D\bold{a}(\Phi_s(x), s)\dot{\Phi}_s(x))\,\mathrm{d}s\nonumber\\
-& + \int_0^t(D\bold{a}(\Phi_s(x), s))^*\dot{\Phi}_s(x)\,\mathrm{d}s\nonumber
+\nabla\mathscr{A} & (x, t) = (D\Phi_t(y))^*(\dot{\Phi}_t(x) + \mathbf{a}(\Phi_t(x), t))\nonumber\\
+& - \int_0^t(D\Phi_s(y))^*(- (\nabla \times \mathbf{a}(\Phi_s(x), s))\times\dot{\Phi}_s(x) + D\mathbf{a}(\Phi_s(x), s)\dot{\Phi}_s(x))\,\mathrm{d}s\nonumber\\
+& + \int_0^t(D\mathbf{a}(\Phi_s(x), s))^*\dot{\Phi}_s(x)\,\mathrm{d}s\nonumber
 \end{align}
 However,
 $$
-(\nabla\times\bold{a}(\Phi_s(x), s))\times\dot{\Phi}_s(x) = D\bold{a}(\Phi_s(x), s))\dot{\Phi}_s(x) - D\bold{a}(\Phi_s(x), s))^*\dot{\Phi}_s(x)
+(\nabla\times\mathbf{a}(\Phi_s(x), s))\times\dot{\Phi}_s(x) = D\mathbf{a}(\Phi_s(x), s))\dot{\Phi}_s(x) - D\mathbf{a}(\Phi_s(x), s))^*\dot{\Phi}_s(x)
 $$
 and so,
 \begin{align}
-\nabla\mathscr{A}(x, t) & = (D\Phi_t(y))^*(\dot{\Phi}_t(x) + \bold{a}(\Phi_t(x), t)) + \int_0^t(D\bold{a}(\Phi_s(x), s))^*\dot{\Phi}_s(x)\,\mathrm{d}s\nonumber\\
-& \hspace{0.5cm} - \int_0^t(D\Phi_s(x))^*D\bold{a}(\Phi_s(x), s)^*\dot{\Phi}_s(x)\,\mathrm{d}s.\nonumber
+\nabla\mathscr{A}(x, t) & = (D\Phi_t(y))^*(\dot{\Phi}_t(x) + \mathbf{a}(\Phi_t(x), t)) + \int_0^t(D\mathbf{a}(\Phi_s(x), s))^*\dot{\Phi}_s(x)\,\mathrm{d}s\nonumber\\
+& \hspace{0.5cm} - \int_0^t(D\Phi_s(x))^*D\mathbf{a}(\Phi_s(x), s)^*\dot{\Phi}_s(x)\,\mathrm{d}s.\nonumber
 \end{align}
 From here the result follows from the chain rule.
 
@@ -1507,11 +1497,11 @@ Assume $\Phi_t$ satisfies the no-caustic condition with the caustic time $T > 0$
 \begin{enumerate}
 \item $\dot{\Phi}_t$ is given by,
 $$
-\dot{\Phi}_t(x) = \nabla S(\Phi_t(x), t) - \bold{a}(\Phi_t(x), t).
+\dot{\Phi}_t(x) = \nabla S(\Phi_t(x), t) - \mathbf{a}(\Phi_t(x), t).
 $$
 \item $S$ satisfies the Hamilton-Jacobi equation,
 \begin{equation}
-\frac{\partial S}{\partial t}(x, t) + \frac{1}{2}\|\nabla S(x, t) - \bold{a}(x, t)\|^2 + V(x) = 0. \label{HJE2}
+\frac{\partial S}{\partial t}(x, t) + \frac{1}{2}\|\nabla S(x, t) - \mathbf{a}(x, t)\|^2 + V(x) = 0. \label{HJE2}
 \end{equation}
 \item If we define,
 $$
@@ -1519,7 +1509,7 @@ $$
 $$
 then $\rho$ satisfies the new continuity equation,
 \begin{equation}
-\frac{\partial \rho}{\partial t}(x, t) + \nabla(\rho(x, t)(\nabla S(x, t) - \bold{a}(x, t))) = 0 \label{CE2}
+\frac{\partial \rho}{\partial t}(x, t) + \nabla(\rho(x, t)(\nabla S(x, t) - \mathbf{a}(x, t))) = 0 \label{CE2}
 \end{equation}
 with the initial condition $\rho(x, 0) = T_0^2(x)$.
 \end{enumerate}
@@ -1529,7 +1519,7 @@ with the initial condition $\rho(x, 0) = T_0^2(x)$.
 For part 1 we use the result of Lemma 6,
 \begin{align}
 \nabla S(y, t) & = \nabla_y\mathscr{A}(\Phi_t^{-1}(y), t)\nonumber\\
-& = (D\Phi_t^{-1}(y))^*((D\Phi_t)(\Phi_t^{-1}(y)))^*(\dot{\Phi}_t(\Phi_t^{-1}(y)) + \bold{a}(\Phi_t(\Phi_t^{-1}(y)), t))\nonumber
+& = (D\Phi_t^{-1}(y))^*((D\Phi_t)(\Phi_t^{-1}(y)))^*(\dot{\Phi}_t(\Phi_t^{-1}(y)) + \mathbf{a}(\Phi_t(\Phi_t^{-1}(y)), t))\nonumber
 \end{align}
 By taking the transpose of,
 $$
@@ -1537,7 +1527,7 @@ I = Dy = D(\Phi_t(\Phi_t^{-1}(y))) = (D\Phi_t^{-1}(y))((D\Phi_t)(\Phi_t^{-1}(y))
 $$
 and setting $y = \Phi_t(x)$ gives the result,
 $$
-\dot{\Phi}_t(x) = \nabla S(\Phi_t(x), t) - \bold{a}(\Phi_t(x), t).
+\dot{\Phi}_t(x) = \nabla S(\Phi_t(x), t) - \mathbf{a}(\Phi_t(x), t).
 $$
 For part 2, since $x$ is fixed,
 $$
@@ -1549,18 +1539,18 @@ also,
 & = \frac{\partial\mathscr{A}}{\partial t}(\Phi_t^{-1}(x), t)\frac{\mathrm{d}t}{\mathrm{d}t} + \nabla\mathscr{A}(\Phi_t^{-1}(x), t)\frac{\mathrm{d}\Phi_t^{-1}}{\mathrm{d}t}\nonumber\\
 & = \frac{\partial\mathscr{A}}{\partial t}(\Phi_t^{-1}(x), t) - (D\Phi_t^{-1}(y))^*\nabla\mathscr{A}(\Phi_t^{-1}(x), t)\cdot\dot{\Phi}(\Phi_t^{-1}(x))\nonumber\\
 & = \frac{\partial\mathscr{A}}{\partial t}(\Phi_t^{-1}(x), t)\nonumber\\
-& \hspace{0.5cm} - (D\Phi_t^{-1}(y))^*(\dot{\Phi}(\Phi_t^{-1}(x)) + \bold{a}(\Phi_t(\Phi_t^{-1}(x)), t))\cdot\dot{\Phi}(\Phi_t^{-1}(x))\nonumber\\
-& = \frac{\partial\mathscr{A}}{\partial t}(\Phi_t^{-1}(x), t) - \nabla S(x, t)\cdot(\nabla S(x, t) - \bold{a}(x, t))\nonumber\\
-& = \frac{1}{2}\|\nabla S(x, t)\|^2 - \frac{1}{2}\|\bold{a}\|^2 - V(x) - \|\nabla S(x, t)\|^2 + \nabla S(x, t)\cdot\bold{a}(x, t)\nonumber\\
-& = -\frac{1}{2}\|\nabla S(x, t) - \bold{a}(x, t)\|^2 - V(x).\nonumber
+& \hspace{0.5cm} - (D\Phi_t^{-1}(y))^*(\dot{\Phi}(\Phi_t^{-1}(x)) + \mathbf{a}(\Phi_t(\Phi_t^{-1}(x)), t))\cdot\dot{\Phi}(\Phi_t^{-1}(x))\nonumber\\
+& = \frac{\partial\mathscr{A}}{\partial t}(\Phi_t^{-1}(x), t) - \nabla S(x, t)\cdot(\nabla S(x, t) - \mathbf{a}(x, t))\nonumber\\
+& = \frac{1}{2}\|\nabla S(x, t)\|^2 - \frac{1}{2}\|\mathbf{a}\|^2 - V(x) - \|\nabla S(x, t)\|^2 + \nabla S(x, t)\cdot\mathbf{a}(x, t)\nonumber\\
+& = -\frac{1}{2}\|\nabla S(x, t) - \mathbf{a}(x, t)\|^2 - V(x).\nonumber
 \end{align}
 Equating the above two expressions gives the result.
 
 Finally for part 3 we take an arbitrary smooth function $f: \mathbb{R}^3 \to \mathbb{R}$ and use integration by parts,
 \begin{align}
-& \hspace{0.5cm} \int_{\mathbb{R}^3}\int_0^tf(x)\nabla\cdot(\rho(x, s)(\nabla S(x, s) - \bold{a}(x, s)))\,\mathrm{d}s\,\mathrm{d}x\nonumber\\
-& = - \int_{\mathbb{R}^3}\int_0^t\rho(x, s)\nabla f(x)\cdot(\nabla S(x, s) - \bold{a}(x, s))\,\mathrm{d}s\,\mathrm{d}x\nonumber\\
-& = - \int_{\mathbb{R}^3}\int_0^t\rho(\Phi_s(y), s)\nabla f(\Phi_s(y))\cdot(\nabla S(\Phi_s(y), s) - \bold{a}(\Phi_s(y), s))\,\mathrm{d}s\,\mathrm{d}y\nonumber\\
+& \hspace{0.5cm} \int_{\mathbb{R}^3}\int_0^tf(x)\nabla\cdot(\rho(x, s)(\nabla S(x, s) - \mathbf{a}(x, s)))\,\mathrm{d}s\,\mathrm{d}x\nonumber\\
+& = - \int_{\mathbb{R}^3}\int_0^t\rho(x, s)\nabla f(x)\cdot(\nabla S(x, s) - \mathbf{a}(x, s))\,\mathrm{d}s\,\mathrm{d}x\nonumber\\
+& = - \int_{\mathbb{R}^3}\int_0^t\rho(\Phi_s(y), s)\nabla f(\Phi_s(y))\cdot(\nabla S(\Phi_s(y), s) - \mathbf{a}(\Phi_s(y), s))\,\mathrm{d}s\,\mathrm{d}y\nonumber\\
 & = - \int_{\mathbb{R}^3}\int_0^tT_0^2(y)\nabla f(\Phi_s(y))\cdot\dot{\Phi}_s(y)\,\mathrm{d}s\,\mathrm{d}y.\nonumber
 \end{align}
 By the chain rule,
@@ -1569,14 +1559,14 @@ $$
 $$
 So,
 \begin{align}
-& \hspace{0.5cm} \int_{\mathbb{R}^3}\int_0^tf(x)\nabla\cdot(\rho(x, s)(\nabla S(x, s) - \bold{a}(x, s)))\,\mathrm{d}s\,\mathrm{d}x\nonumber\\
+& \hspace{0.5cm} \int_{\mathbb{R}^3}\int_0^tf(x)\nabla\cdot(\rho(x, s)(\nabla S(x, s) - \mathbf{a}(x, s)))\,\mathrm{d}s\,\mathrm{d}x\nonumber\\
 & = - \int_{\mathbb{R}^3}\int_0^tT_0^2(y)\,\mathrm{d}f(\Phi_s(y))\,\mathrm{d}y\nonumber\\
 & = - \int_{\mathbb{R}^3}T_0^2(y)f(\Phi_t(y))\,\mathrm{d}y + \int_{\mathbb{R}^3}T_0^2(y)f(y)\,\mathrm{d}y\nonumber\\
 & = - \int_{\mathbb{R}^3}\int_0^tf(x)\frac{\partial\rho}{\partial s}(x, s)\,\mathrm{d}s\,\mathrm{d}x.\nonumber
 \end{align}
 Since $f$ was arbitrary we have,
 $$
--\frac{\partial\rho}{\partial s}(x, s) = \nabla\cdot(\rho(x, s)(\nabla S(x, s) - \bold{a}(x, s))).
+-\frac{\partial\rho}{\partial s}(x, s) = \nabla\cdot(\rho(x, s)(\nabla S(x, s) - \mathbf{a}(x, s))).
 $$
 
 \qedhere
@@ -1588,13 +1578,13 @@ We are now in a position to show that the stochastic elementary formula holds fo
 Given that the no-caustic condition holds for the caustic time $T > 0$, then for $t \in [0, T)$,
 \begin{align}
 & \hspace{0.5cm} u^\mu(x, t)\nonumber\\
-& = \exp\left(-\frac{S(x, t)}{\mu^2}\right)\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \bold{a})(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right) \label{SEF2}
+& = \exp\left(-\frac{S(x, t)}{\mu^2}\right)\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \mathbf{a})(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right) \label{SEF2}
 \end{align}
 where $Y_s^\mu$ satisfies the S.D.E.,
 $$
 \left\{
 \begin{aligned}
-\mathrm{d}Y_s^\mu & = -(\nabla S(Y_s^\mu, t - s) - \bold{a}(Y_s^\mu, t - s))\,\mathrm{d}s + \mu\,\mathrm{d}B_s, \hspace{0.3cm} s \in [0, t],\\
+\mathrm{d}Y_s^\mu & = -(\nabla S(Y_s^\mu, t - s) - \mathbf{a}(Y_s^\mu, t - s))\,\mathrm{d}s + \mu\,\mathrm{d}B_s, \hspace{0.3cm} s \in [0, t],\\
 Y_0^\mu & = x.
 \end{aligned}
 \right.
@@ -1620,27 +1610,27 @@ hence,
 \begin{align}
 \mathrm{d}S & = -\frac{\partial S}{\partial t}\,\mathrm{d}s - \sum_{i = 1}^n\frac{\partial S}{\partial x_i}\frac{\partial S}{\partial x_i}\,\mathrm{d}s\nonumber\\
 & \hspace{0.5cm} + \sum_{i = 1}^na_i\frac{\partial S}{\partial x_i}\,\mathrm{d}s + \mu\sum_{i = 1}^n\frac{\partial S}{\partial x_i}\,\mathrm{d}B_s^i + \frac{\mu^2}{2}\sum_{i, j = 1}^n\frac{\partial^2 S}{\partial x_i^2}\,\mathrm{d}s\nonumber\\
-& = \left(-\frac{\partial S}{\partial t} - \|\nabla S\|^2 + \nabla S\cdot\bold{a}\right)\mathrm{d}s + \frac{\mu^2}{2}\Delta S\,\mathrm{d}s + \mu\nabla S\cdot\mathrm{d}B_s.\nonumber
+& = \left(-\frac{\partial S}{\partial t} - \|\nabla S\|^2 + \nabla S\cdot\mathbf{a}\right)\mathrm{d}s + \frac{\mu^2}{2}\Delta S\,\mathrm{d}s + \mu\nabla S\cdot\mathrm{d}B_s.\nonumber
 \end{align}
 Integrating from $0$ to $t$,
 \begin{align}
-S(Y_t^\mu, 0) - S(Y_0^\mu, t) & = -\int_0^t\left(\frac{\partial S}{\partial t} + \|\nabla S\|^2 - \nabla S\cdot\bold{a}\right)\mathrm{d}s\nonumber\\
+S(Y_t^\mu, 0) - S(Y_0^\mu, t) & = -\int_0^t\left(\frac{\partial S}{\partial t} + \|\nabla S\|^2 - \nabla S\cdot\mathbf{a}\right)\mathrm{d}s\nonumber\\
 & \hspace{0.5cm} + \frac{\mu^2}{2}\int_0^t\Delta S\,\mathrm{d}s + \mu\int_0^t\nabla S\cdot\mathrm{d}B_s\nonumber
 \end{align}
 or,
 \begin{align}
 \frac{1}{\mu}\int_0^t\nabla S\cdot\mathrm{d}B_s & = \frac{1}{\mu^2}(S_0(Y_t^\mu) - S(x, t))\nonumber\\
-& \hspace{0.5cm} + \frac{1}{\mu^2}\int_0^t\left(\frac{\partial S}{\partial t} + \|\nabla S\|^2 - \nabla S\cdot\bold{a}\right)\mathrm{d}s - \frac{1}{2}\int_0^t\Delta S\,\mathrm{d}s.\nonumber
+& \hspace{0.5cm} + \frac{1}{\mu^2}\int_0^t\left(\frac{\partial S}{\partial t} + \|\nabla S\|^2 - \nabla S\cdot\mathbf{a}\right)\mathrm{d}s - \frac{1}{2}\int_0^t\Delta S\,\mathrm{d}s.\nonumber
 \end{align}
 By the Feynman-Kac formula for this system \eqref{FCF2} and the random change of measure,
 \begin{align}
 u^\mu(x, t) & = \mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{\mu^2}S_0(Y_t^\mu) + \frac{1}{\mu^2}\int_0^t\bar{V}(Y_s^\mu, t - s)\,\mathrm{d}s\right)M_t\right)\nonumber\\
 & = \mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{\mu^2}S_0(Y_t^\mu) + \frac{1}{\mu^2}(S_0(Y_t^\mu) - S(x, t))\right.\right.\nonumber\\
-& \hspace{0.5cm} + \frac{1}{\mu^2}\int_0^t\left(\frac{\partial S}{\partial t} + \frac{1}{2}(\|\nabla S\|^2 - 2\nabla S\cdot\bold{a} + \|\bold{a}\|^2) + V\right)\mathrm{d}s\nonumber\\
-& \hspace{0.5cm} - \left.\left.\frac{1}{2}\int_0^t(\Delta S - \nabla\cdot\bold{a})\,\mathrm{d}s\right)\right)\nonumber\\
-& = \mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{S(x, t)}{\mu^2}\right)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \bold{a})\,\mathrm{d}s\right.\right.\nonumber\\
-& \hspace{0.5cm} + \left.\left.\frac{1}{\mu^2}\int_0^t\left(\frac{\partial S}{\partial t} + \frac{1}{2}\|\nabla S - \bold{a}\|^2 + V\right)\mathrm{d}s\right)\right)\nonumber\\
-& = \exp\left(-\frac{S(x, t)}{\mu^2}\right)\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \bold{a})\,\mathrm{d}s\right)\right).\nonumber
+& \hspace{0.5cm} + \frac{1}{\mu^2}\int_0^t\left(\frac{\partial S}{\partial t} + \frac{1}{2}(\|\nabla S\|^2 - 2\nabla S\cdot\mathbf{a} + \|\mathbf{a}\|^2) + V\right)\mathrm{d}s\nonumber\\
+& \hspace{0.5cm} - \left.\left.\frac{1}{2}\int_0^t(\Delta S - \nabla\cdot\mathbf{a})\,\mathrm{d}s\right)\right)\nonumber\\
+& = \mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{S(x, t)}{\mu^2}\right)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \mathbf{a})\,\mathrm{d}s\right.\right.\nonumber\\
+& \hspace{0.5cm} + \left.\left.\frac{1}{\mu^2}\int_0^t\left(\frac{\partial S}{\partial t} + \frac{1}{2}\|\nabla S - \mathbf{a}\|^2 + V\right)\mathrm{d}s\right)\right)\nonumber\\
+& = \exp\left(-\frac{S(x, t)}{\mu^2}\right)\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \mathbf{a})\,\mathrm{d}s\right)\right).\nonumber
 \end{align}
 The result follows from this system's Hamilton-Jacobi equation \eqref{HJE2}.
 
@@ -1649,12 +1639,12 @@ The result follows from this system's Hamilton-Jacobi equation \eqref{HJE2}.
 
 \begin{remark}
 {
-This theorem shows that as long as we have a new process $Y_s^\mu$ with $\nabla S$ replaced with $\nabla S - \bold{a}$ in the drift term, then the stochastic elementary formula holds for this system with $\nabla S$ replaced with $\nabla S - \bold{a}$.  Reflecting the result of Theorem 12 Part 1 in which the velocity is given by $\nabla S - \bold{a}$ rather $\nabla S$.
+This theorem shows that as long as we have a new process $Y_s^\mu$ with $\nabla S$ replaced with $\nabla S - \mathbf{a}$ in the drift term, then the stochastic elementary formula holds for this system with $\nabla S$ replaced with $\nabla S - \mathbf{a}$.  Reflecting the result of Theorem 12 Part 1 in which the velocity is given by $\nabla S - \mathbf{a}$ rather $\nabla S$.
 }
 \end{remark}
 
 We can now show that Corollary 1 from the last chapter holds for this system which gives us the behaviour of the new heat equation as $\mu \to 0$.
-\cor
+\corollary
 {
 Suppose $\nabla S$ is bounded and $\Delta S$ is bounded below, then for $t \in [0, T)$,
 $$
@@ -1663,60 +1653,60 @@ $$
 }
 \proof
 {
-The proof is nearly identical to the proof of corollary 1 in the previous chapter.  We want to define a new matrix $S_\bold{a}''(s) = (D^2S(y, s) - D\bold{a}(y, s))|_{y = \Phi_s(\Phi_t^{-1})}$.  By Theorem 12, the elements of $S_\bold{a}''$ are given by,
+The proof is nearly identical to the proof of corollary 1 in the previous chapter.  We want to define a new matrix $S_\mathbf{a}''(s) = (D^2S(y, s) - D\mathbf{a}(y, s))|_{y = \Phi_s(\Phi_t^{-1})}$.  By Theorem 12, the elements of $S_\mathbf{a}''$ are given by,
 \begin{align}
 & \left.\frac{\partial^2 S}{\partial y_i \partial y_j}(y, s) - \frac{\partial a_j}{\partial y_i}(y, s)\right|_{y = \Phi_s(\Phi_t^{-1}(x))}\nonumber\\
 & \hspace{2cm} = \left.\frac{\partial}{\partial y_i}\left(\frac{\partial S}{\partial y_j}(y, s) - a_j(y, s)\right)\right|_{y = \Phi_s(\Phi_t^{-1}(x))}\nonumber\\
 & \hspace{2cm} = \left.\frac{\partial}{\partial y_i}\left(\dot{\Phi}_s(\Phi_s^{-1})(y)\right)_j\right|_{y = \Phi_s(\Phi_t^{-1}(x))}.\nonumber
 \end{align}
-From here on, by a similar calculation to Theorem 7, we find that $S_\bold{a}''$ satisfies the matrix differential equation $S_\bold{a}''J(s) = \frac{\mathrm{d}}{\mathrm{d}s}J(s)$, where again $J(s) = D\Phi_s(x)$.  The proof follows by following Corollary 1.
+From here on, by a similar calculation to Theorem 7, we find that $S_\mathbf{a}''$ satisfies the matrix differential equation $S_\mathbf{a}''J(s) = \frac{\mathrm{d}}{\mathrm{d}s}J(s)$, where again $J(s) = D\Phi_s(x)$.  The proof follows by following Corollary 1.
 
 \qedhere
 }
 
 Note that the limiting behaviour here is the same as in the previous chapter as long as we replace the old classical mechanical flow map with the relevant map for this sytem.
 
-For the next corollary we would like to introduce the function $v(x, t) = \nabla S(x, t) - \bold{a}(x, t)$ in a similar fashion to Chapter 2.  We take the gradient of this system's Hamilton-Jacobi equation \eqref{HJE2},
+For the next corollary we would like to introduce the function $v(x, t) = \nabla S(x, t) - \mathbf{a}(x, t)$ in a similar fashion to Chapter 2.  We take the gradient of this system's Hamilton-Jacobi equation \eqref{HJE2},
 $$
-\frac{\partial v}{\partial t}(x, t) + \frac{\partial \bold{a}}{\partial t}(x, t) + \frac{1}{2}\nabla\|v(x, t)\|^2 + \nabla V(x) = \bold{0}
+\frac{\partial v}{\partial t}(x, t) + \frac{\partial \mathbf{a}}{\partial t}(x, t) + \frac{1}{2}\nabla\|v(x, t)\|^2 + \nabla V(x) = \mathbf{0}
 $$
 and so,
 \begin{equation}
-\frac{\partial v}{\partial t}(x, t) + \frac{\partial \bold{a}}{\partial t}(x, t) + (v(x, t)\cdot\nabla)v(x, t) + v(x, t)\times(\nabla\times v(x, t)) + \nabla V(x) = \bold{0} \label{IBE}
+\frac{\partial v}{\partial t}(x, t) + \frac{\partial \mathbf{a}}{\partial t}(x, t) + (v(x, t)\cdot\nabla)v(x, t) + v(x, t)\times(\nabla\times v(x, t)) + \nabla V(x) = \mathbf{0} \label{IBE}
 \end{equation}
-with the initial condition $v(x, 0) = \nabla S_0(x) - \bold{a}(x, 0)$.  Our function $v$ satisfies the inviscid Burgers' equation with vorticity.  Again, mimicking Chapter 2, we define $S^\mu(x, t) = -\mu^2\ln u^\mu(x, t)$, then,
+with the initial condition $v(x, 0) = \nabla S_0(x) - \mathbf{a}(x, 0)$.  Our function $v$ satisfies the inviscid Burgers' equation with vorticity.  Again, mimicking Chapter 2, we define $S^\mu(x, t) = -\mu^2\ln u^\mu(x, t)$, then,
 \begin{align}
-& \frac{\partial S^\mu}{\partial t}(x, t) + \|\nabla S^\mu(x, t) - \bold{a}(x, t)\|^2 + V(x)\nonumber\\
-= & -\frac{\mu^2}{u^\mu}\frac{\partial u^\mu}{\partial t}(x, t) + \frac{\mu^4}{2(u^\mu)^2}(x, t) + \mu^2\bold{a}(x, t)\cdot\frac{\nabla u^\mu}{u^\mu}(x, t) + \frac{1}{2}\|\bold{a}(x, t)\|^2 + V(x)\nonumber
+& \frac{\partial S^\mu}{\partial t}(x, t) + \|\nabla S^\mu(x, t) - \mathbf{a}(x, t)\|^2 + V(x)\nonumber\\
+= & -\frac{\mu^2}{u^\mu}\frac{\partial u^\mu}{\partial t}(x, t) + \frac{\mu^4}{2(u^\mu)^2}(x, t) + \mu^2\mathbf{a}(x, t)\cdot\frac{\nabla u^\mu}{u^\mu}(x, t) + \frac{1}{2}\|\mathbf{a}(x, t)\|^2 + V(x)\nonumber
 \end{align}
 by \eqref{VPHE},
 \begin{align}
-\frac{\partial S^\mu}{\partial t}(x, t) & + \|\nabla S^\mu(x, t) - \bold{a}(x, t)\|^2 + V(x)\nonumber\\
-= & \frac{\mu^2}{2}\left(\mu^2\frac{\|\nabla u^\mu(x, t)\|^2}{(u^\mu(x, t))^2} - \mu^2\frac{\Delta u^\mu(x, t)}{u^\mu(x, t)} - \nabla\cdot\bold{a}(x, t)\right)\nonumber\\
-= & \frac{\mu^2}{2}(-\mu^2\Delta\ln u^\mu(x, t) - \nabla\cdot\bold{a}(x, t))\nonumber\\
-= & \frac{\mu^2}{2}\nabla\cdot(\nabla S(x, t) - \bold{a}(x, t)).\nonumber
+\frac{\partial S^\mu}{\partial t}(x, t) & + \|\nabla S^\mu(x, t) - \mathbf{a}(x, t)\|^2 + V(x)\nonumber\\
+= & \frac{\mu^2}{2}\left(\mu^2\frac{\|\nabla u^\mu(x, t)\|^2}{(u^\mu(x, t))^2} - \mu^2\frac{\Delta u^\mu(x, t)}{u^\mu(x, t)} - \nabla\cdot\mathbf{a}(x, t)\right)\nonumber\\
+= & \frac{\mu^2}{2}(-\mu^2\Delta\ln u^\mu(x, t) - \nabla\cdot\mathbf{a}(x, t))\nonumber\\
+= & \frac{\mu^2}{2}\nabla\cdot(\nabla S(x, t) - \mathbf{a}(x, t)).\nonumber
 \end{align}
 So, $S^\mu$ satisfies the Hamilton-Jacobi-Bellman equation,
 \begin{equation}
 \left\{
 \begin{aligned}
-& \frac{\partial S^\mu}{\partial t}(x, t) + \|\nabla S^\mu(x, t) - \bold{a}(x, t)\|^2 + V(x) = \frac{\mu^2}{2}\nabla\cdot(\nabla S(x, t) - \bold{a}(x, t)),\\
+& \frac{\partial S^\mu}{\partial t}(x, t) + \|\nabla S^\mu(x, t) - \mathbf{a}(x, t)\|^2 + V(x) = \frac{\mu^2}{2}\nabla\cdot(\nabla S(x, t) - \mathbf{a}(x, t)),\\
 & S^\mu(x, 0) = S_0(x) - \mu^2\ln T_0(x).
 \end{aligned}
 \right.
 \end{equation}
-Completing what is known as the extended Hopf-Cole transformation\\$v^\mu(x, t) = \nabla S^\mu(x, t) - \bold{a}(x, t)$, we find that $v^\mu$ satisfies,
+Completing what is known as the extended Hopf-Cole transformation\\$v^\mu(x, t) = \nabla S^\mu(x, t) - \mathbf{a}(x, t)$, we find that $v^\mu$ satisfies,
 \begin{equation}
 \left\{
 \begin{aligned}
-& \frac{\partial v^\mu}{\partial t}(x, t) + \frac{\partial\bold{a}}{\partial t}(x, t) + (v^\mu(x, t)\cdot\nabla)v^\mu(x, t) + v^\mu(x, t)\times(\nabla\times v^\mu(x, t))\\ \label{VBEWV}
-& \hspace{0.8cm} = \frac{\mu^2}{2}(\Delta v^\mu(x, t) + \nabla\times\nabla\times\bold{a}(x, t)) - \nabla V(x),\\
-& v^\mu(x, 0) = \nabla S_0(x) - \mu^2\nabla\ln T_0(x) - \bold{a}(x, 0),
+& \frac{\partial v^\mu}{\partial t}(x, t) + \frac{\partial\mathbf{a}}{\partial t}(x, t) + (v^\mu(x, t)\cdot\nabla)v^\mu(x, t) + v^\mu(x, t)\times(\nabla\times v^\mu(x, t))\\ \label{VBEWV}
+& \hspace{0.8cm} = \frac{\mu^2}{2}(\Delta v^\mu(x, t) + \nabla\times\nabla\times\mathbf{a}(x, t)) - \nabla V(x),\\
+& v^\mu(x, 0) = \nabla S_0(x) - \mu^2\nabla\ln T_0(x) - \mathbf{a}(x, 0),
 \end{aligned}
 \right.
 \end{equation}
 which is known as the viscous Burgers' equation with vorticity.
-\cor
+\corollary
 {
 Given that the no-caustic condition holds for the caustic time $T$, then under the conditions of Theorem 13 for $t \in [0, T)$,
 $$
@@ -1730,20 +1720,20 @@ We simply take the extended Hopf-Cole transformation of our stochastic elementar
 \begin{align}
 & \ln u^\mu(x, t)\nonumber\\
 & = \ln\exp\left(-\frac{S(x, t)}{\mu^2}\right)\nonumber\\
-& \hspace{0.5cm} + \ln\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \bold{a})(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right)\nonumber\\
-& = -\frac{S(x, t)}{\mu^2} + \ln\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \bold{a})(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right)\nonumber
+& \hspace{0.5cm} + \ln\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \mathbf{a})(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right)\nonumber\\
+& = -\frac{S(x, t)}{\mu^2} + \ln\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \mathbf{a})(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right)\nonumber
 \end{align}
 taking the gradient yields,
 \begin{align}
 & \nabla\ln u^\mu(x, t) = \nonumber\\
-& -\frac{1}{\mu^2}\nabla S(x, t) + \nabla\ln\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \bold{a})(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right)\nonumber
+& -\frac{1}{\mu^2}\nabla S(x, t) + \nabla\ln\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \mathbf{a})(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right)\nonumber
 \end{align}
 and completing the transformation,
 \begin{align}
--\mu^2\nabla\ln u^\mu & (x, t) - \bold{a}(x, t) = \nabla S(x, t) - \bold{a}(x, t)\nonumber\\
-& - \mu^2\nabla\ln\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \bold{a})(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right).\nonumber
+-\mu^2\nabla\ln u^\mu & (x, t) - \mathbf{a}(x, t) = \nabla S(x, t) - \mathbf{a}(x, t)\nonumber\\
+& - \mu^2\nabla\ln\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot(\nabla S - \mathbf{a})(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right).\nonumber
 \end{align}
-Hence, remembering $v(x, t) = \nabla S(x, t) - \bold{a}(x, t)$, we get,
+Hence, remembering $v(x, t) = \nabla S(x, t) - \mathbf{a}(x, t)$, we get,
 $$
 v^\mu(x, t) = v(x, t) - \mu^2\nabla\ln\mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{2}\int_0^t\nabla\cdot v(Y_s^\mu, t - s)\,\mathrm{d}s\right)\right).
 $$
@@ -1762,7 +1752,7 @@ where, $Y_s^\mu$ satisfies the S.D.E.,
 $$
 \left\{
 \begin{aligned}
-\mathrm{d}Y_s^\mu & = (-(\nabla S(Y_s^\mu, t - s) - \bold{a}(Y_s^\mu, t - s)) + \mu^2\nabla\ln\rho_0(Y_s^\mu, t - s))\,\mathrm{d}s\\
+\mathrm{d}Y_s^\mu & = (-(\nabla S(Y_s^\mu, t - s) - \mathbf{a}(Y_s^\mu, t - s)) + \mu^2\nabla\ln\rho_0(Y_s^\mu, t - s))\,\mathrm{d}s\\
 & \hspace{0.5cm} + \mu\,\mathrm{d}B_s, \hspace{0.3cm} s \in [0, t],\\
 Y_0^\mu & = x,
 \end{aligned}
@@ -1772,7 +1762,7 @@ and $\rho_0 = \sqrt{\rho}$.
 }
 \proof
 {
-The proof is similar to Theorem 9 but we must remember the new drift.  We again define a general diffusion $Z_s^\mu = -S(Y_s^\mu, t - s) + \mu^2\ln\rho_0(Y_s^\mu, t - s)$ so now our drift becomes $\mathrm{d}Y_s^\mu = (\nabla Z_s^\mu + \bold{a})\,\mathrm{d}s + \mu\,\mathrm{d}B_s$.  So by It$\mathrm{\hat{o}}$'s formula,
+The proof is similar to Theorem 9 but we must remember the new drift.  We again define a general diffusion $Z_s^\mu = -S(Y_s^\mu, t - s) + \mu^2\ln\rho_0(Y_s^\mu, t - s)$ so now our drift becomes $\mathrm{d}Y_s^\mu = (\nabla Z_s^\mu + \mathbf{a})\,\mathrm{d}s + \mu\,\mathrm{d}B_s$.  So by It$\mathrm{\hat{o}}$'s formula,
 $$
 \mathrm{d}Z_s^\mu = \frac{\partial Z_s^\mu}{\partial s}\,\mathrm{d}s + \sum_{i = 1}^n\frac{\partial Z_s^\mu}{\partial x_i}\,\mathrm{d}Y_s^i + \frac{1}{2}\sum_{i = 1}^n\frac{\partial^2 Z_s^\mu}{\partial x_i \partial x_j}\,\mathrm{d}Y_s^i\,\mathrm{d}Y_s^j
 $$
@@ -1793,26 +1783,26 @@ Hence,
 \end{align}
 or in vector calculus notation,
 $$
-\mathrm{d}Z_s^\mu = \left(\frac{\partial Z_s^\mu}{\partial s} + \|Z_s^\mu\|^2 + \nabla Z_s^\mu\cdot\bold{a} + \frac{\mu^2}{2}\Delta Z_s^\mu\right)\mathrm{d}s + \mu\nabla Z_s^\mu\cdot\mathrm{d}B_s.
+\mathrm{d}Z_s^\mu = \left(\frac{\partial Z_s^\mu}{\partial s} + \|Z_s^\mu\|^2 + \nabla Z_s^\mu\cdot\mathbf{a} + \frac{\mu^2}{2}\Delta Z_s^\mu\right)\mathrm{d}s + \mu\nabla Z_s^\mu\cdot\mathrm{d}B_s.
 $$
 Integrating from $0$ to $t$ and re-arranging gives us,
 \begin{align}
 -\frac{1}{\mu}\int_0^t\nabla Z_s^\mu\cdot\mathrm{d}B_s & = \frac{1}{\mu^2}(Z_0^\mu - Z_t^\mu) + \frac{1}{2}\int_0^t\Delta Z_s^\mu\,\mathrm{d}s\nonumber\\
-& \hspace{0.5cm} + \frac{1}{\mu^2}\int_0^t\left(\frac{\partial Z_s^\mu}{\partial s} + \|Z_s^\mu\|^2 + \nabla Z_s^\mu\cdot\bold{a}\right)\mathrm{d}s.\nonumber
+& \hspace{0.5cm} + \frac{1}{\mu^2}\int_0^t\left(\frac{\partial Z_s^\mu}{\partial s} + \|Z_s^\mu\|^2 + \nabla Z_s^\mu\cdot\mathbf{a}\right)\mathrm{d}s.\nonumber
 \end{align}
 Our Radon-Nikodym derivative is given by,
 \begin{align}
 M_t & = \exp\left(-\frac{1}{\mu}\int_0^t\nabla Z_s^\mu\cdot\mathrm{d}B_s - \frac{1}{\mu^2}\int_0^t\frac{1}{2}\|\nabla Z_s^\mu\|^2\,\mathrm{d}s\right)\nonumber\\
 & = \exp\left(\frac{1}{\mu^2}(Z_0^\mu - Z_t^\mu) + \frac{1}{2}\int_0^t\Delta Z_s^\mu\,\mathrm{d}s\right.\nonumber\\
-& \hspace{1.5cm} + \left.\frac{1}{\mu^2}\int_0^t\left(\frac{\partial Z_s^\mu}{\partial s} + \frac{1}{2}\|Z_s^\mu\|^2 + \nabla Z_s^\mu\cdot\bold{a}\right)\mathrm{d}s\right).\nonumber
+& \hspace{1.5cm} + \left.\frac{1}{\mu^2}\int_0^t\left(\frac{\partial Z_s^\mu}{\partial s} + \frac{1}{2}\|Z_s^\mu\|^2 + \nabla Z_s^\mu\cdot\mathbf{a}\right)\mathrm{d}s\right).\nonumber
 \end{align}
 We must modify our continuity equation \eqref{CE2} using the definition $\rho = \rho_0^2$,
 $$
-\frac{\partial\rho_0^2}{\partial t} + \nabla\rho_0^2\cdot(\nabla S - \bold{a}) + \rho_0^2\nabla\cdot(\nabla S - \bold{a}) = 0
+\frac{\partial\rho_0^2}{\partial t} + \nabla\rho_0^2\cdot(\nabla S - \mathbf{a}) + \rho_0^2\nabla\cdot(\nabla S - \mathbf{a}) = 0
 $$
 and by vector calculus and re-arranging,
 $$
-\frac{1}{\rho_0}\frac{\partial\rho_0}{\partial t} + \frac{\nabla\rho_0}{\rho_0}\cdot(\nabla S - \bold{a}) + \frac{1}{2}\nabla\cdot(\nabla S - \bold{a}) = 0.
+\frac{1}{\rho_0}\frac{\partial\rho_0}{\partial t} + \frac{\nabla\rho_0}{\rho_0}\cdot(\nabla S - \mathbf{a}) + \frac{1}{2}\nabla\cdot(\nabla S - \mathbf{a}) = 0.
 $$
 We now proceed by direct computation:
 $$
@@ -1820,10 +1810,10 @@ $$
 $$
 by our modified continuity equation, the definition of $\bar{V}$ and this system's Hamilton-Jacobi equation \eqref{HJE2},
 \begin{align}
-\frac{1}{\mu^2}&\left(\frac{\partial Z_s^\mu}{\partial s} + \frac{1}{2}\|\nabla Z_s^\mu\|^2 + \nabla Z_s^\mu\cdot\bold{a}\right)\nonumber\\
-& = \frac{1}{\mu^2}\left(\frac{\partial S}{\partial t} + \frac{1}{2}\|\nabla S\|^2 - \nabla S\cdot\bold{a}\right) - \frac{1}{\rho_0}\left(\frac{\partial\rho_0}{\partial t} + \nabla\rho_0\cdot(\nabla S - \bold{a})\right)\nonumber\\
+\frac{1}{\mu^2}&\left(\frac{\partial Z_s^\mu}{\partial s} + \frac{1}{2}\|\nabla Z_s^\mu\|^2 + \nabla Z_s^\mu\cdot\mathbf{a}\right)\nonumber\\
+& = \frac{1}{\mu^2}\left(\frac{\partial S}{\partial t} + \frac{1}{2}\|\nabla S\|^2 - \nabla S\cdot\mathbf{a}\right) - \frac{1}{\rho_0}\left(\frac{\partial\rho_0}{\partial t} + \nabla\rho_0\cdot(\nabla S - \mathbf{a})\right)\nonumber\\
 & \hspace{0.5cm} + \frac{\mu^2}{2}\frac{\|\nabla\rho_0\|^2}{\rho_0^2}\nonumber\\
-& = -\frac{1}{\mu^2}\left(\frac{1}{2}\|\bold{a}\|^2 + \frac{\mu^2}{2}\nabla\cdot\bold{a} + V\right) + \frac{1}{2}\Delta S + \frac{\mu^2}{2}\frac{\|\nabla\rho_0\|^2}{\rho_0^2}\nonumber\\
+& = -\frac{1}{\mu^2}\left(\frac{1}{2}\|\mathbf{a}\|^2 + \frac{\mu^2}{2}\nabla\cdot\mathbf{a} + V\right) + \frac{1}{2}\Delta S + \frac{\mu^2}{2}\frac{\|\nabla\rho_0\|^2}{\rho_0^2}\nonumber\\
 & = -\frac{1}{\mu^2}\bar{V} + \frac{1}{2}\Delta S + \frac{\mu^2}{2}\frac{\|\nabla\rho_0\|^2}{\rho_0^2}\nonumber
 \end{align}
 and by vector calculus,
@@ -1847,7 +1837,7 @@ u^\mu(x, t) & = \mathbb{E}\left(T_0(Y_t^\mu)\exp\left(-\frac{1}{\mu^2}S_0(Y_t^\m
 \qedhere
 }
 
-Using Corollary 3 we see that we can obtain a series expansion in higher order terms of $\mu^2$ by using the definition of the exponential function.  So we see that the result of Theorem 9 holds for this new system with a vector potential, again by replacing $\nabla S$ by $\nabla S - \bold{a}$ where appropriate.
+Using Corollary 3 we see that we can obtain a series expansion in higher order terms of $\mu^2$ by using the definition of the exponential function.  So we see that the result of Theorem 9 holds for this new system with a vector potential, again by replacing $\nabla S$ by $\nabla S - \mathbf{a}$ where appropriate.
 
 
 
