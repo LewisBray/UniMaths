@@ -1,35 +1,28 @@
 \documentclass[a4paper, 12pt]{report}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{amsmath}
-\usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{mathrsfs}
-\usepackage{bm}
 \usepackage{upgreek}
-\usepackage{graphics, color}
 \usepackage{quotes}
-\usepackage{tikz}
 \usepackage[nottoc, notlot, notlof]{tocbibind}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{cor}[theorem]{Corollary}
-\theoremstyle{cor}
-\newtheorem{prop}[theorem]{Proposition}
-\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
-\newtheorem{assume}[theorem]{Assumptions}
-\newtheorem{defn}[theorem]{Definition}
-\newtheorem{eg}[theorem]{Example}
+\newtheorem{assumptions}[theorem]{Assumptions}
+\newtheorem{example}[theorem]{Example}
+
 \setlength{\unitlength}{10mm}
 \renewcommand{\baselinestretch}{1.5}
+
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
-\DeclareMathOperator*{\bplim}{bp-lim}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -244,7 +237,7 @@ In this first part, we introduce concepts used throughout this thesis such as re
 
 We begin with some topological definitions.
 
-\begin{defn}
+\begin{definition}
 Let $X$ be a topological vector space.  A set $G \subset X$ is called:
 \begin{enumerate}
 \item \emph{convex} if for all $\lambda \in [0, 1]$ and $x, y \in G$ it follows that $\lambda x + (1 - \lambda)y \in G$;
@@ -253,13 +246,13 @@ Let $X$ be a topological vector space.  A set $G \subset X$ is called:
 
 \item \emph{balanced} whenever $x \in G$ and $|\lambda| \le 1$ implies $\lambda x \in G$.
 \end{enumerate}
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 We call a topological vector space $X$ a \emph{locally convex topological vector space} if there exists a base of neighbourhoods of $0 \in X$ consisting of convex, balanced and absorbing sets.
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 Let $X$ be a vector space over a scalar field $\mathbb{K}$.  We call a function $\nu : X \to \mathbb{R}$ a \emph{seminorm} on $X$ if and only if:
 \begin{enumerate}
 \item $\nu(x) \ge 0$ for all $x \in X$;
@@ -269,28 +262,28 @@ Let $X$ be a vector space over a scalar field $\mathbb{K}$.  We call a function 
 \item $\nu(x + y) \le \nu(x) + \nu(y)$ for all $x, y \in X$.
 \end{enumerate}
 We call a family of seminorms $(\nu_i)_{i \in I}$, where $I$ is an index set, a \emph{family of separating seminnorms} if for some $0 \ne x \in X$ there exists some $\nu_i$ such that $\nu_i(x) \ne 0$.
-\end{defn}
+\end{definition}
 
 If $\mathcal{B}_0$ is a base (of neighbourhoods) of $0 \in X$, then $\mathcal{B}_x := \{x + B_0 : B_0 \in \mathcal{B}_0\}$ is a base of $x \in X$ and the topology of a topological vector space is completely determined by $\mathcal{B}_0$.  This leads to,
-\begin{prop}
+\begin{proposition}
 Let $(\nu_i)_{i \in I}$, where $I$ is an index set, be a family of separating seminorms on the vector space $X$ and $\mathcal{B}_0'$ the family of subsets $U_{i, \varepsilon} \subset X$ defined for $\varepsilon > 0$ and $i \in I$ by,
 $$
 U_{i \varepsilon} := \{x \in X : \nu_i(x) < \varepsilon\}.
 $$
 Then the set $\mathcal{B}_0$ of all finite intersections of elements of $\mathcal{B}_0'$ form a base of $0 \in X$ which turns $X$ into a locally convex topological vector space.
-\end{prop}
+\end{proposition}
 
 We can now introduce the Schwartz space.
 
-\begin{defn}
+\begin{definition}
 The \emph{Schwartz space} $\mathcal{S}(\mathbb{R}^n)$ consists of all functions $u \in C^\infty(\mathbb{R}^n)$ such that for all $m_1, m_2 \in \mathbb{N}_0$,
 \begin{equation}
 p_{m_1, m_2}(u) := \sup_{x \in \mathbb{R}^n}\bigg(\big(1 + |x|^2\big)^{m_1/2}\sum_{|\alpha| \le m_2}|\partial_\alpha u(x)|\bigg) < \infty.
 \end{equation}
 The family $(p_{m_1, m_2})_{m_1, m_2 \in \mathbb{N}_0}$ forms a family of separating seminorms and hence induce a locally convex topology on $\mathcal{S}(\mathbb{R}^n)$ which is metrizable.
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 Let $u \in \mathcal{S}(\mathbb{R}^n)$, then the \emph{Fourier transform} of $u$ is defined by,
 \begin{equation}
 \hat{u}(\xi) := (2\pi)^{-n/2}\int_{\mathbb{R}^n}e^{-ix\cdot\xi}u(x)\,\mathrm{d}x.
@@ -299,7 +292,7 @@ Sometimes we will write $\mathrm{F}u(\xi)$.  We also define the \emph{inverse Fo
 \begin{equation}
 \mathrm{F}^{-1}u(\eta) := (2\pi)^{-n/2}\int_{\mathbb{R}^n}e^{i\eta\cdot y}u(y)\,\mathrm{d}y.\label{IFT}
 \end{equation}
-\end{defn}
+\end{definition}
 The following theorem summarises some useful properties of the Fourier transform on $\mathcal{S}(\mathbb{R}^n)$.
 
 \begin{theorem}
@@ -329,12 +322,12 @@ This allows us to extend the Fourier transform from $\mathcal{S}(\mathbb{R}^n)$ 
 \end{remark}
 
 There is an important relationship between Fourier transforms and the convolution of functions which we now state.
-\begin{defn}
+\begin{definition}
 Let $u, v \in \mathcal{S}(\mathbb{R}^n)$, their \emph{convolution} $u\ast v \in \mathcal{S}(\mathbb{R}^n)$ is given by,
 \begin{equation}
 (u\ast v)(x) := \int_{\mathbb{R}^n}u(x - y)v(y)\,\mathrm{d}y.
 \end{equation}
-\end{defn}
+\end{definition}
 
 \begin{theorem}
 Let $u, v \in \mathcal{S}(\mathbb{R}^n)$.  Then we have,
@@ -351,9 +344,9 @@ and,
 \section{The Fourier Transform in $\mathcal{S}'(\mathbb{R}^n)$}
 
 We now look to extend the Fourier transform from $\mathcal{S}(\mathbb{R}^n)$ to $\mathcal{S}'(\mathbb{R}^n)$ by duality.  We will always consider the weak-$\ast$-topology on $\mathcal{S}'(\mathbb{R}^n)$.
-\begin{defn}
+\begin{definition}
 $\mathcal{S}'(\mathbb{R}^n)$ is called \emph{the space of tempered distributions}.  It consists of all distributions $u \in \mathcal{D}'(\mathbb{R}^n)$ having a continuous extension to $\mathcal{S}(\mathbb{R}^n)$.
-\end{defn}
+\end{definition}
 \begin{remark}
 Let $X$ be a topological vector space and $X^\ast$ its dual (i.e. the space of all continuous linear functionals $u : X \to \mathbb{C}$).  The weakest topology on $X^\ast$ which makes all elements of $X$ continuous, i.e. for every $u \in X$ a continuous linear functional on $X^\ast$ is given by $u(x^\ast) = x^\ast(u)$, is called the weak-$\ast$-topology on $X^\ast$.  A sequence $(u_\nu)_{\nu \in \mathbb{N}}$, $u_\nu \in \mathcal{S}'(\mathbb{R}^n)$, converges in the weak-$\ast$-topology to $u \in \mathcal{S}'(\mathbb{R}^n)$ if and only if,
 $$
@@ -361,13 +354,13 @@ $$
 $$
 \end{remark}
 
-\begin{defn}
+\begin{definition}
 Let $u \in \mathcal{S}'(\mathbb{R}^n)$.  Then the \emph{Fourier transform} of $u$ is defined by,
 \begin{equation}
 \langle\hat{u}, \phi\rangle := \langle u, \hat{\phi}\rangle,
 \end{equation}
 for all $\phi \in \mathcal{S}(\mathbb{R}^n)$.
-\end{defn}
+\end{definition}
 \begin{remark}
 For $g \in \mathcal{L}^1(\mathbb{R}^n) \subset \mathcal{S}'(\mathbb{R}^n)$ and $\phi \in \mathcal{S}(\mathbb{R}^n)$ we find,
 $$
@@ -381,12 +374,12 @@ Similar to the Fourier transform on $\mathcal{S}(\mathbb{R}^n)$ we find,
 The Fourier transform is a continuous linear operator from $\mathcal{S}'(\mathbb{R}^n)$ into itself which is bijective and has a continuous inverse $\mathrm{F}^{-1} = \mathrm{F}^3$.
 \end{theorem}
 
-\begin{defn}
+\begin{definition}
 Let $u \in \mathcal{S}'(\mathbb{R}^n)$ and $\varphi \in \mathcal{S}(\mathbb{R}^n)$, their \emph{convolution} $u \ast \varphi$ is defined as,
 \begin{equation}
 \big(u \ast \varphi\big)(x) := u\big(\varphi(x - \cdot)\big).
 \end{equation}
-\end{defn}
+\end{definition}
 \begin{remark}
 We find that $u \ast \varphi$ is in $\mathcal{S}'(\mathbb{R}^n)$.
 \end{remark}
@@ -431,12 +424,12 @@ For $\mu, \nu \in \mathcal{M}_b^+(\mathbb{R}^n)$ the convolution theorem holds, 
 \end{theorem}
 
 To characterise the Fourier transforms of bounded Borel measures we need the notion of positive definite functions.
-\begin{defn}
+\begin{definition}
 A function $u : \mathbb{R}^n \to \mathbb{C}$ is called \emph{positive definite} if for any choice of $k \in \mathbb{N}$ and vectors $\xi^1, \dots, \xi^k \in \mathbb{R}^n$ the matrix $\big(u(\xi^j - \xi^l)\big)_{j, l = 1, \dots, k}$ is positive Hermitian, i.e. for all $\lambda_1, \dots, \lambda_k \in \mathbb{C}$ we have,
 \begin{equation}
 \sum_{j, l = 1}^ku(\xi^j - \xi^l)\lambda_j\bar{\lambda}_l \ge 0.
 \end{equation}
-\end{defn}
+\end{definition}
 
 The following theorem of Bochner is fundamental in characterising the Fourier transforms of bounded Borel measures.
 \begin{theorem}
@@ -451,16 +444,16 @@ A function $u : \mathbb{R}^n \to \mathbb{C}$ is the Fourier transform of a bound
 \end{theorem}
 
 
-\section{Convolution Semigroups and Negative Definite Functions}\label{Se.CSaNDF}
+\section{Convolution Semigroups and Negative\\Definite Functions}\label{Se.CSaNDF}
 
 Having introduced positive definite functions, we now explore negative definite functions and their link to convolution semigroups.
-\begin{defn}
+\begin{definition}
 Let $G$ be a locally compact space.  Further let $(\mu_\nu)_{\nu \in \mathbb{N}}$ be a sequence in $\mathcal{M}_b(G)$ and $\mu \in \mathcal{M}_b(G)$.  We say that the sequence $(\mu_\nu)_{\nu \in \mathbb{N}}$ \emph{converges weakly} to $\mu$ if for all $u \in C_b(G; \mathbb{R})$ we have,
 \begin{equation}
 \lim_{\nu \to \infty}\int_Gu(x)\,\mu_\nu(\mathrm{d}x) = \int_Gu(x)\,\mu(\mathrm{d}x).\label{WCoM}
 \end{equation}
 If \eqref{WCoM} holds only for all $u \in C_0(G; \mathbb{R})$, we say that $(\mu_\nu)_{\nu \in \mathbb{N}}$ \emph{converges vaguely} to $\mu$.
-\end{defn}
+\end{definition}
 \begin{remark}
 Since $C_0(G; \mathbb{R}^n) \subset C_b(G; \mathbb{R}^n)$ we obviously have that weak convergence implies vague convergence.
 \end{remark}
@@ -470,13 +463,13 @@ We also need for later,
 \begin{theorem}\label{VCimpliesWC}
 Suppose that $(\mu_\nu)_{\nu \in \mathbb{N}}$, $\mu_\nu \in \mathcal{M}_b^+(\mathbb{R}^n)$, converges vaguely to $\mu \in \mathcal{M}_b^+(\mathbb{R}^n)$ as $\nu \to \infty$ and $\mu_\nu(\mathbb{R}^n) \to \mu(\mathbb{R}^n)$.  Then $(\mu_\nu)_{\nu \in \mathbb{N}}$ converges weakly to $\mu$.
 \end{theorem}
-\begin{cor}
+\begin{corollary}
 A sequence of probability measures on $G$ converges weakly if and only if it converges vaguely to a probability measure.
-\end{cor}
+\end{corollary}
 
 Now we introduce convolution semigroups.
 
-\begin{defn}
+\begin{definition}
 A family $(\mu_t)_{t \ge 0}$ of bounded Borel measures on $\mathbb{R}^n$ is called a \emph{convolution semigroup} on $\mathbb{R}^n$ if and only if the following conditions are fulfilled:
 \begin{enumerate}
 \item $\mu_t(\mathbb{R}^n) \le 1$ for all $t \ge 0$;
@@ -486,11 +479,11 @@ A family $(\mu_t)_{t \ge 0}$ of bounded Borel measures on $\mathbb{R}^n$ is call
 \item $\mu_t \to \varepsilon_0$ vaguely as $t \to 0$,
 \end{enumerate}
 where for $a \in \mathbb{R}^n$, $\varepsilon_a$ denotes the Dirac measure at $a$.
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 A function $\psi : \mathbb{R}^n \to \mathbb{C}$ is called negative definite if $\psi(0) \ge 0$ and $\xi \mapsto (2\pi)^{-n/2}e^{-t\psi(\xi)}$ is positive definite for $t \ge 0$.
-\end{defn}
+\end{definition}
 
 The following theorem is of huge importance and establishes a one-to-one correspondence between convolution semigroups on $\mathbb{R}^n$ and continuous negative definite functions.
 \begin{theorem}
@@ -538,11 +531,11 @@ $$
 \section{Some Function Spaces Related to Negative Definite Functions}
 
 We now take a brief moment to define some function spaces related to negative definite functions which are used later on for the purpose of estimating.  These spaces are modelled after classical Bessel potential spaces, see \cite{I.1} or \cite{II.256}, and were introduced in \cite{II.256}, see also \cite{II.87}.  For this section let $\psi : \mathbb{R}^n \to \mathbb{R}$ be a continuous negative definite function.
-\begin{defn}
+\begin{definition}
 Let $(X, \|\cdot\|_X)$ and $(Y, \|\cdot\|_Y)$ be two normed spaces.  We say that $X$ is \emph{continuously embedded} in $Y$ if $X \subset Y$ and the identity map is continuous, i.e. $\|u\|_Y \le c\|u\|_X$ for some constant $c > 0$ and all $u \in X$.  We write $X \hookrightarrow Y$ when $X$ is continuously embedded in $Y$.
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 For any $\sigma \in \mathbb{R}$ we define the space,
 \begin{equation}
 H^{\psi, \sigma}(\mathbb{R}^n) := \left\{u \in \mathcal{S}'(\mathbb{R}^n) : \|u\|_{\psi, s} < \infty\right\},
@@ -551,7 +544,7 @@ where,
 \begin{equation}
 \|u\|_{\psi, s} = \left\|\big(1 + \psi(\cdot)\big)^{s/2}\hat{u}\right\|_0.
 \end{equation}
-\end{defn}
+\end{definition}
 \begin{remark}
 Clearly $H^{\psi, 0}(\mathbb{R}^n) = \mathcal{L}^2(\mathbb{R}^n)$.
 \end{remark}
@@ -568,7 +561,7 @@ which we use repeatedly later on.
 \section{One Parameter Operator Semigroups}\label{Se.OPOS}
 
 First we will introduce some results from the theory of one-parameter operator semigroups on a Banach space $(X, \|\cdot\|_X)$.  Then we will focus on Feller semigroups on $C_\infty(\mathbb{R}^n; \mathbb{R})$ and sub-Markovian semigroups on $\mathcal{L}^2(\mathbb{R}^n; \mathbb{R})$.
-\begin{defn}
+\begin{definition}
 \hspace{0.5cm}
 \begin{itemize}
 \item[A.] A one-parameter family $(T_t)_{t \ge 0}$ of bounded linear operators $T_t : X \to X$ is called a \emph{(one-parameter) semigroup of operators}, if $T_0 = \mathrm{id}$ and $T_{s + t} = T_s \circ T_t$ hold for all $s, t \ge 0$.
@@ -585,13 +578,13 @@ for all $u \in X$.
 \end{equation}
 holds where $\|\cdot\|$ denotes the operator norm.
 \end{itemize}
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 Let $(T_t)_{t \ge 0}$ be a strongly continuous contraction semigroup on $\big(C_\infty(\mathbb{R}^n; \mathbb{R}), \|\cdot\|_\infty\big)$ which is \emph{positivity preserving}, i.e. $u \ge 0$ implies $T_tu \ge 0$ for all $t \ge 0$.  Then $(T_t)_{t \ge 0}$ is called a \emph{Feller semigroup}.
-\end{defn}
+\end{definition}
 
-\begin{eg}\label{FTaSOSE1}
+\begin{example}\label{FTaSOSE1}
 Let $(\mu_t)_{t \ge 0}$ be a convolution semigroup on $\mathbb{R}^n$.  On the Banach space $\big(C_\infty(\mathbb{R}^n; \mathbb{R}), \|\cdot\|_\infty\big)$ we define the operator,
 \begin{equation}
 T_tu(x) := \int_{\mathbb{R}^n}u(x - y)\,\mu_t(\mathrm{d}y).\label{FSO}
@@ -644,17 +637,17 @@ $$
 \end{aligned}
 $$
 implying the strong continuity of $(T_t)_{t \ge 0}$ as $t \to 0$.  Finally, for all $t \ge 0$, if $u \ge 0$ then we find easily from \eqref{FSO} that $T_tu \ge 0$ also.  Thus, $(T_t)_{t \ge 0}$ is a Feller semigroup.
-\end{eg}
+\end{example}
 
-\begin{defn}
+\begin{definition}
 Let $(T_t)_{t \ge 0}$ be a strongly continuous contraction semigroup on $\mathcal{L}^p(\mathbb{R}^n; \mathbb{R})$, $1 \le p < \infty$.  We call $(T_t)_{t \ge 0}$ a \emph{sub-Markovian semigroup} on $\mathcal{L}^p(\mathbb{R}^n; \mathbb{R})$, $1 \le p < \infty$ if for $u \in \mathcal{L}^p(\mathbb{R}^n; \mathbb{R})$ such that $0 \le u \le 1$ a.e. it follows that $0 \le Tu \le 1$ a.e.
-\end{defn}
+\end{definition}
 \begin{remark}
 We find that $(T_t)_{t \ge 0}$ as defined by \eqref{FSO} in Example \ref{FTaSOSE1} is a sub-Markovian semigroup on $\mathcal{L}^2(\mathbb{R}^n; \mathbb{R})$
 \end{remark}
 
 We develop some more theory of one-parameter semigroups by introducing the important notion of a generator.
-\begin{defn}
+\begin{definition}
 Let $(T_t)_{t \ge 0}$ be a strongly continuous contraction semigroup of operators on a Banach space $\big(X, \|\cdot\|_X\big)$.  The \emph{generator} $A$ of $(T_t)_{t \ge 0}$ is defined by,
 \begin{equation}
 Au := \lim_{t \to 0}\frac{T_tu - u}{t},
@@ -663,10 +656,10 @@ as a strong limit with domain,
 \begin{equation}
 D(A) := \left\{u \in X : \lim_{t \to 0}\frac{T_tu - u}{t} \,\,\, \text{exists as strong limit}\right\}.
 \end{equation}
-\end{defn}
+\end{definition}
 
 We return to Example \ref{FTaSOSE1}.
-\begin{eg}\label{FTaSOSE2}
+\begin{example}\label{FTaSOSE2}
 Let $\psi : \mathbb{R}^n \to \mathbb{C}$ be a continuous negative definite function with corresponding convolution semigroup $(\mu_t)_{t \ge 0}$, i.e. for all $t \ge 0$, $\hat{\mu}_t(\xi) = (2\pi)^{-n/2}e^{-t\psi(\xi)}$.  Moreover, let $(T_t)_{t \ge 0}$ be the Feller semigroup defined by \eqref{FSO}.  Let $u \in \mathcal{S}(\mathbb{R}^n)$ and note that $\mathcal{S}(\mathbb{R}^n) \subset C_\infty(\mathbb{R}^n)$.  Since $\hat{u} \in \mathcal{S}(\mathbb{R}^n)$ and, by Theorem \ref{FTaSNDFT1}, $|\psi(\xi)| \le c_\psi\big(1 + |\xi|^2\big)$ we can define the operator,
 \begin{equation}\label{PDOwNDSeg}
 \psi(D)u(x) := (2\pi)^{-n/2}\int_{\mathbb{R}^n}e^{ix\cdot\xi}\psi(\xi)\hat{u}(\xi)\,\mathrm{d}\xi.
@@ -691,20 +684,20 @@ which implies,
 $$
 \lim_{t \to 0}\frac{T_tu - u}{t} = -\psi(D)u.
 $$
-\end{eg}
+\end{example}
 \begin{remark}
 In general it is difficult to characterise $D\big(-\psi(D)\big)$ in terms of function spaces.  See \cite{Vol1}.
 \end{remark}
 
 We present a theorem from the general theory of semigroups that gives properties of generators and from this we get a useful corollary.  We first however need a definition.
-\begin{defn}
+\begin{definition}
 Let $\big(A, D(A)\big)$ be a linear operator from $X$ to $Y$ where $X$ and $Y$ are both Banach spaces.
 \begin{itemize}
 \item[A.] We call $A$ a \emph{closed operator} if $\Gamma(A)$, the graph of the operator, is closed in $X \times Y$.
 
 \item[B.] The operator $A$ is \emph{closable} if it has a closed extension.  The smallest closed extension of $A$ is called its \emph{closure} and denoted by $\big(\bar{A}, D(\bar{A})\big)$.
 \end{itemize}
-\end{defn}
+\end{definition}
 
 \begin{theorem}
 Let $(T_t)_{t \ge 0}$ be a strongly continuous contraction semigroup on the Banach space $\big(X, \|\cdot\|_X\big)$ and denote by $A$ its generator with domain $D(A) \subset X$.
@@ -725,18 +718,18 @@ T_tu - u = \int_0^tAT_su\,\mathrm{d}s = \int_0^tT_sAu\,\mathrm{d}s.
 \end{equation}
 \end{itemize}
 \end{theorem}
-\begin{cor}
+\begin{corollary}
 Let $A$ be the generator of a strongly continuous contraction semigroup $(T_t)_{t \ge 0}$ on the Banach space $\big(X, \|\cdot\|_X\big)$.  Then $D(A) \subset X$ is a dense subspace and $A$ is a closed operator.  Moreover, $(T_t)_{t \ge 0}$ is a strongly continuous semigroup on $D(A)$ when $D(A)$ is equipped with the graph norm $\|\cdot\|_{A, X} := \|A\cdot\|_X + \|\cdot\|_X$.
-\end{cor}
+\end{corollary}
 
 To finish up this section we want to state a version of the Hille-Yoshida-Ray Theorem, compare \cite{I.88} or \cite{Vol1}.  However we first need,
-\begin{defn}
+\begin{definition}
 A linear operator $A : D(A) \to X$, $D(A) \subset X$, is called \emph{dissipative} if,
 $$
 \|\lambda u - Au\|_X \ge \lambda\|u\|_X,
 $$
 holds for all $\lambda > 0$ and $u \in D(A)$.
-\end{defn}
+\end{definition}
 
 \begin{theorem}
 A linear operator $\big(A, D(A)\big)$, on a Banach space $X$ is the generator of a strongly continuous contraction semigroup if and only if the following conditions hold:
@@ -751,9 +744,9 @@ A linear operator $\big(A, D(A)\big)$, on a Banach space $X$ is the generator of
 
 We also need a variation on this theorem.
 
-\begin{defn}
+\begin{definition}
 Let $A : D(A) \to B(\mathbb{R}^n; \mathbb{R})$ be a linear operator with $D(A) \subset B(\mathbb{R}^n; \mathbb{R})$.  We say $\big(A, D(A)\big)$ satisfies the \emph{positive maximum principle} if for any $u \in D(A)$ such that $u(x_0) := \sup_{x \in \mathbb{R}^n}u(x) \ge 0$ we have that $Au(x_0) \le 0$.
-\end{defn}
+\end{definition}
 
 \begin{theorem}
 A linear operator $\big(A, D(A)\big)$, $D(A) \subset C_\infty(\mathbb{R}^n; \mathbb{R})$ is closable and its closure is the generator of a Feller semigroup if and only if the following conditions hold:
@@ -766,35 +759,35 @@ A linear operator $\big(A, D(A)\big)$, $D(A) \subset C_\infty(\mathbb{R}^n; \mat
 \end{enumerate}
 \end{theorem}
 
-\begin{eg}
+\begin{example}
 Let $\psi : \mathbb{R}^n \to \mathbb{C}$ be a continuous negative definite function.  On $C_0^\infty(\mathbb{R}^n; \mathbb{R})$ we define the operator,
 $$
 -\psi(D)u(x) = -(2\pi)^{n/2}\int_{\mathbb{R}^n}e^{ix\cdot\xi}\psi(\xi)\hat{u}(\xi)\,\mathrm{d}\xi.
 $$
 From Example \ref{FTaSOSE1} and Example \ref{FTaSOSE2} we know that $\big(-\psi(D), C_0^\infty(\mathbb{R}^n; \mathbb{R})\big)$ has an extension generating a Feller semigroup, hence the operator $\big(-\psi(D), C_0^\infty(\mathbb{R}^n; \mathbb{R})\big)$ satisfies the positive maximum principle.
-\end{eg}
+\end{example}
 
 
 \section{Bernstein Functions and Subordination in the Sense of Bochner}\label{BFaSitSoB}
 
 Bernstein functions are a useful tool for generating examples of continuous negative definite functions so we present the theory of subordination which is used to achieve this.
-\begin{defn}
+\begin{definition}
 A real-valued function $f \in C^\infty\big((0, \infty)\big)$ is said to be \emph{completely monotone} if,
 \begin{equation}
 (-1)^k\frac{\mathrm{d}^kf}{\mathrm{d}x^k}(x) \ge 0,
 \end{equation}
 holds for all $k \in \mathbb{N}_0$.
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 A real-valued function $f \in C^\infty\big((0, \infty)\big)$ is called a \emph{Bernstein function} if,
 \begin{equation}
 f \ge 0 \,\,\,\,\, \text{and} \,\,\,\,\, (-1)^k\frac{\mathrm{d}^kf}{\mathrm{d}x^k}(x) \le 0,
 \end{equation}
 holds for all $k \in \mathbb{N}$.
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 A function $f : (0, \infty) \to \mathbb{R}$ is called a \emph{complete Bernstein function} if there exists a Bernstein function $g \ge 0$ such that,
 \begin{equation}
 f(x) = x^2\mathcal{L}g(x),
@@ -803,20 +796,20 @@ holds for all $x > 0$ where $\mathcal{L}$ is the Laplace transform of a function
 $$
 \mathcal{L}g(x) := \int_0^\infty e^{-xy}g(y)\,\mathrm{d}y.
 $$
-\end{defn}
+\end{definition}
 
 A Bernstein function is positive, increasing and concave.  If $f$ is a Bernstein function then $f'$ is completely monotone and conversely if $g'$ is completely monotone then $g$ is a Bernstein function.  The following proposition gives a further link between Bernstein and completely monotone functions.
 
-\begin{prop}
+\begin{proposition}
 For a function $f : (0, \infty) \to \mathbb{R}$ the following two assertions are equivalent:
 \begin{enumerate}
 \item $f$ is a Bernstein function;
 
 \item $f \ge 0$ and for all $t \ge 0$ the function $e^{-tf}$ is completely monotone.
 \end{enumerate}
-\end{prop}
+\end{proposition}
 
-\begin{eg}
+\begin{example}
 Some examples of Bernstein functions:
 \begin{itemize}
 \item $f(\lambda) = a$, for $a \ge 0$;
@@ -827,12 +820,12 @@ Some examples of Bernstein functions:
 
 \item $f(\lambda) = \ln\big(1 + \frac{\lambda}{a}\big)$, for $a > 0$.
 \end{itemize}
-\end{eg}
+\end{example}
 
 We now wish to relate Bernstein functions to certain convolution semigroups of measures.
-\begin{defn}
+\begin{definition}
 Let $(\eta_t)_{t \ge 0}$ be a convolution semigroup of measures on $\mathbb{R}$.  It is said to be \emph{supported by $[0, \infty)$} if $\mathrm{supp}\,\eta_t \subset[0, \infty)$ for all $t \ge 0$.
-\end{defn}
+\end{definition}
 
 \begin{theorem}
 Let $f : (0, \infty) \to \mathbb{R}$ be a Bernstein function.  Then there exists a unique convolution semigroup $(\eta_t)_{t \ge 0}$ supported by $[0, \infty)$ such that,
@@ -853,16 +846,16 @@ For any Bernstein function $f$ and any continuous negative definite function $\p
 \end{lemma}
 
 So we see that if we have a negative definite function $\psi$, it can be composed with a Bernstein function $f$ to produce another negative definite function.  Now since $f \circ \psi$ is continuous negative definite, there exists a convolution semigroup $(\mu_t^f)_{t \ge 0}$ associated with $f \circ \psi$.
-\begin{prop}\label{FTaSBFP2}
+\begin{proposition}\label{FTaSBFP2}
 Let $\psi : \mathbb{R}^n \to \mathbb{C}$ be a continuous negative definite function with associated convolution semigroup $(\mu_t)_{t \ge 0}$ on $\mathbb{R}^n$.  Further, let $f$ be a Bernstein function with associated semigroup $(\eta_t)_{t \ge 0}$ supported by $[0, \infty)$.  The convolution semigroup $(\mu_t^f)_{t \ge 0}$ on $\mathbb{R}^n$ associated with the continuous negative definite function $f \circ \psi$ is given by,
 \begin{equation}
 \int_{\mathbb{R}^n}\phi(x)\,\mu_t^f(\mathrm{d}x) = \int_0^\infty\int_{\mathbb{R}^n}\phi(x)\,\mu_s(\mathrm{d}x)\,\eta_t(\mathrm{d}s), \,\,\,\, \phi \in C_0(\mathbb{R}^n).
 \end{equation}
-\end{prop}
+\end{proposition}
 
-\begin{defn}
+\begin{definition}
 In the situation of Proposition \ref{FTaSBFP2}, we call the convolution semigroup $(\mu_t^f)_{t \ge 0}$ the \emph{semigroup subordinate (in the sense of Bochner)} to $(\mu_t)_{t \ge 0}$ with respect to $(\eta_t)_{t \ge 0}$.
-\end{defn}
+\end{definition}
 
 We now apply this subordination to operator semigroups.  Let $(T_t)_{t \ge 0}$ be a strongly continuous contraction semigroup of operators on a Banach space $\big(X, \|\cdot\|_X)$ with generator $\big(A, D(A)\big)$.  Furthermore, let $f : (0, \infty) \to \mathbb{R}$ be a Bernstein function and $(\eta_t)_{t \ge 0}$ the associated convolution semigroup on $\mathbb{R}$ supported by $[0, \infty)$.
 \begin{theorem}\label{FTaSBFT2}
@@ -873,9 +866,9 @@ T_t^fu(x) := \int_0^\infty T_su(x)\,\eta_t(\mathrm{d}s), \,\,\,\,\, \text{for } 
 Then the integral is well-defined and $(T_t^f)_{t \ge 0}$ is a strongly continuous contraction semigroup on $X$.
 \end{theorem}
 
-\begin{defn}
+\begin{definition}
 Let $(T_t)_{t \ge 0}$ and $(\eta_t)_{t \ge 0}$ with corresponding Bernstein function $f$ be as in Theorem \ref{FTaSBFT2}.  The semigroup $(T_t^f)_{t \ge 0}$ is called \emph{subordinate (in the sense of Bochner)} to $(T_t)_{t \ge 0}$ with respect to $(\eta_t)_{t \ge 0}$ or equivalently with respect to $f$.
-\end{defn}
+\end{definition}
 
 
 \chapter{Stochastic Processes}\label{Ch.oSP}
@@ -884,19 +877,19 @@ Let $(T_t)_{t \ge 0}$ and $(\eta_t)_{t \ge 0}$ with corresponding Bernstein func
 
 To begin we give a brief overview of Kolmogorov's Existence Theorem and constructing canonical processes.  The reference for this section is \cite{Vol3} which follows mainly from \cite{SPRef}.
 
-\begin{defn}
+\begin{definition}
 A topological space $(X, T)$ for which there exists at least one metric $d$ on $X$ such that $(X, d)$ is a complete metric space and $d$ induces the topology $T$ is called a \emph{completely metrizable} space.
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 A topological space $E$ is called a \emph{Polish space} if it is completely metrizable and has a countable base (i.e. has a countable number of sets that generate all other open sets in its topology).
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 A \emph{stochastic process} with \emph{state space} $(E, \mathcal{B})$ and \emph{time parameter set} $I$ is a quadruple $\big(\Omega, \mathcal{A}, P, (X_t)_{t \in I}\big)$ where $(\Omega, \mathcal{A}, P)$ is a probability space and $X_t : \Omega \to E$ is for each $t \in I$ a random variable, i.e. a measurable mapping.
-\end{defn}
+\end{definition}
 
-\begin{defn}
+\begin{definition}
 Let $(\Omega_1, \mathcal{A}_1), \dots, (\Omega_N, \mathcal{A}_N)$ be a collection of measurable spaces.
 \begin{itemize}
 \item We denote by,
@@ -913,7 +906,7 @@ $$
 \end{aligned}
 $$
 \end{itemize}
-\end{defn}
+\end{definition}
 Firstly we let $I \ne \emptyset$ be an index set and unless specified $\emptyset \ne J \subset K \subset I$ throughout for finite $J, K$.  Moreover let $E$ be a Polish space and $\mathcal{B}$ its Borel $\upsigma$-algebra.  We introduce,
 $$
 E^J := \prod_{j \in J}E_j, \,\,\, E_j := E, \,\,\,\,\, \text{and } \,\,\,\,\, \mathcal{B}^J := \bigotimes_{j \in J}\mathcal{B}_j, \,\,\, \mathcal{B}_j := \mathcal{B},
@@ -938,17 +931,17 @@ P_J := X_J(P).
 \end{equation}
 So $P_J$ is the joint distribution of the family of $(X_t)_{t \in J}$.
 
-\begin{defn}
+\begin{definition}
 We call $(P_J)_{J \in \mathcal{H}(I)}$ (as defined in \eqref{FoFDD}) the \emph{family of finite dimensional distributions} of the process $\big(\Omega, \mathcal{A}, P, (X_t)_{t\ge 0}\big)$.  Here $\mathcal{H}(I)$ denotes the system of all finite non-empty subsets of $I$.
-\end{defn}
+\end{definition}
 Since $X_J = \pi_J^K\circ X_K$ we find that,
 \begin{equation}\label{P_JProperty}
 P_J = \pi_J^K\circ P_K.
 \end{equation}
 
-\begin{defn}
+\begin{definition}
 If \eqref{P_JProperty} holds for all $J, K \in \mathcal{H}(I)$ then we call $(P_J)_{J \in \mathcal{H}(I)}$ a \emph{projective family of probability measures} over $(E, \mathcal{B})$.
-\end{defn}
+\end{definition}
 We now state Kolmogorov's Existence Theorem:
 
 \begin{theorem}
@@ -959,22 +952,22 @@ Let $E$ be a Polish space and $I \ne \emptyset$.  For every projective family of
 holds for all $J \in \mathcal{H}(I)$.
 \end{theorem}
 
-\begin{cor}
+\begin{corollary}
 Let $E$ be a Polish space and $I \ne \emptyset$ an index set.  Then for every projective family of probability measures $(P_J)_{J \in \mathcal{H}(I)}$ over $(E, \mathcal{B})$ there exists a stochastic process with state space $(E, \mathcal{B})$ and parameter set $I$ such that $(P_J)_{J \in \mathcal{H}(I)}$ is the family of its finite dimensional ditributions.
-\end{cor}
+\end{corollary}
 
 Now that we know that given a family of projective probability measures there exists a stochastic process that has that family as its finite dimensional distributions, we go on to give such a process a name.
 
-\begin{defn}\label{FAaSSPD4}
+\begin{definition}\label{FAaSSPD4}
 Set $\Omega := E^I$, $\mathcal{A} := \mathcal{B}^I$ and $P := P_I$ where $\pi_J(P_I) = P_J$ for $J \subset I$.  Further, set $X_t : \Omega \to E$, $\omega \mapsto X_t(\omega) := \omega(t) := \pi_t(\omega)$.  The stochastic process $\big(\Omega, \mathcal{A}, P, (X_t)_{t \ge 0}\big)$ is called the \emph{canonical process} corresponding to the projective family of probability measures $(P_J)_{J \in \mathcal{H}(I)}$.
-\end{defn}
+\end{definition}
 
 
 \section{Negative Definite Functions to L\'evy Processes}\label{Se.NDFtLP}
 
 To move on we would like to show a way of constructing projective families of probability measures.
 
-\begin{defn}
+\begin{definition}
 Let $(\Omega, \mathcal{A})$ and $(\Omega', \mathcal{A}')$ be two measurable spaces.  A mapping $K : \Omega \times \mathcal{A}' \to [0, \infty)$ is called a \emph{kernel} from $(\Omega, \mathcal{A})$ to $(\Omega', \mathcal{A}')$ if and only if,
 \begin{itemize}
 \item[Ki)] $\omega \mapsto K(\omega, A')$ is measurable for each $A' \in \mathcal{A}'$;
@@ -982,10 +975,10 @@ Let $(\Omega, \mathcal{A})$ and $(\Omega', \mathcal{A}')$ be two measurable spac
 \item[Kii)] $A' \mapsto K(\omega, A')$ is for each $\omega \in \Omega$ a measure on $\mathcal{A}'$.
 \end{itemize}
 If $K(\omega, \Omega') = 1$ for all $\omega \in \Omega$ we call $K$ a \emph{Markovian kernel}.  If $K(\omega, \Omega') \le 1$ for all $\omega \in \Omega$ we call $K$ a \emph{sub-Markovian kernel}.
-\end{defn}
+\end{definition}
 This allows us to introduce another central construct.
 
-\begin{defn}
+\begin{definition}
 Let $(E, \mathcal{B})$ be a measurable space and let $(p_t)_{t \ge 0}$ be a family of sub-Markovian kernels from $(E, \mathcal{B})$ to itself.  If for the corresponding operators $(P_t)_{t \ge 0}$ defined as,
 $$
 P_tu(x) = \int u(y)\,p_t(x, \mathrm{d}y),
@@ -995,7 +988,7 @@ $$
 P_{s + t} = P_s\circ P_t, \,\,\,\,\, s, t \ge 0,
 $$
 then $(p_t)_{t \ge 0}$ is called a \emph{semigroup of sub-Markovian kernels}.  If all kernels $p_t$ are Markovian then we call $(p_t)_{t \ge 0}$ a \emph{semigroup of Markovian kernels}.  Moreover if the operator $P_0 = \mathrm{id}$, we call $(p_t)_{t \ge 0}$ a \emph{normal semigroup}.
-\end{defn}
+\end{definition}
 \begin{remark}
 As a consequence of the condition $P_{s + t} = P_s \circ P_t$, $s, t \ge 0$, we must have that the \emph{Chapman-Kolmogorov equations},
 \begin{equation}
@@ -1026,9 +1019,9 @@ $$
 Then $(P_J)_{J \in \mathcal{H}(I)}$ is a projective family of probability measures over $(E, \mathcal{B})$.
 \end{theorem}
 
-\begin{cor}
+\begin{corollary}
 In Theorem \ref{FAaSSPT3}, if $E$ is a Polish space and $\mathcal{B}$ its Borel $\upsigma$-algebra then the family $(P_J)_{J \in \mathcal{H}(\mathbb{R}_+)}$ forms the family of finite dimensional distributions of a canonical process with state space $(E, \mathcal{B})$.
-\end{cor}
+\end{corollary}
 So if we have a Polish space $E$, its Borel $\sigma$-algebra $\mathcal{B}$ and a semigroup of Markovian kernels $(p_t)_{t \ge 0}$ on $(E, \mathcal{B})$.  Then the family $(P_J)_{J \in \mathcal{H}(\mathbb{R}_+)}$ can be constructed as in Theorem \ref{FAaSSPT3}.  However, it depends on the initial distribution $\mu$, thus we denote the corresponding canonical process as $\big(\Omega, \mathcal{A}, P^\mu, (X_t)_{t \ge 0}\big)$ where $\Omega$, $\mathcal{A}$ and $(X_t)_{t \ge 0}$ are defined as in Definition \ref{FAaSSPD4} and $P^\mu$ can be shown to satisfy,
 $$
 P^\mu\{X_t \in B\} = \int p_t(x, B)\,\mu(\mathrm{d}x),
@@ -1037,7 +1030,7 @@ for all $B \in \mathcal{A}, x \in \Omega$.  We call $\mu$ the initial distributi
 
 Continuing, we introduce Markov processes.
 
-\begin{defn}
+\begin{definition}
 Let $(X_t)_{t \ge 0}$ be a stochastic process on $(\Omega, \mathcal{A}, P)$ with state space $(E, \mathcal{B})$ and suppose that $(X_t)_{t \ge 0}$ is adapted to the filtration $(\mathcal{F}_t)_{t \ge 0}$.  We call $(X_t)_{t \ge 0}$ a \emph{Markov process} with respect to $(\mathcal{F}_t)_{t \ge 0}$ if and only if,
 \begin{equation}\label{EMP}
 P(X_t \in B\,|\,\mathcal{F}_s) = P(X_t \in B\,|\, X_s),
@@ -1047,18 +1040,18 @@ $$
 \mathbb{E}(\chi_{\{X_t \in B\}}\,|\, \mathcal{F}_s) = \mathbb{E}(\chi_{\{X_t \in B\}}\,|\, X_s).
 $$
 We call \eqref{EMP} the \emph{elementary Markov property}.
-\end{defn}
+\end{definition}
 
 \begin{theorem}
 Let $\big(\Omega, \mathcal{A}, P^\mu, (X_t)_{t \ge 0}\big)$ be a stochastic process with Polish state space $(E, \mathcal{B})$ and finite dimensional distributions deriving from the normal semigroup of Markovian kernels $(p_t)_{t \ge 0}$ and initial distribution $\mu$.  Then $(X_t)_{t \ge 0}$ is a Markov process with respect to the canonical filtration $(\mathcal{F}_t^0)_{t \ge 0}$.
 \end{theorem}
 This corollary links Feller semigroups to Markov processes.
-\begin{cor}
+\begin{corollary}
 Every canonical process constructed by starting with a Feller semigroup $(T_t)_{t \ge 0}$ on $C_\infty(\mathbb{R}^n)$ and a given initial distribution $\mu \in \mathcal{M}_b^1(\mathbb{R}^n)$ is a Markov process with respect to the canonical filtration.
-\end{cor}
+\end{corollary}
 Having defined a Markov process, we now define a universal Markov process.
 
-\begin{defn}
+\begin{definition}
 Let $(E, \mathcal{B})$ be a measurable space.  We call \\$\big(\Omega, \mathcal{A}, P^x, (X_t)_{t \ge 0}\big)_{x \in E}$ a \emph{universal Markov process} with state space $(E, \mathcal{B})$ if the following conditions hold:
 \begin{itemize}
 
@@ -1075,7 +1068,7 @@ $$
 
 \end{itemize}
 Property Miv) is called the \emph{universal Markov property} with respect to the canonical filtration $(\mathcal{F}_t^0)_{t \ge 0}$.
-\end{defn}
+\end{definition}
 
 \begin{theorem}
 Let $(p_t)_{t \ge 0}$ be a normal semigroup of Markovian kernels on a Polish state space $(E, \mathcal{B})$.  Then there exists a universal Markov process $\big(\Omega, \mathcal{A}, P^x, (X_t)_{t \ge 0}\big)_{x \in E}$ with state space $(E, \mathcal{B})$ such that for all $t \ge 0$, $x \in E$ and $B \in \mathcal{B}$ we have,
@@ -1084,18 +1077,18 @@ p_t(x, B) = P^x(X_t \in B).
 $$
 \end{theorem}
 
-\begin{cor}
-Let $(T_t)_{t \ge 0}$ be a conservative Feller semigroup on $C_\infty(\mathbb{R}^n)$, i.e. $T_t1 = 1$.  Then the family of canonical processes $\big(\Omega, \mathcal{A}, P^x, (X_t)_{t \ge 0}\big)_{x \in E}$ associated with $(T_t)_{t \ge 0}$ form a universal Markov process.  It follows that,
+\begin{corollary}
+Let $(T_t)_{t \ge 0}$ be a conservative Feller semigroup on\\$C_\infty(\mathbb{R}^n)$.  Then the family of canonical processes $\big(\Omega, \mathcal{A}, P^x, (X_t)_{t \ge 0}\big)_{x \in E}$\\associated with $(T_t)_{t \ge 0}$ form a universal Markov process.  It follows that,
 $$
 T_tu(x) = \mathbb{E}^x(u\circ X_t),
 $$
 where $\mathbb{E}^x$ is the expectation with respect to $P^x$.
-\end{cor}
+\end{corollary}
 In other words, starting with a conservative Feller semigroup we can construct a universal Markov process.
 
-\begin{defn}
+\begin{definition}
 A universal Markov process $\big((X_t)_{t \ge 0}, P^x, (\mathcal{F}_t)_{t \ge 0}\big)_{x \in E}$ with locally compact Polish state space $(E, \mathcal{B})$ is called a \emph{Feller process} if $(T_t)_{t \ge 0}$, $T_t := P_t|_{C_\infty(E)}$ is a Feller semigroup.
-\end{defn}
+\end{definition}
 
 We need a brief digression before continuing to introduce c\`adl\`ag processes.  Let $\big(\Omega, \mathcal{A}, P, (X_t)_{t \ge 0}\big)$ be a stochastic process with Polish state space $(E, \mathcal{B})$.  For each $\omega \in \Omega$ we can consider the mapping,
 $$
@@ -1103,7 +1096,7 @@ X_\cdot(\omega) : \mathbb{R}_+ \to E, \,\,\, t \mapsto X_t(\omega),
 $$
 which is called a path or sample path of the process.
 
-\begin{defn}
+\begin{definition}
 Let $(X_t)_{t \ge 0}$ be a stochastic process with Polish state space.
 \begin{itemize}
 \item[A)] The process $(X_t)_{t \ge 0}$ is called \emph{a.s. continuous} if its paths are a.s. continuous.
@@ -1112,24 +1105,24 @@ Let $(X_t)_{t \ge 0}$ be a stochastic process with Polish state space.
 
 \item[C)] We call $(X_t)_{t \ge 0}$ a \emph{c\`adl\`ag process} if a.s. all paths of $(X_t)_{t \ge 0}$ are continuous from the right and have limits from the left.
 \end{itemize}
-\end{defn}
+\end{definition}
 We now state some results for Feller processes.
 
-\begin{defn}
-Let $\big(\Omega, \mathcal{A}, P, (X_t)_{t \ge 0}\big)$ and $\big(\Omega, \mathcal{A}, P, (Y_t)_{t \ge 0}\big)$ be two stochastic processes with state space $(E, \mathcal{B})$.  If for all $t \ge 0$,
+\begin{definition}
+Let $\big(\Omega, \mathcal{A}, P, (X_t)_{t \ge 0}\big)$ and $\big(\Omega, \mathcal{A}, P, (Y_t)_{t \ge 0}\big)$ be two sto\-chastic processes with state space $(E, \mathcal{B})$.  If for all $t \ge 0$,
 $$
 P(X_t = Y_t) = 1,
 $$
 holds then we call $(X_t)_{t \ge 0}$ a \emph{modification} of $(Y_t)_{t \ge 0}$.
-\end{defn}
+\end{definition}
 
 \begin{theorem}
 A Feller process $\big((X_t)_{t \ge 0}, P^x\big)_{x \in \mathbb{R}^n}$ has a c\`adl\`ag modification.
 \end{theorem}
 
-\begin{cor}
+\begin{corollary}
 Let $(X_t)_{t \ge 0}$ be the canonical universal Markov process with respect to the canonical filtration associated with the Feller semigroup $(T_t)_{t \ge 0}$, $T_t : C_\infty(\mathbb{R}^n) \to C_\infty(\mathbb{R}^n)$.  Then it admits a c\`adl\`ag modifcation.
-\end{cor}
+\end{corollary}
 
 \begin{theorem}
 Every Feller process $\big((X_t)_{t \ge 0}, P^x\big)_{x \in \mathbb{R}^n}$ is stochastically continuous, i.e.,
@@ -1140,14 +1133,14 @@ $$
 
 Finally we are in a position to consider L\'evy processes.
 
-\begin{defn}
+\begin{definition}
 Let $\big((X_t)_{t \ge 0}, P\big)$ be a stochastic process with state space $(\mathbb{R}^n, \mathcal{B}^{(n)})$.
 \begin{itemize}
 \item[A)] We say that $(X_t)_{t \ge 0}$ has \emph{independent increments} if for all $0 \le s < t$ the random variable $X_t - X_s$ is independent of $\mathcal{F}_s$.
 
 \item[B)] The process $(X_t)_{t \ge 0}$ is said to have \emph{stationary increments} if for all $0 \le s < t$ it follows that $P_{X_t - X_s} = P_{X_{t - s}}$.
 \end{itemize}
-\end{defn}
+\end{definition}
 
 \begin{theorem}\label{FAaSSPT6}
 The process $\big((X_t)_{t \ge 0}, P^\mu\big)$ constructed from the Feller semigroup associated to the continuous negative definite function $\psi$ and the initial distribution $\mu$ has stationary and independent increments.
@@ -1155,8 +1148,9 @@ The process $\big((X_t)_{t \ge 0}, P^\mu\big)$ constructed from the Feller semig
 
 We now define what a L\'evy process is \cite{Sato}.
 
-\begin{defn}
-A stochastic process $\big(\Omega, \mathcal{A}, P, (X_t)_{t \ge 0}, (\mathcal{F}_t)_{t \ge 0}\big)$ with state space $(\mathbb{R}^n, \mathcal{B}^{(n)})$ is called a \emph{L\'evy process} if and only if:
+\begin{definition}
+A stochastic process $\big(\Omega, \mathcal{A}, P, (X_t)_{t \ge 0}, (\mathcal{F}_t)_{t \ge 0}\big)$ with\\
+state space $(\mathbb{R}^n, \mathcal{B}^{(n)})$ is called a \emph{L\'evy process} if and only if:
 \begin{itemize}
 \item[Li)] $(X_t)_{t \ge 0}$ is $\mathcal{F}_t$-adapted;
 
@@ -1169,13 +1163,13 @@ A stochastic process $\big(\Omega, \mathcal{A}, P, (X_t)_{t \ge 0}, (\mathcal{F}
 \item[Lv)] $(X_t)_{t \ge 0}$ is c\`adl\`ag.
 \end{itemize}
 A stochastic process satisfying Li) - Liv) is called a \emph{L\'evy process in law}.
-\end{defn}
+\end{definition}
 
 We can now state our final result.
 
-\begin{cor}\label{FAaSSPC6}
+\begin{corollary}\label{FAaSSPC6}
 The process in Theorem \ref{FAaSSPT6} is a L\'evy process in law.
-\end{cor}
+\end{corollary}
 
 We summarise some of the key points of this chapter with an example.  Let $\psi : \mathbb{R}^n \to \mathbb{C}$ be continuous and negative definite and suppose $\psi(0) = 0$, this entails that we are dealing with probability measures.  Then we have the corresponding unique convolution semigroup $(\mu_t)_{t \ge 0}$ on $\mathbb{R}^n$ defined by,
 $$
@@ -1212,7 +1206,7 @@ p_t(x) := (2\pi)^{-n}\int_{\mathbb{R}^n}e^{ix\cdot\xi}e^{-t\psi(\xi)}\,\mathrm{d
 \end{equation}
 So we see that $p_t(x, B) = p_t(x)\lambda^{(n)}(B)$, or in other words our Markovian kernel $p_t(x, \cdot)$ has a density $p_t(x)$ with respect to the Lebesgue measure.  We call the family $(p_t)_{t > 0}$ the \emph{transition densities} (or \emph{probability densities}) of our L\'evy process.
 
-\begin{eg}
+\begin{example}
 Some examples of transition densities.
 \begin{center}
 \begin{tabular}{c | c | c}
@@ -1225,14 +1219,15 @@ Relativistic Hamiltonian & $\sqrt{m^2 + \xi^2} - m$ & $\frac{mte^{mt}}{\pi}\frac
 \end{tabular}
 \end{center}
 
-\end{eg}
+\end{example}
 \begin{remark}
 Here $K_1$ is the modified Bessel function of the second kind with index $1$.
 \end{remark}
 
 Finally we introduce additive processes \cite{Sato}.
-\begin{defn}
-A stochastic process $\big(\Omega, \mathcal{A}, P, (X_t)_{t \ge 0}, (\mathcal{F}_t)_{t \ge 0}\big)$ with state space $(\mathbb{R}^n, \mathcal{B}^{(n)})$ is called an \emph{additive process} if and only if:
+\begin{definition}
+A stochastic process $\big(\Omega, \mathcal{A}, P, (X_t)_{t \ge 0}, (\mathcal{F}_t)_{t \ge 0}\big)$ with\\
+state space $(\mathbb{R}^n, \mathcal{B}^{(n)})$ is called an \emph{additive process} if and only if:
 \begin{itemize}
 \item[Ai)] $(X_t)_{t \ge 0}$ is $\mathcal{F}_t$-adapted;
 
@@ -1243,16 +1238,16 @@ A stochastic process $\big(\Omega, \mathcal{A}, P, (X_t)_{t \ge 0}, (\mathcal{F}
 \item[Aiv)] $(X_t)_{t \ge 0}$ is c\`adl\`ag.
 \end{itemize}
 A stochastic process satisfying Ai) - Aiii) is called an \emph{additive process in law}.
-\end{defn}
+\end{definition}
 It is noteworthy that a L\'evy process is a special case of an additive process.  We will have a more detailed discussion of additive processes in section \ref{Se.FSoEEaAP}.
 
 
 \section{Metrics Related to L\'evy Processes}\label{MRtLP}
 
 In this section we present results and ideas from \cite{Paper}, general references for metric measure spaces are \cite{22in8} and \cite{45in8}.
-\begin{defn}
+\begin{definition}
 A \emph{metric measure space} is a triple $(X, d, \mu)$ where $(X, d)$ is a metric space and $\mu$ is a measure on the Borel sets of the space $X$.
-\end{defn}
+\end{definition}
 
 We are interested in looking at metric measure spaces generated by negative definite functions.  Let $\psi : \mathbb{R}^n \to \mathbb{C}$ be a continuous negative definite function, we know that,
 $$
@@ -1283,17 +1278,17 @@ Let $\psi : \mathbb{R}^n \to \mathbb{C}$ be a continuous negative definite funct
 \end{lemma}
 
 From now on we want to assume $d_\psi$ generates the Euclidean topology and so we introduce the following class of functions.
-\begin{defn}
+\begin{definition}
 Let $\psi : \mathbb{R}^n \to \mathbb{C}$ be a non-periodic, locally bounded negative definite function with $\psi(0) = 0$.  We call $\psi$ \emph{metric generating} on $\mathbb{R}^n$ if the metric $d_\psi$ generates the Euclidean topology on $\mathbb{R}^n$.  The set of all continuous metric generating negative definite functions on $\mathbb{R}^n$ is denoted by $\mathcal{MCN}(\mathbb{R}^n)$.
-\end{defn}
+\end{definition}
 It follows that a continuous negative definite function $\psi : \mathbb{R}^n \to \mathbb{C}$ is in $\mathcal{MCN}(\mathbb{R}^n)$ if and only if $\lim\inf_{|\xi| \to \infty}|\psi(\xi)| > 0$.  We now restrict ourselves to the study of $\big(\mathbb{R}^n, d_\psi, \lambda^{(n)}\big)$ where $\psi \in \mathcal{MCN}(\mathbb{R}^n)$, here the notion of volume doubling is of importance.
-\begin{defn}
+\begin{definition}
 Let $(X, d, \mu)$ be a metric measure space.  We say that $(X, d, \mu)$ or just $\mu$ has the \emph{volume doubling property} if there exists a constant $c$ such that,
 \begin{equation}\label{VDP}
 \mu\big(B^d(x, 2r)\big) \le c\mu\big(B^d(x, r)\big),
 \end{equation}
 holds for all metric balls $B^d(x, r) \subset X$.  If \eqref{VDP} only holds for all balls with radii $r < \rho$ for some fixed $\rho > 0$, we say that $(X, d, \mu)$ or just $\mu$ is \emph{locally volume doubling}.
-\end{defn}
+\end{definition}
 \begin{remark}
 If $(X, d, \mu)$ has volume doubling with constant $c > 1$, then it follows that for every $R \ge 1$ that,
 $$
@@ -1320,12 +1315,12 @@ for all $t > 0$.
 \end{theorem}
 
 Having seen that we can understand the diagonal behaviour of $p_t$ in geometric terms, a natural question is to see if the off-diagonal behaviour can be understood in geometric terms also.  Following \cite{Paper} we state,
-\begin{conj}\label{FAaSGRtLPConj1}
+\begin{conjecture}\label{FAaSGRtLPConj1}
 Let $(p_t)_{t > 0}$ be the transition densities of some symmetric L\'evy process with characteristic exponent $\psi \in \mathcal{MCN}(\mathbb{R}^n)$.  There exists a mapping $\delta_\psi : (0, \infty) \times \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ such that for every $t \in (0, \infty)$ the map $\delta_\psi(t, \cdot, \cdot) : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ is a (translation invariant) metric such that,
 \begin{equation}\label{PaperConjecture}
 p_t(x) = p_t(0)e^{-\delta_\psi^2(t, x, 0)}.
 \end{equation}
-\end{conj}
+\end{conjecture}
 In short, Conjecture \ref{FAaSGRtLPConj1} states that the transition densities of symmetric L\'evy processes can be fully understood in terms of two one-parameter family of metrics $(d_{\psi, t})_{t > 0}$ and $\big(\delta_\psi(t, \cdot, \cdot)\big)_{t > 0}$.  Reasons for suspecting Conjecture \ref{FAaSGRtLPConj1} is true is given in \cite{Paper} and will not be explored here, however later we will discuss the weaker form of \eqref{PaperConjecture} namely,
 \begin{equation}
 p_t(x) \simeq p_t(0)e^{-\delta_\psi^2(t, x, 0)}.
@@ -1362,7 +1357,7 @@ or in other words,
 \end{equation}
 is a family of probability measures for all $t > 0$.  An interesting question is when does $(\rho_t)_{t > 0}$ define a process?  If such a process exists then we will call it the ``dual'' process of $(X_t)_{t \ge 0}$, in general we will call $(\rho_t)_{t \ge 0}$ the dual family of probability measures associated with $(\mu_t)_{t \ge 0}$.
 
-\begin{eg}\label{DofCPeg}
+\begin{example}\label{DofCPeg}
 Consider the Cauchy process in $\mathbb{R}$ which has characteristic exponent $\psi_C(\xi) = |\xi|$ and transition densities $(p_t^C)_{t > 0}$ given by,
 $$
 p_t^C(x) = \frac{1}{\pi}\frac{t}{x^2 + t^2}.
@@ -1372,7 +1367,7 @@ $$
 \frac{e^{-t\psi_C(x)}}{(2\pi)p_t^C(0)} = \frac{t}{2}e^{-t|x|},
 $$
 which is the transition density of the Laplace process at time $t > 0$, i.e. the dual process of the Cauchy process is the Laplace process.
-\end{eg}
+\end{example}
 
 A problem is highlighted when looking to the Gaussian process in $\mathbb{R}^n$ which has characteristic exponent $\psi_G(\xi) = \frac{1}{2}|\xi|^2$ and transition densities $(p_t^G)_{t > 0}$ given by,
 $$
@@ -1388,9 +1383,9 @@ $$
 $$
 A quick observation however shows that if we replace $t$ with $1/t$ then we get our original Gaussian process which leads to the following result.
 
-\begin{prop}\label{SharedPropWithNiels}
+\begin{proposition}\label{SharedPropWithNiels}
 Let $\psi : \mathbb{R}^n \to \mathbb{R}$ be the characteristic exponent of a symmetric L\'evy process.  Then $\nu_t := \rho_{1/t} \to \varepsilon_0$ weakly as $t \to 0$, where $\rho_t$ is defined as in \eqref{DPPM}.
-\end{prop}
+\end{proposition}
 \begin{proof}
 Let $\varphi \in C_0^\infty(\mathbb{R}^n)$ then by Plancherel's Theorem,
 $$
@@ -1482,7 +1477,7 @@ q(t, D)u(x) = (2\pi)^{-n/2}\int_{\mathbb{R}^n}e^{ix\cdot\xi}q(t, \xi)\hat{u}(\xi
 \end{equation}
 compare \eqref{PDOwNDSeg} in Example \ref{FTaSOSE2}.  An open question is when $q(t, \xi)$ is negative definite for all $t \ge 0$.
 
-\begin{eg}\label{TDSME2}
+\begin{example}\label{TDSME2}
 \hspace{0.5cm}
 \begin{itemize}
 \item[A.] Consider the Gaussian process in $\mathbb{R}^n$ which has characteristic exponent $\psi_G(\xi) = \frac{1}{2}|\xi|^2$ and transition densities $(p_t^G)_{t > 0}$ given by,
@@ -1552,12 +1547,12 @@ q_M(t, \xi) = \frac{1}{2t^2}\Bigg(\digamma\bigg(\frac{1/t + i\xi}{2}\bigg) + \di
 $$
 Compare \eqref{SMPTD}.
 \end{itemize}
-\end{eg}
+\end{example}
 \begin{remark}
 We note that the dual of the Meixner process has a symbol that can be thought of as an infinite sum of functions, each of which would be the symbol of the dual of a Cauchy process.
 \end{remark}
 
-\begin{eg}
+\begin{example}
 Consider the relativistic Hamiltonian process on $\mathbb{R}$ which has characteristic exponent $\psi_H(\xi) = \sqrt{m^2 + \xi^2} - m$ for $m > 0$ and transition densities $(p_t^H)_{t > 0}$ given by,
 $$
 p_t^H(x) = \frac{mte^{mt}}{\pi}\frac{K_1\big(m\sqrt{t^2 + x^2}\big)}{\sqrt{t^2 + x^2}}.
@@ -1578,14 +1573,14 @@ q_H(t, \xi) := & -\frac{\partial}{\partial t}\ln\frac{p_\frac{1}{t}^H(\xi)}{p_\f
 \end{aligned}
 $$
 It is open whether $\xi \mapsto q_H(t, \xi)$ is a continuous negative definite function or whether $q_H^{1/2}(t, \xi - \eta)$ is a metric on $\mathbb{R}^n$.
-\end{eg}
+\end{example}
 
 
-\section{Fundamental Solutions of Evolution Equations and Additive Processes}\label{Se.FSoEEaAP}
+\section{Fundamental Solutions of Evolution Equ\-ations and Additive Processes}\label{Se.FSoEEaAP}
 
 Having seen that time dependent negative definite symbols seem to be of importance to the dual processes of L\'evy processes we would like to investigate them further and see what kind of processes they generate, in particular whether they generate processes at all.  Similarly to the time independent case we want to introduce an analogue of the one-parameter semigroup.  For this we introduce the notion of a fundamental solution.  We take the following definition from Tanabe \cite{Tanabe}.
 
-\begin{defn}
+\begin{definition}
 Let $Y$ be a Banach space of functions and $X\big([0, T]; Y\big)$ the Banach space of functions on $[0, T]$ giving functions in $Y$.  Let $u \in X\big([0, T]; Y\big)$ be the solution to the initial value problem,
 \begin{equation}\label{IVP}
 \begin{cases}
@@ -1605,7 +1600,7 @@ where $A(t)$ generates a semigroup for each $t \ge 0$.  We call a strongly conti
 \item[Siv)] $\frac{\partial}{\partial s}U(t, s) = -U(t, s)A(s)$, for $0 \le s \le t \le T$.
 
 \end{itemize}
-\end{defn}
+\end{definition}
 \begin{remark}\label{TDSFSR1}
 \hspace{0.5cm}
 \begin{itemize}
@@ -1632,13 +1627,13 @@ u(0, x) = u_0(x),
 \end{cases}
 \end{equation}
 on the Banach space $\mathcal{L}^2\big([0, T]; \mathcal{L}^2(\mathbb{R}^n)\big)$.  We need the following result.
-\begin{prop}\label{TDSFSP1}
+\begin{proposition}\label{TDSFSP1}
 The function,
 $$
 \int_s^tq(\tau, \cdot)\,\mathrm{d}\tau,
 $$
 is continuous negative definite.
-\end{prop}
+\end{proposition}
 \begin{proof}
 Since $q(\tau, \cdot)$ for $\tau \ge 0$ is negative definite, for any choice of $k \in \mathbb{N}$ and vectors $\xi^1, \dots, \xi^k \in \mathbb{R}^n$ the matrix $\big(q(\tau, \xi^j) + \overbar{q(\tau, \xi^l)} - q(\tau, \xi^j - \xi^l)\big)_{j, l = 1, \dots, k}$ is positive Hermitian, i.e. for all $\lambda_1, \dots, \lambda_k \in \mathbb{C}$ we have,
 $$
@@ -1663,7 +1658,7 @@ is continuous positive definite \cite[Corollary 3.6.17]{Vol1}.  Hence we can def
 \begin{equation}
 \hat{\mu}_{t, s}(\xi) = (2\pi)^{-n/2}e^{-\int_s^tq(\tau, \xi)\,\mathrm{d}\tau}.\label{FBBM}
 \end{equation}
-\begin{eg}\label{TDSFSE1}
+\begin{example}\label{TDSFSE1}
 \hspace{0.5cm}
 \begin{itemize}
 \item[A.] Consider the dual of the Guassian process on $\mathbb{R}^n$ which has time independent negative definite symbol $q_G(t, \xi) = \frac{1}{2}|\xi|^2$ by Example \ref{TDSME2}.A.  Since we do not have time dependence we can simply write,
@@ -1689,7 +1684,7 @@ $$
 \end{aligned}
 $$
 \end{itemize}
-\end{eg}
+\end{example}
 
 We also define the family of operators $\big(V(t, s)\big)_{t \ge s \ge 0}$ on Schwartz space $\mathcal{S}(\mathbb{R}^n)$ by,
 \begin{equation}\label{FoO}
@@ -1707,9 +1702,9 @@ V(t, s)u(x) = (2\pi)^{-n/2}\int_{\mathbb{R}^n}e^{ix\cdot\xi}e^{-\int_s^tq(\tau, 
 \end{equation}
 which is a useful representation for $V(t, s)$, in particular for the following proof.
 
-\begin{prop}\label{TDSFSP2}
+\begin{proposition}\label{TDSFSP2}
 A fundamental solution of \eqref{IVPP} is given by $V(t, s)$.
-\end{prop}
+\end{proposition}
 \begin{proof}
 It suffices to show that $V(t, s)$ has all of the properties of a fundamental solution to \eqref{IVPP} in a dense subspace of $\mathcal{L}^2(\mathbb{R}^n)$, namely $\mathcal{S}(\mathbb{R}^n)$.  For $v \in \mathcal{S}(\mathbb{R}^n)$,
 $$
@@ -1791,9 +1786,9 @@ Let $(X_t)_{t \ge 0}$ be an additive process in law on $\mathbb{R}^n$ and for $0
 Conversely, if $(\nu_{t, s})_{\infty > t \ge s \ge 0}$ is a family of probability measures on $\mathbb{R}^n$ satisfying Ai) - Aiv), then there exists an additive process in law $(X_t)_{t \ge 0}$ such that for $0 \le s \le t < \infty$, $X_t - X_s$ has the distribution $\nu_{t, s}$.
 \end{theorem}
 
-\begin{prop}
+\begin{proposition}
 Let $(\mu_{t, s})_{t \ge s \ge 0}$ be as in \eqref{FBBM}, then $(\mu_{t, s})_{t \ge s \ge 0}$ is a family of distributions of the increments of an additive process on $\mathbb{R}^n$.
-\end{prop}
+\end{proposition}
 \begin{proof}
 It suffices to show that $(\mu_{t, s})_{t \ge s \ge 0}$ satisfies Ai) - Aiv), to do this we turn to the Fourier transform of our probability measures.
 \begin{itemize}
@@ -1837,7 +1832,7 @@ i.e. $V(t, s)$ is a convolution operator with $V(t, s)u = p_{t, s} \ast u$ where
 p_{t, s}(x) = (2\pi)^{-n}\int_{\mathbb{R}^n}e^{ix\cdot\xi}e^{-\int_s^tq(\tau, \xi)\,\mathrm{d}\tau}\,\mathrm{d}\xi = \mathrm{F}^{-1}\hat{\mu}_{t, s}(x)\label{TD},
 \end{equation}
 which defines the transition densities $(p_{t, s})_{t > s \ge 0}$ of the additive process associated to $q(t, \xi)$.
-\begin{eg}
+\begin{example}
 \hspace{0.5cm}
 \begin{itemize}
 \item[A.] Consider the dual of the Guassian process on $\mathbb{R}^n$ which has an associated family of probability measures $(\mu_{t, s}^G)_{t \ge s \ge 0}$ which by Example \ref{TDSFSE1}.A is given by,
@@ -1925,7 +1920,7 @@ p_{t, 0}^M(x) = \frac{e^{-\frac{1}{t}\psi_M(x)}}{(2\pi)p_\frac{1}{t}^M(0)},
 $$
 where $\psi_M$ and $p_t^M$ are given in Example \ref{TDSME2}.C.  Compare \eqref{DPPM}.
 \end{itemize}
-\end{eg}
+\end{example}
 For ease of notation we define,
 \begin{equation}
 Q_{t, s}(\xi) := \int_s^t q(\tau, \xi)\,\mathrm{d}\tau,\label{Q}
@@ -2025,7 +2020,7 @@ $$
 $$
 \end{proof}
 
-\begin{eg}\label{TDSGMetcE2}
+\begin{example}\label{TDSGMetcE2}
 Consider the dual of the Gaussian process on $\mathbb{R}^n$ which has time independent negative definite symbol $q_G(t, \xi) = \frac{1}{2}|\xi|^2$.  We have,
 $$
 Q_{t, s}^G(\xi) := \int_s^tq_G(\tau, \xi)\,\mathrm{d}\tau = \frac{t -s}{2}|\xi|^2,
@@ -2051,9 +2046,9 @@ $$
 p_{t, s}^G(x) = k_n\lambda^{(n)}\Big(B^{d_{Q_{t, s}^G}}(0, 1)\Big)e^{-\frac{1}{t - s}d_{\psi_G}^2(x, 0)},
 $$
 where $d_{\psi_G}(\xi, \eta) = \frac{1}{\sqrt{2}}|\xi - \eta|$ and $k_n = (2\pi)^{-n}\Gamma(\frac{n}{2} + 1)$.
-\end{eg}
+\end{example}
 
-\begin{eg}
+\begin{example}
 Let $a : [0, \infty) \to (0, \infty)$ such that $a_0 \le a(t) \le a_1$ for all $t \ge 0$ with $a_1, a_0 > 0$.  Define $q : [0, \infty) \times \mathbb{R}^n \to (0, \infty)$ by $q(t, \xi) = a(t)f\big(|\xi|^2\big)$ where $f$ is a Bernstein function such that $f(0) = 0$.  Since $a(t)$ is positive for all $t \ge 0$ and $f\big(|\xi|^2\big)$ is clearly continuous negative definite we have by Theorem \ref{FTaSNDFT1} that $q(t, \xi)$ is continuous negative definite for all $t \ge 0$.  We also have that $q(t, \xi)$ is non-periodic, $q(t, \xi) = 0$ if and only if $\xi = 0$ and $\lim\inf_{|\xi| \to \infty}q(t, \xi) = a(t)\lim\inf_{\xi \to \infty}f\big(|\xi|^2\big) > 0$ since $f$ is strictly monotone increasing, hence $q(t, \cdot) \in \mathcal{MCN}(\mathbb{R}^n)$ for all $t \ge 0$.  We now apply Theorem \ref{ThesisMainResult} and get,
 $$
 p_{t, s}(0) \asymp \lambda^{(n)}\Big(B^{d_{Q_{t, s}}}\big(0, \sqrt{a_1/a_0}\big)\Big), \,\,\,\,\, t > s \ge 0,
@@ -2071,7 +2066,7 @@ where $A(t, s) := \int_s^ta(\tau)\,\mathrm{d}\tau$.  Thus,
 $$
 p_{t, s}(0) \asymp \frac{\pi^{n/2}}{\Gamma(\frac{n}{2} + 1)}\bigg(f^{-1}\Big(\frac{a_1}{a_0A(t, s)}\Big)\bigg).
 $$
-\end{eg}
+\end{example}
 
 We take further inspiration from \cite{Paper} and find that we can obtain a result similar to Theorem \ref{TDSGMeT3} for our situation.  Let $f : [0, \infty) \times (0, \infty) \to [0, \infty)$, $(t, x) \mapsto f(t, x)$ be a function such that for all $t \ge 0$ the function $f(t, \cdot) : (0, \infty) \to [0, \infty)$ is a Bernstein function with $f(t, 0) = 0$ and,
 $$
@@ -2093,7 +2088,7 @@ $$
 \end{proof}
 
 From this and by using Theorem \ref{TDSGMeT3} we get a simple corollary.
-\begin{cor}\label{TDSGMetcC1}
+\begin{corollary}\label{TDSGMetcC1}
 If for $t > s \ge 0$ we define,
 \begin{equation}
 p_{t, s}^f(x) := (2\pi)^{-n}\int_{\mathbb{R}^n}e^{ix\xi}e^{-\int_s^tf(\tau, |\xi|)\,\mathrm{d}\tau}\,\mathrm{d}\xi,\label{SubEx}
@@ -2102,7 +2097,7 @@ where for all $\tau \ge 0$, $f(\tau, \cdot)$ is a Bernstein function with $f(\ta
 $$
 \frac{p_{t, s}^f(x)}{p_{t, s}^f(0)} = e^{-g_{t, s}(|x|^2)}.
 $$
-\end{cor}
+\end{corollary}
 \begin{proof}
 We fix $t > s \ge 0$ and note that for $F_{t, s}$ as in \eqref{BF} we can write \eqref{SubEx} as,
 $$
@@ -2186,9 +2181,9 @@ q(t, x, D)u(t, x) = (2\pi)^{-n/2}\int_{\mathbb{R}^n}e^{ix\cdot\xi}q(t, x, \xi)\h
 \end{equation}
 where initially $u(t, \cdot) \in \mathcal{S}(\mathbb{R}^n)$ for all $t \ge 0$.  We assume that $q : [0, \infty) \times \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{C}$ is a locally bounded function such that for all $t \ge 0$ and $x \in \mathbb{R}^n$ the function $q(t, x, \cdot) : \mathbb{R}^n \to \mathbb{C}$ is negative definite and continuous.
 
-\begin{defn}
+\begin{definition}
 We call a function $q : [0, \infty) \times \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{C}$ a time dependent continuous negative definite symbol if $q$ is continuous and for all $t \ge 0$ and $x \in \mathbb{R}^n$, the function $q(t, x, \cdot) : \mathbb{R}^n \to \mathbb{C}$ is negative definite and continuous.
-\end{defn}
+\end{definition}
 
 For a time dependent negative definite symbol $q$ for every compact set $K \subset \mathbb{R}^n$, there exists a constant $C_K(t)$ such that,
 $$
@@ -2207,7 +2202,7 @@ $$
 q(t, x, \xi) = q(t, x_0, \xi) + \big(q(t, x, \xi) - q(t, x_0, \xi)\big).
 $$
 
-\begin{assume}\label{TDSTDSA1}
+\begin{assumptions}\label{TDSTDSA1}
 We assume that the function $q : [0, \infty) \times \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{C}$ is a time dependent continuous negative definite symbol having the decomposition $q(t, x, \xi) = q_1(t, \xi) + q_2(t, x, \xi)$ into a continuous function $q_1 : [0, \infty) \times \mathbb{R}^n \to \mathbb{C}$ such that $q_1(t, \cdot) : \mathbb{R}^n \to \mathbb{C}$ is negative definite and a continuous function $q_2 : [0, \infty) \times \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{C}$.  Further let $\psi : \mathbb{R}^n \to \mathbb{R}$ be a fixed continuous negative definite function that satisfies
 \begin{equation}\label{GCfNDRF}
 \psi(\xi) \ge c_0|\xi|^{r_0},
@@ -2238,7 +2233,7 @@ for some $\tau_2 > 0$ independent of $t$.
 \end{equation}
 for all $\alpha \in \mathbb{N}_0^n$, $|\alpha| \le m$, with functions $\varphi_\alpha \in \mathcal{L}^1(\mathbb{R}^n)$.
 \end{itemize}
-\end{assume}
+\end{assumptions}
 
 Under Assumptions \ref{TDSTDSA1} with $m \ge n + \lfloor a \rfloor + 1$ for $a \ge 1$, it can be shown that $\big(-q(t_0, x, D), \mathcal{S}(\mathbb{R}^n)\big)$ is the generator of a sub-Markovian semigroup $\big(S_\sigma^{(t_0)}\big)_{\sigma \ge 0}$ on $\mathcal{L}^2(\mathbb{R}^n; \mathbb{R})$ and extends to the generator of a Feller semigroup $\big(T_\tau^{(t_0)}\big)_{\tau \ge 0}$ on $C_\infty(\mathbb{R}^n; \mathbb{R})$ for each fixed $t_0 \ge 0$ such that they coincide on $\mathcal{L}^2(\mathbb{R}^n; \mathbb{R}) \cap C_\infty(\mathbb{R}^n; \mathbb{R})$, i.e. $T_t^{(t_0)}\big|_{\mathcal{L}^2(\mathbb{R}^n; \mathbb{R}) \cap C_\infty(\mathbb{R}^n; \mathbb{R})} = S_t^{(t_0)}\big|_{\mathcal{L}^2(\mathbb{R}^n; \mathbb{R}) \cap C_\infty(\mathbb{R}^n; \mathbb{R})}$, $t \ge 0$.  We also get that a fundamental solution to,
 \begin{equation}
@@ -2382,9 +2377,9 @@ Also from our investigations in section \ref{Se.MaTD} we know that we can estima
 \section{The Symbol of an Additive-type Process}
 
 In this final section we want to construct the symbol for $U(t, s)$, a fundamental solution to \eqref{IVP2}.  Firstly we want a kernel representation for $U(t, s)$ by showing that $U(t, s)$ satisfies the conditions of the Riesz Representation Theorem and for this purpose we follow \cite{KernelPaper}, modifying arguments to fit our case.  Once we have a kernel representation we can follow proofs given in \cite{SymbolPaper} and \cite{Conservative} to construct the symbol of $U(t, s)$.  Throughout this section we assume that our time dependent symbol $q$ has the property $q(t, x, 0) = 0$ for all $x \in \mathbb{R}^n$ and $t \ge 0$.  Since $\mathcal{S}(\mathbb{R}^n)$ is dense in $C_\infty(\mathbb{R}^n)$ we can extend the domain of $U(t, s)$ by continuity to include $C_\infty(\mathbb{R}^n)$, this extension of $U(t, s)$ we again denote by $U(t, s)$.  We start with some preparation.
-\begin{defn}
+\begin{definition}
 Let $A_1, A_2, \dots, A_N, B$ be topological spaces.  A mapping $f : A_1 \times A_2 \times \dots \times A_N \to B$ is called \emph{jointly continuous} if $f$ is a continuous map from $A_1 \times A_2 \times \dots \times A_N$ equipped with the product topology.
-\end{defn}
+\end{definition}
 
 \begin{lemma}\label{TDSSoAPL1}
 Let $u$ be a solution to \eqref{IVP2} with a positive initial condition $u_0$.  If $u$ is jointly continuous and,
@@ -2597,7 +2592,11 @@ $$
 which can be extended to $H^{\psi, \sigma + 2}(\mathbb{R}^n)$ in the same way as in Lemma \ref{TDSSoAPL1.5}.
 \end{proof}
 \begin{remark}
-From $U(t, s)1 = 1$ we can conclude that our positive Borel measures $p_{t, s}(x, \cdot)$ are probability measures and due to the properties $U(t, s) = U(t, r)U(r, s)$, $0 \le s \le r \le t$ and $U(t, t) = I$ they define a projective limit.  Thus by Kolmogorov's existence theorem, a corresponding canonical process exists.  We note that this process is a Markov process that is in general time and space inhomogeneous.
+From $U(t, s)1 = 1$ we can conclude that our positive Borel measures $p_{t, s}(x, \cdot)$ are probability measures and due to the properties,
+$$
+U(t, s) = U(t, r)U(r, s), \text{ } 0 \le s \le r \le t \text{ and } U(t, t) = I,
+$$
+they define a projective limit.  Thus by Kolmogorov's existence theorem, a corresponding canonical process exists.  We note that this process is a Markov process that is in general time and space inhomogeneous.
 \end{remark}
 
 Now that \eqref{UBiSN} holds for all bounded Borel functions and $e_\xi$ is in the domain of $U(t, s)$ where $e_\xi(x) := e^{ix\cdot\xi}$ for all $x, \xi \in \mathbb{R}^n$, for $t \ge s \ge 0$ we can define the function $\lambda_{t, s} : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{C}$ given by,
@@ -2847,12 +2846,12 @@ $$
 \end{aligned}
 $$
 \end{proof}
-\begin{cor}
+\begin{corollary}
 In the case of Theorem \ref{TDSSoAPT3} we have,
 \begin{equation}
 \frac{\partial}{\partial t}\lambda_{t, s}(x, \xi)\bigg|_{t = s} = -q(s, x, \xi).
 \end{equation}
-\end{cor}
+\end{corollary}
 \begin{proof}
 By the strong continuity of $U(t, s)$,
 $$
@@ -2869,83 +2868,159 @@ $$
 \chapter*{Index of Notation}
 \addcontentsline{toc}{chapter}{Index of Notation}
 
-$\mathbb{N}$ - natural numbers\\
-$\mathbb{N}_0 = \mathbb{N} \cup \{0\}$\\
-$\mathbb{N}_0^n$ - set of all multiindices\\
-$\mathbb{R}$ - real numbers\\
-$\mathbb{R}^n$ - Euclidean vector space\\
-$\mathbb{C}$ - complex numbers\\
-$a \wedge b = \min\{a, b\}$\\
-$a \vee b = \max\{a, b\}$\\
-$|\alpha| = \alpha_1 + \dots +\alpha_n$ for $\alpha \in \mathbb{N}_0^n$\\
-$\partial^\alpha u = \frac{\partial^{|\alpha|}u}{\partial^{\alpha_1}x_1\dots\partial^{\alpha_n}x_n}$ for $\alpha \in \mathbb{N}_0^n$\\
-\\
-$\chi_A$ - characteristic function of the set $A$\\
-$f|_A$ - restriction of $f$ to $A$\\
-$\text{Re}\,f$ - real part of $f$\\
-$\text{Im}\,f$ - imaginary part of $f$\\
-$(f_\nu)_{\nu \in \mathbb{N}}$ - sequence of functions\\
-$f \circ g$ - composition of functions\\
-$f \ast g$ - convolution of functions\\
-$K_\lambda$ - modified Bessel function of the second kind with index $\lambda$\\
-$\mathcal{L}u$ - Laplace transform of $u$\\
-$\hat{u}, \mathrm{F}u$ - Fourier transform of $u$\\
-$\mathrm{F}^{-1}u$ - inverse Fourier transform of $u$\\
-$\text{supp}\,u$ - support of a function or distribution\\
-\\
-$\mathcal{B}^{(n)}$ - Borel sets in $\mathbb{R}^n$\\
-$\lambda^{(n)}$ - Lebesgue measure in $\mathbb{R}^n$\\
-$\varepsilon_a$ - Dirac measure at $a \in \mathbb{R}^n$\\
-$\mu_1 \ast \mu_2$ - convolution of the measures $\mu_1$ and $\mu_2$\\
-$\|\mu\|$ - total mass of a measure $\mu$\\
-$\text{supp}\,\mu$ - support of a measure $\mu$\\
-$(\mu_t)_{t \ge 0}$ - convolution semigroup of measures\\
-$(\mu_t^f)_{t \ge 0}$ - subordinate convolution semigroup\\
-\\
-For this section $G \subseteq \mathbb{R}^n$ is open, $K \subset \mathbb{R}^n$ is compact.  If $X(\Omega)$ is any of the spaces in the following list, $X(\Omega; \mathbb{R})$ stands for the space of real-valued elements of $X(\Omega)$.\\
-$B(\Omega)$ - Borel measurable functions\\
-$B_b(\Omega)$ - bounded Borel measurable functions\\
-$C(G)$ - continuous functions\\
-$C_0(G)$ - continuous functions with compact support\\
-$C_\infty(G)$ - continuous functions vanishing at infinity\\
-$C_b(G)$ - bounded continuous functions\\
-$C^m(G)$ - m-times continuously differentiable functions\\
-$C_0^m(G) = C^m(G) \cap C_0(G)$\\
-$C^\infty(G) = \bigcap_{m \in \mathbb{N}}C^m(G)$\\
-$C_0^\infty(G) = \bigcap_{m \in \mathbb{N}}C_0^m(G)$\\
-$C_0^\infty(K)$ - arbitrarily often differentiable functions which have compact support in $K$\\
-$\mathcal{D}'(G)$ - space of all distributions\\
-$H^{\psi, s}(\mathbb{R}^n) = \{u \in \mathcal{S}'(\mathbb{R}^n) : \|u\|_{\psi, s} < \infty\}$\\
-$\mathcal{L}^p(\Omega, \mu)$ - usual Lebesgue space over $(\Omega, \mathcal{A}, \mu)$\\
-$\mathcal{L}^p(\mathbb{R}^n) = \mathcal{L}^p\big(\mathbb{R}^n, \lambda^{(n)}\big)$\\
-$\mathcal{M}^+(\Omega)$ - measures on $\Omega$\\
-$\mathcal{M}_b^+(\Omega)$ - bounded measures on $\Omega$\\
-$\mathcal{M}_b^1(\Omega)$ - probability measures on $\Omega$\\
-$\mathcal{S}(\mathbb{R}^n)$ - Schwartz space of tempered functions\\
-$\mathcal{S}'(\mathbb{R}^n)$ - tempered distributions\\
-\\
-$|x|$ - Euclidean distance of $x$ in $\mathbb{R}^n$\\
-$\|u\|_X$ - norm of $u$ in the space of $X$\\
-$\|u\|_{A, X} = \|u\|_X + \|Au\|_X$ - graph norm of $u$ with respect to the operator $A : X \to X$\\
-$\|A\| = \|A\|_{X, Y}$ - operator norm of the operator $A : X \to Y$\\
-$\|u\|_0$, $\langle u, u\rangle_0$ - norm and scalar product in $\mathcal{L}^2(\Omega, \mu)$\\
-$\|u\|_\infty = \sup|u(x)|$\\
-$\|u\|_{\psi, s}$ - norm in the space of $H^{\psi, s}(\mathbb{R}^n)$\\
-\\
-$(X, \|\cdot\|_X)$ - Banach space with norm $\|\cdot\|_X$\\
-$(X, d)$ - metric space with metric $d(\cdot, \cdot)$ on $X \times X$\\
-$(X, d, \mu)$ - metric measure space with metric $d$ and measure $\mu$\\
-$B^d(x, r)$ - open ball of radius $r$ and centre $x$ with respect to metric $d$\\
-$X^\ast$ - topological dual space of a topological space $X$\\
-$X \hookrightarrow Y$ - continuous embedding of $X$ into $Y$\\
-$B(X)$ - bounded linear operators from $X$ into itself\\
-$D(A)$ - domain of the operator $A$\\
-$\big(A, D(A)\big)$ - linear operator with domain $D(A)$\\
-$\psi(D)$ - pseudo-differential operator with symbol $\psi(\xi)$\\
-$q(x, D)$ - pseudo-differential operator with symbol $q(x, \xi)$\\
-$q(t, x, D)$ - pseudo-differential operator with symbol $q(t, x, \xi)$\\
-$(T_t)_{t \ge 0}$ - one-parameter semigroup of operators\\
-$(T_t^f)_{t \ge 0}$ - subordinated semigroup
+$\mathbb{N}$ - natural numbers
+
+\noindent$\mathbb{N}_0 = \mathbb{N} \cup \{0\}$
+
+\noindent$\mathbb{N}_0^n$ - set of all multiindices
+
+\noindent$\mathbb{R}$ - real numbers
+
+\noindent$\mathbb{R}^n$ - Euclidean vector space
+
+\noindent$\mathbb{C}$ - complex numbers
+
+\noindent$a \wedge b = \min\{a, b\}$
+
+\noindent$a \vee b = \max\{a, b\}$
+
+\noindent$|\alpha| = \alpha_1 + \dots +\alpha_n$ for $\alpha \in \mathbb{N}_0^n$
+
+\noindent$\partial^\alpha u = \frac{\partial^{|\alpha|}u}{\partial^{\alpha_1}x_1\dots\partial^{\alpha_n}x_n}$ for $\alpha \in \mathbb{N}_0^n$
+
+\bigbreak
+
+\noindent$\chi_A$ - characteristic function of the set $A$
+
+\noindent$f|_A$ - restriction of $f$ to $A$
+
+\noindent$\text{Re}\,f$ - real part of $f$
+
+\noindent$\text{Im}\,f$ - imaginary part of $f$
+
+\noindent$(f_\nu)_{\nu \in \mathbb{N}}$ - sequence of functions
+
+\noindent$f \circ g$ - composition of functions
+
+\noindent$f \ast g$ - convolution of functions
+
+\noindent$K_\lambda$ - modified Bessel function of the second kind with index $\lambda$
+
+\noindent$\mathcal{L}u$ - Laplace transform of $u$
+
+\noindent$\hat{u}, \mathrm{F}u$ - Fourier transform of $u$
+
+\noindent$\mathrm{F}^{-1}u$ - inverse Fourier transform of $u$
+
+\noindent$\text{supp}\,u$ - support of a function or distribution
+
+\bigbreak
+
+\noindent$\mathcal{B}^{(n)}$ - Borel sets in $\mathbb{R}^n$
+
+\noindent$\lambda^{(n)}$ - Lebesgue measure in $\mathbb{R}^n$
+
+\noindent$\varepsilon_a$ - Dirac measure at $a \in \mathbb{R}^n$
+
+\noindent$\mu_1 \ast \mu_2$ - convolution of the measures $\mu_1$ and $\mu_2$
+
+\noindent$\|\mu\|$ - total mass of a measure $\mu$
+
+\noindent$\text{supp}\,\mu$ - support of a measure $\mu$
+
+\noindent$(\mu_t)_{t \ge 0}$ - convolution semigroup of measures
+
+\noindent$(\mu_t^f)_{t \ge 0}$ - subordinate convolution semigroup
+
+\bigbreak
+
+\noindent For this section $G \subseteq \mathbb{R}^n$ is open, $K \subset \mathbb{R}^n$ is compact.  If $X(\Omega)$ is any of the spaces in the following list, $X(\Omega; \mathbb{R})$ stands for the space of real-valued elements of $X(\Omega)$.
+
+\noindent$B(\Omega)$ - Borel measurable functions
+
+\noindent$B_b(\Omega)$ - bounded Borel measurable functions
+
+\noindent$C(G)$ - continuous functions
+
+\noindent$C_0(G)$ - continuous functions with compact support
+
+\noindent$C_\infty(G)$ - continuous functions vanishing at infinity
+
+\noindent$C_b(G)$ - bounded continuous functions
+
+\noindent$C^m(G)$ - m-times continuously differentiable functions
+
+\noindent$C_0^m(G) = C^m(G) \cap C_0(G)$
+
+\noindent$C^\infty(G) = \bigcap_{m \in \mathbb{N}}C^m(G)$
+
+\noindent$C_0^\infty(G) = \bigcap_{m \in \mathbb{N}}C_0^m(G)$
+
+\noindent$C_0^\infty(K)$ - arbitrarily often differentiable functions which have compact support in $K$
+
+\noindent$\mathcal{D}'(G)$ - space of all distributions
+
+\noindent$H^{\psi, s}(\mathbb{R}^n) = \{u \in \mathcal{S}'(\mathbb{R}^n) : \|u\|_{\psi, s} < \infty\}$
+
+\noindent$\mathcal{L}^p(\Omega, \mu)$ - usual Lebesgue space over $(\Omega, \mathcal{A}, \mu)$
+
+\noindent$\mathcal{L}^p(\mathbb{R}^n) = \mathcal{L}^p\big(\mathbb{R}^n, \lambda^{(n)}\big)$
+
+\noindent$\mathcal{M}^+(\Omega)$ - measures on $\Omega$
+
+\noindent$\mathcal{M}_b^+(\Omega)$ - bounded measures on $\Omega$
+
+\noindent$\mathcal{M}_b^1(\Omega)$ - probability measures on $\Omega$
+
+\noindent$\mathcal{S}(\mathbb{R}^n)$ - Schwartz space of tempered functions
+
+\noindent$\mathcal{S}'(\mathbb{R}^n)$ - tempered distributions
+
+\bigbreak
+
+\noindent$|x|$ - Euclidean distance of $x$ in $\mathbb{R}^n$
+
+\noindent$\|u\|_X$ - norm of $u$ in the space of $X$
+
+\noindent$\|u\|_{A, X} = \|u\|_X + \|Au\|_X$ - graph norm of $u$ with respect to the operator $A : X \to X$
+
+\noindent$\|A\| = \|A\|_{X, Y}$ - operator norm of the operator $A : X \to Y$
+
+\noindent$\|u\|_0$, $\langle u, u\rangle_0$ - norm and scalar product in $\mathcal{L}^2(\Omega, \mu)$
+
+\noindent$\|u\|_\infty = \sup|u(x)|$
+
+\noindent$\|u\|_{\psi, s}$ - norm in the space of $H^{\psi, s}(\mathbb{R}^n)$
+
+\bigbreak
+
+\noindent$(X, \|\cdot\|_X)$ - Banach space with norm $\|\cdot\|_X$
+
+\noindent$(X, d)$ - metric space with metric $d(\cdot, \cdot)$ on $X \times X$
+
+\noindent$(X, d, \mu)$ - metric measure space with metric $d$ and measure $\mu$
+
+\noindent$B^d(x, r)$ - open ball of radius $r$ and centre $x$ with respect to metric $d$
+
+\noindent$X^\ast$ - topological dual space of a topological space $X$
+
+\noindent$X \hookrightarrow Y$ - continuous embedding of $X$ into $Y$
+
+\noindent$B(X)$ - bounded linear operators from $X$ into itself
+
+\noindent$D(A)$ - domain of the operator $A$
+
+\noindent$\big(A, D(A)\big)$ - linear operator with domain $D(A)$
+
+\noindent$\psi(D)$ - pseudo-differential operator with symbol $\psi(\xi)$
+
+\noindent$q(x, D)$ - pseudo-differential operator with symbol $q(x, \xi)$
+
+\noindent$q(t, x, D)$ - pseudo-differential operator with symbol $q(t, x, \xi)$
+
+\noindent$(T_t)_{t \ge 0}$ - one-parameter semigroup of operators
+
+\noindent$(T_t^f)_{t \ge 0}$ - subordinated semigroup
 
 
 
