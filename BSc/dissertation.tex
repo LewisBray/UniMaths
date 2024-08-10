@@ -1,0 +1,660 @@
+\documentclass[a4paper,12pt,draft]{report}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+
+\begin{document}
+
+\title{Special Relativity}
+\author{Lewis J. Bray}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Introduction}
+
+The concept of relativity is by no means a new one, neither is it an unfamiliar one. A classical explanatory example would be to imagine you are inside a car travelling at a constant speed 60\emph{mph} heading east along a straight stretch of road. According to a stationary oberserver outside of the car, you are travelling 60\emph{mph} to the east, while to you it appears as if you are not moving at all, in fact, all of your surroundings appear to be rushing behind you (or west) at 60\emph{mph}. It is said that, relative to the observer standing near the road your velocity is 60\emph{mph} to the east, while relative to yourself your velocity is 0\emph{mph}.
+
+The underlying theme of this project is called `The Principal of Relativity', put simply it states that the laws of physics are the same relative to any admissable observer (or frame of reference as they will come to be known). To relate this to the car example, you would not expect the force of gravity to be different for the outside observer compared to you in the car. The first formulation of the principal of relativity was given by Galileo Galilei in his 1632 book `\emph{Dialogue Concerning the Two Chief World Systems}', this has been given the name `Galilean Relativity' and is the first main concern of this project.
+
+
+\chapter{What is Relativity?}
+
+\section{Galilean Relativity}
+
+Galileo gave a detailed explanation of his idea in his book, to give a brief outline of his description, imagine you are in the main cabin below the deck of a ship which is sailing with a uniform velocity. Galileo points out (among other things) that a drop of water dripping into a bowl does not veer towards the ship's stern even though the ship itself is moving underneath the drop while it is in free fall. To give a more modern example, imagine you are juggling in the cabin of a train travelling with a uniform velocity, even though the train is moving underneath you the act of juggling feels no different to when you are standing on solid ground. However, if the train now begins to increase its speed, continuing to juggle would become much more difficult as once thrown in the air the balls would begin to veer off behind you to the back of the cabin. A similar statement can be said for when the train stays at a constant speed but begins to change direction, as expected the train turning left will cause the airborne balls to veer to the right and vice versa.
+
+The train's changing of speed and/or direction corresponds to a change in its acceleration, so a preliminary conclusion would be that if the train was not accelerating relative to an outside, stationary observer, then the force of gravity would look equivalent to both observers. However, this notion could also be extended to the situation where you are walking at a constant speed in a straight line whilst riding the train, itself travelling with uniform velocity, once again the juggling would feel no different. So an extension of the first conclusion would be that if one observer (in this case yourself) is not accelerating relative to another observer where the laws of gravity are valid (i.e. a person sitting on the train travelling at uniform velocity), then gravity is again equivalent for both observers. This is the main intuition behind Galilean Relativity, the idea that gravity appears to behave equivalently to both observers, as long as they are not accelerating relative to each other.
+
+While credit is given to Galileo for this idea, it was left to Sir Isaac Newton to give this a mathematical description in his hugely influential 1687 book `\emph{Philosophiae Naturalis Principia Mathematica}'. The mathematical treatment of this idea is to follow, where the notion of `observers' is to be given a more rigorous approach.
+
+\section{Galilean Transformations}
+
+Before moving on, we introduce the first definition:
+
+\begin{definition} A frame of reference is a set of axes (not necessarily stationary) that is used to measure the position, orientation and other properties of an object contained within them.
+\end{definition}
+
+This replaces the observer from the intuitive argument above. We also had the notion of the law of gravity being valid in a frame of reference (or to an observer), this leads to the second definition:
+
+\begin{definition}
+An inertial frame is a frame of reference in which Newton's 3 Laws of Motion are valid.
+\end{definition}
+
+Let us define two frames of reference, namely $\mathcal{F}$ and $\mathcal{F'}$. If $\mathcal{F}$ is an inertial frame of reference, then Newton's laws hold within it, particularly Newton's second law which states that the force acting within the frame is given by the vector equation,
+$$
+\pmb{F} = m\pmb{a}
+$$
+
+Similarly, if Newton's laws are to hold in the second frame $\mathcal{F'}$, then it must too be inertial, the force in the second frame is given by,
+$$
+\pmb{F'} = m\pmb{a'}
+$$
+
+We require the force to be the same in both reference frames, as the principal of relativity states that the laws of physics be the same in all admissable reference frames, so we require that,
+$$
+\begin{aligned}
+\pmb{F} & = \pmb{F'}\\
+m\pmb{a} & = m\pmb{a'}
+\end{aligned}
+$$
+
+Now, since the mass $m$ is assumed not to change between frames of reference, the condition for the force to be the same in every reference frame is $\pmb{a} = \pmb{a'}$, or equivalently $\pmb{a} - \pmb{a'} = \pmb{0}$. This says that the difference in the acceleration of the two frames is $0$, or that the frames are not accelerating relative to each other, which is exactly the intuition derived in the previous section.
+
+Now, to derive mathematical conditions for this, we will consider a coordinate transform that relates the two frames $\mathcal{F}$ and $\mathcal{F'}$. If $(x, y, z)$ and $(x', y', z')$ are points in $\mathcal{F}$ and $\mathcal{F'}$ respectively, then the 2 coordinates are related by the transformation,
+\begin{equation}
+\begin{pmatrix}x\\y\\z\end{pmatrix} = G\begin{pmatrix}x'\\y'\\z'\end{pmatrix} + T
+\end{equation}
+where,
+$$
+G =
+\begin{pmatrix}
+G_{11} & G_{12} & G_{13}\\
+G_{21} & G_{22} & G_{23}\\
+G_{31} & G_{32} & G_{33}
+\end{pmatrix}
+$$
+$$
+T = \begin{pmatrix}T_1\\T_2\\T_3\end{pmatrix}
+$$
+
+Here, $G$ is an orthogonal matrix that represents the rotational aspect of the transformation while $T$ the translational part. We assume $G$, $T$, depend on time. To find the acceleration, we differentiate with respect to time $t$ to obtain the velocity,
+$$
+\begin{pmatrix}\dot{x}\\\dot{y}\\\dot{z}\end{pmatrix} = G\begin{pmatrix}\dot{x}'\\\dot{y}'\\\dot{z}'\end{pmatrix} + \dot{G}\begin{pmatrix}x'\\y'\\z'\end{pmatrix} + \dot{T}
+$$
+Once more for the acceleration,
+$$
+\begin{pmatrix}\ddot{x}\\\ddot{y}\\\ddot{z}\end{pmatrix} = G\begin{pmatrix}\ddot{x}'\\\ddot{y}'\\\ddot{z}'\end{pmatrix} + 2\dot{G}\begin{pmatrix}\dot{x}'\\\dot{y}'\\\dot{z}'\end{pmatrix} + \ddot{G}\begin{pmatrix}x'\\y'\\z'\end{pmatrix} + \ddot{T}
+$$
+Thus, for the acceleration to be the same in both frames we must have that $\dot{G} = \ddot{T} = 0$, i.e. $\dot{G}_{ij} = \ddot{T}_i = 0$, where, $i, j = 1, 2, 3$.
+
+To move towards defining a Galilean Transformation, consider one of the elements of $T$, i.e. $T_i$, since $\ddot{T_i} = 0$, we may integrate with respect to time $t$ twice to obtain $T_i = v_it + C_i$ for constants $v_i$, $C_i$ and $i = 1, 2, 3$. Now $T$ may be written as,
+$$
+T = \begin{pmatrix}T_1\\T_2\\T_3\end{pmatrix} = \begin{pmatrix}v_1t\\v_2t\\v_3t\end{pmatrix} + \begin{pmatrix}C_1\\C_2\\C_3\end{pmatrix}
+$$
+Following \emph{Woodhouse} \cite{NMJW} chapter 1 we can now, after some rearranging define a Galilean Transformation:
+
+\begin{definition}
+A Galilean Transformation is a coordinate transform of the form,
+\begin{equation}
+\begin{pmatrix}t\\x\\y\\z\end{pmatrix} =
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+v_1 & G_{11} & G_{12} & G_{13}\\
+v_2 & G_{21} & G_{22} & G_{23}\\
+v_3 & G_{31} & G_{32} & G_{33}
+\end{pmatrix}
+\begin{pmatrix}t'\\x'\\y'\\z'\end{pmatrix} + \begin{pmatrix}C_1\\C_2\\C_3\\C_4\end{pmatrix}
+\end{equation}
+where, $G_{ij}$, $C_i$, $v_i$ are all constants and $(t, x, y, z)$, $(t', x', y', z')$ are space-time coordinates of a point in intertial reference frames $\mathcal{F}$, $\mathcal{F'}$, respectively.
+\end{definition}
+
+\begin{remark}
+Note that when multiplying this out, you obtain the equation $t = t' + C_1$, this is just a shifting of time to start at a more convenient point for computational reasons, however there is no factor multiplied by $t'$. In this sense, time is said to be \emph{absolute}, while time's origin may be shifted it still flows at the same rate in both reference frames.
+\end{remark}
+
+Galilean Transforms are very important in classical mechanics as they allow transfer between reference frames while keeping Newton's Laws valid in both frames, which proves to be invaluable in computation of problems. To have some insight into how the frames may be related, we will consider specific cases:
+\\
+\\
+\textbf{Rotations}: If $C_i = 0$, $i = 1, 2, 3, 4$ and $v_j = 0$, $j = 1, 2, 3$, then,
+$$
+\begin{pmatrix}t\\x\\y\\z\end{pmatrix} =
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+v_1 & G_{11} & G_{12} & G_{13}\\
+v_2 & G_{21} & G_{22} & G_{23}\\
+v_3 & G_{31} & G_{32} & G_{33}
+\end{pmatrix}
+\begin{pmatrix}t'\\x'\\y'\\z'\end{pmatrix}
+$$
+shows that $\mathcal{F'}$ is related to $\mathcal{F}$ by a rotation of the spacial axes.
+\\
+\\
+\textbf{Boosts}: If $C_i = 0$, $i = 1, 2, 3, 4$ and $G_{jk} = \delta_{jk}$, $j, k = 1, 2, 3$, where $\delta_{jk}$ is the `\emph{Kronecker Delta}', then,
+$$
+\begin{pmatrix}t\\x\\y\\z\end{pmatrix} =
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+v_1 & 1 & 0 & 0\\
+v_2 & 0 & 1 & 0\\
+v_3 & 0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}t'\\x'\\y'\\z'\end{pmatrix}
+$$
+shows that $\mathcal{F'}$ moves with constant velocity relative to $\mathcal{F}$ whilst both frames keep their axes parallel to one another.
+\\
+\\
+\textbf{Translations}: If $v_i = 0$, $i = 1, 2, 3, 4$ and $G_{jk} = \delta_{jk}$, $j, k = 1, 2, 3$, then,
+$$
+\begin{pmatrix}t\\x\\y\\z\end{pmatrix} =
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}t'\\x'\\y'\\z'\end{pmatrix} + \begin{pmatrix}C_1\\C_2\\C_3\\C_4\end{pmatrix}
+$$
+shows that the origin has been translated and the initial time has been shifted by $C_1$. From this demonstration it is clear that Galilean Transformations are a composition of rotations, boosts and translations, thus, these are how inertial frames of reference are connected mathematically and can be pictured geometrically.
+
+With this model of transformations between inertial reference frames preserving the highly revered \emph{Newton's Laws of Motion} and also confirming the basic intuition of how transformations between reference frames should behave, it is little wonder that Galilean Relativity perservered unquestioned for over two hundred years. To develop the theory of \emph{Special Relativity}, something had to disagree with Galilean Relativity, this is the next area of discussion of this project.
+
+
+\chapter{Electromagnetics}
+
+\section{Maxwell's Equations}
+
+Electromagnetics is the study of moving charged particles passing through electric and magnetic fields and their corresponding phenomena. At the heart of electromagnetics are 4 differential equations known as \emph{Maxwell's Equations}, these coupled along with the \emph{Lorentz Force Law} can be used to model electromagnetic interactions with unrivaled and incredible accuracy.
+
+Before moving on we must introduce some definitions taken from \emph{Electrostatics and Potential Theory Notes} \cite{ADN} section 1 and \emph{Woodhouse} \cite{NMJW} chapter 2:
+
+\begin{definition}
+If the position of a stationary charged particle $P$ in an inertial reference frame is given by $\mathbf{r}$, then the Electric Field $\mathbf{E}$ on $\mathbf{r}$ generated by a test charge $q_1$ with position vector $\mathbf{r}_1$ is given by,
+\begin{equation}
+\mathbf{E}(\mathbf{r}) = \frac{q_1}{4\pi\epsilon_0}\frac{\mathbf{r} - \mathbf{r}_1}{\|\mathbf{r} - \mathbf{r}_1\|^3} \label{EF}
+\end{equation}
+where, $\epsilon_0$ is the permittivity of free space.
+\end{definition}
+
+\begin{definition}
+If the position of a moving charged particle $P$ in an intertial reference frame is given by $\mathbf{r}$, then the Magnetic Field $\mathbf{B}$ on $\mathbf{r}$ generated by itself and a test charge $q_1$ with position vector $\mathbf{r}_1$ is given by,
+\begin{equation}
+\mathbf{B}(\mathbf{r}, \dot{\mathbf{r}}) = \frac{\mu_0}{4\pi}\frac{(\dot{\mathbf{r}} - \dot{\mathbf{r}}_1) \wedge (\mathbf{r} - \mathbf{r}_1)}{\|\mathbf{r} - \mathbf{r}_1\|^3} \label{MF}
+\end{equation}
+where, $\mu_0$ is the permeability of free space.
+\end{definition}
+
+We are now in a position to define the first of our electromagnetic equations, the \emph{Lorentz Force Law}:
+\begin{definition}
+For a particle $P$ of position vector $\mathbf{r}$ and charge $q$, the force $\mathbf{F}$ generated on this particle by a test charge $q_1$ with position vector $\mathbf{r}_1$ is given by,
+\begin{equation}
+\mathbf{B}(\mathbf{r}, \dot{\mathbf{r}}) = q(\mathbf{E} + \dot{\mathbf{r}} \wedge \mathbf{B})
+\end{equation}
+where, $\mathbf{E}$, $\mathbf{B}$ are defined as in \eqref{EF} and \eqref{MF}, respectively. This is known as the Lorentz Force Law.
+\end{definition}
+
+\begin{remark}
+The force on a particle due to electromagnetic phenomena has been known for some time, however it has acquired the name of the Lorentz Force Law due to its above form first being described by Hendrick Lorentz in 1892, a full 30 years after Maxwell's Equations.
+\end{remark}
+
+The definition of the electric and magnetic fields also allows for Maxwell's Equations to be defined:
+
+\begin{definition}
+With the electric field $\mathbf{E}$ and the magnetic field $\mathbf{B}$ defined as above, Maxwell's Equations are given as,
+\begin{equation}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0} \label{ME1}
+\end{equation}
+\begin{equation}
+\nabla\cdot\mathbf{B} = 0 \label{ME2}
+\end{equation}
+\begin{equation}
+\nabla\wedge\mathbf{B} - \frac{1}{c^2}\frac{\partial\mathbf{E}}{\partial t} = \mu_0\mathbf{J} \label{ME3}
+\end{equation}
+\begin{equation}
+\nabla\wedge\mathbf{E} + \frac{\partial\mathbf{B}}{\partial t} = \mathbf{0} \label{ME4}
+\end{equation}
+where, $\rho$ is the charge density, $\mathbf{J}$ is the current density and $c^2 = 1/\epsilon_0\mu_0$, where $c$ is the speed of light.
+\end{definition}
+
+\begin{remark}
+The choices of $\rho$ and $\mathbf{J}$ are not free as the system of equations must satisfy the Continuity Equation given by,
+$$
+\frac{\partial\rho}{\partial t} + \nabla\cdot\mathbf{J} = 0
+$$
+If $\rho$ and $\mathbf{J}$ satisfy this equation then Maxwell's Equations are self-consistent.
+\end{remark}
+
+As accurate as these equations may be, if we restrict ourselves to Galilean Relativity we quickly run into complications as shown in this example from \emph{Woodhouse} \cite{NMJW} chapter 2.
+
+\begin{example}
+Consider a particle $P$ with charge $q$ travelling with constant velocity $\mathbf{v}$ relative to a stationary reference frame. We may measure the force on the particle with two different reference frames, a stationary frame $\mathcal{F}$ and a second frame $\mathcal{F'}$ moving with velocity $\mathbf{v}$,\\
+\begin{center}
+\begin{tikzpicture}
+\draw[thick, ->] (0, 0) -- (4, 0);
+\draw[thick, ->] (0, 0) -- (0, 4) node[anchor=east] {$\mathcal{F}$};
+\fill (2, 2) circle[radius=2pt] node[anchor=south east] {$P$};
+\draw (2, 2) -- (2.5, 2) node[anchor=south] {$\mathbf{v}$};
+\draw[->] (2.5, 2) -- (3, 2);
+\path (current bounding box.south west) +(-1,-1) (current bounding box.north east) +(1,1);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw[thick, ->] (0, 0) -- (4, 0);
+\draw[thick, ->] (0, 0) -- (0, 4) node[anchor=east] {$\mathcal{F'}$};
+\fill (2, 2) circle[radius=2pt] node[anchor=south east] {$P$};
+\path (current bounding box.south west) +(-1,-1) (current bounding box.north east) +(1,1);
+\end{tikzpicture}
+\end{center}
+so the force in $\mathcal{F}$ is given by $\mathbf{F} = q(\mathbf{E} + \mathbf{v} \wedge \mathbf{B})$ and the force in $\mathcal{F}'$ by $\mathbf{F'} = q\mathbf{E}'$. Since, by the principle of relativity the force in both frames are equal, we get the equation,
+$$
+\mathbf{E}' = \mathbf{E} + \mathbf{v} \wedge \mathbf{B}
+$$
+Giving $\mathcal{F}$ a velocity of $\mathbf{v}$, then removing the velocity of $\mathcal{F'}$ and rotating it about an axis perpendicular to $\mathbf{v}$ by 180 degrees we may manipulate the Lorentz Force Law in a way similar to the above to get,
+$$
+\mathbf{E} = \mathbf{E}' - \mathbf{v} \wedge \mathbf{B}'
+$$
+Rearranging these equations gives us the condition that $\mathbf{v} \wedge (\mathbf{B} - \mathbf{B}') = \mathbf{0}$, so $\mathbf{B} - \mathbf{B}'$ must be parallel to $\mathbf{v}$. Now,
+$$
+\mathbf{B} = \mathbf{0}
+$$
+$$
+\mathbf{B}' = -\frac{\mu_0}{4\pi}\frac{\mathbf{v} \wedge \mathbf{r}}{\|\mathbf{r}\|^3}
+$$
+hence, $\mathbf{B} - \mathbf{B}'$ is perpendicular to $\mathbf{v}$, this is contradictory to the derived conditions.
+\end{example}
+
+This fairly basic example illustrates that there is a problem with this particular method of classical mechanics. The only two options are that Maxwell's Equations are only an approximation that hold best in stationary frames of reference or Galilean Relativity has errors. As mentioned several times, Maxwell's Equations have been tested an immense number of times always producing unreasonably accurate results, hence the problem could possibly lie within Galilean Relativity regardless of how much intuitive sense it makes and accurate results it had produced in the past.
+
+Further analysis of Maxwell's Equations gives an insight into what might be wrong.
+
+\section{The Wave Equation}
+
+If we consider what are called the \emph{Source-Free Equations}, these are just Maxwell's Equations with the conditions $\rho = 0$ and $\mathbf{J} = \mathbf{0}$. By taking the curl of \eqref{ME3} and \eqref{ME4} remembering the new conditions and substituting, it is fairly elementary to arrive at the equations,
+\begin{equation}
+\frac{\partial^2\mathbf{E}}{\partial t^2} = c^2 \Delta\mathbf{E}
+\end{equation}
+\begin{equation}
+\frac{\partial^2\mathbf{E}}{\partial t^2} = c^2 \Delta\mathbf{E}
+\end{equation}
+
+In other words, $\mathbf{E}$ and $\mathbf{B}$ satisfy the wave equation. We will just consider the 1-dimensional case for $\mathbf{E}$, however, all results are directly applicable to $\mathbf{B}$. So we have in 1-dimension that the electric field satisfies,
+$$
+\frac{\partial^2 E}{\partial t^2} = c^2 \frac{\partial^2 E}{\partial x^2}
+$$
+since the partial derivative operator is linear, we may factorise into,
+$$
+\left(\frac{\partial}{\partial t} - c\frac{\partial}{\partial x}\right)\left(\frac{\partial}{\partial t} + c\frac{\partial}{\partial x}\right)E = 0
+$$
+solving each case separately then adding to find the full general solution gives us,
+$$
+E(x, t) = F(x + ct) + G(x - ct)
+$$
+where, $F$ and $G$ are arbitrary scalar functions.
+
+Looking at each individual solution closely, $F(x + ct)$ gives a wave profile travelling with velocity $c$ in the direction of decreasing $x$ and $G(x - ct)$ gives the same with the wave travelling in the direction of $x$ increasing, so the conclusion is that the wave is travelling the same speed in both directions. Now, this result can be generalised to 3-dimensions for both $\mathbf{E}$ and $\mathbf{B}$ to describe the behaviour of electromagnetic phenomena, including light. Taking a 3-dimensional conclusion analagous to the 1-dimensional case, light travels with the same speed in all directions regardless of the frame of reference. This is very contradictory to Galilean Relativity as this states that if there is an inertial frame of reference moving with velocity $v$ in the same direction as a light beam, then the speed of that light beam relative to the moving frame of reference should be measured as $c - v$. Maxwell's Equations seem to suggest that the moving observer still records the speed of the light beam as $c$.
+
+Obviously, since Maxwell's Equations have caused so much controversy, this required further thought and experimentation. To try and resolve the problems, the \emph{Luminiferous Aether} was proposed. This can be considered as a sort of medium in which electromagnetic phenomena propagates, then Maxwell's Equations were said to hold in a rest frame of the Luminiferous Aether and this would resolve the mathematical difficulties. This sparked numerous experiments to try and detect this elusive aether, the results of the experiments were inconclusive as measuring the speed of light beams accurately proved to be overly difficult, it was not until the famous \emph{Michelson-Morley Experiment} that a definitive result was produced. The experiment concluded that the proposed aether did not exist, many re-trials were performed with increasing degrees of accuracy with the same results being produced, thus, physicists could only conclude that Galilean Relativity was, at best, an approximation to the real world.
+
+To describe the mathematics of the Principle of Relativity, we will have to work againm from first principles with the new assumption that the speed of light is constant in all reference frames.
+
+
+\chapter{Special Relativity}
+
+\section{Principle of Simultaneity}
+
+To begin fresh we will restrict ourselves to 1-dimensional problems, however, as mentioned we will be working with the assumption that the speed of light is a constant, which shall always be denoted as $c \approx 300,000,000ms^{-1}$.
+
+It was Einstein's insight to redefine how distances are measured since he thought that we unwittingly accepted our intuition of distance without rigorous thought or exploration, this will be the first task in reconstructing the Principle of Relativity.
+
+Following \emph{Woodhouse} \cite{NMJW} chapter 4, the first thing to tackle is the simultaneity of events since even in Galilean Relativity events are only measured when they occur at the same time. In other words we know that the distance between Cardiff and Swansea is approximately 38 miles, however, it is difficult to say what the distance between Swansea at 1pm and Cardiff at 6am would be in a space-time frame of reference. This problem is tackled by giving distance an \emph{operational definition} that depends on the operations used to measure it. This will be achieved by first noting that every observer (frame of reference) has a personal, local clock that they may use to measure the time of events and since we are stressing that the speed of light is constant, it would be a good idea to give every observer the ability to send out a beam of light that they can use to measure/create events.
+
+Imagine we have a stationary observer at $x = 0$, at $t = t_1$ they send out a beam of light that hits a mirror at $x = d$, the mirror then obviously reflects the light beam back at the observer and the observer records the beam of light coming back at $t = t_2$,\\
+\begin{center}
+\begin{tikzpicture}
+\draw[thick, ->] (0, 0) node[anchor=north east] {$O$} -- (5, 0) node[anchor=north] {$t$};
+\draw[thick, ->] (0, 0) -- (0, 5) node[anchor=east] {$x$};
+\draw (0, 2.5) -- (-0.1, 2.5) node[anchor=east] {$d$};
+\draw (1, 0) -- (1, -0.1) node[anchor=north] {$t_1$};
+\draw (2.5, 0) -- (2.5, -0.1) node[anchor=north] {$t'$};
+\draw (4, 0) -- (4, -0.1) node[anchor=north] {$t_2$};
+\fill (2.5, 2.5) circle[radius=2pt] node[anchor=south east] {$A$};
+\fill (2.5, 0) circle[radius=2pt] node[anchor=south east] {$B$};
+\draw (1, 0) -- (2.5, 2.5) -- (4, 0);
+\path (current bounding box.south west) +(-1,-1) (current bounding box.north east) +(1,1);
+\end{tikzpicture}
+\end{center}
+So which event $B = (0, t')$ is simultaneous, relative to the observer, to $A = (d, t')$ the light beam hitting the mirror? Since the observer is stationary, the distance from the observer to $d$ does not change, also we are taking the speed of light to be constant so the time taken for the light beam to reach the mirror is the same as the time taken for it to return, so $t'$ is exactly halfway between $t_1$ and $t_2$, i.e. $t' = \frac{1}{2}(t_1 + t_2)$. Also, the time taken for the light beam to reach the mirror is $t' - t_1 = \frac{1}{2}(t_2 - t_1)$, hence $d = \frac{c}{2}(t_2 - t_1)$.
+
+The above working is an example of the \emph{radar definition} of simultaneity and we can use this to show one of the first counter-intuitive consequences. Imagine two observers $O$, $O'$ travelling along the $x$-axis where $O'$ is moving with constant velocity relative to $O$ in the direction of $x$ increasing. When $O$ and $O'$ coincide a light beam is sent in both directions to mirrors placed at equal distances on the $x$-axis to the point where the two observers coincide.
+\begin{center}
+\begin{tikzpicture}
+\draw[thick, ->] (0, 0) -- (0, 5) node[anchor=east] {$O$};
+\draw[thick, ->] (-0.5, 0) -- (2, 5) node[anchor=east] {$O'$};
+\draw (0, 3) -- (2, 2) -- (0, 1) -- (-2, 2) -- (1.333, 3.666);
+\fill (0, 1) circle[radius=2pt];
+\fill (0, 3) circle[radius=2pt];
+\fill (0.8, 2.6) circle[radius=2pt];
+\fill (1.333, 3.666) circle[radius=2pt];
+\path (current bounding box.south west) +(-1,-1) (current bounding box.north east) +(1,1);
+\end{tikzpicture}
+\end{center}
+In the above diagram, the two thick lines represent the worldlines of $O$ and $O'$ as labelled and the thinner lines represent the worldlines of the two beams of light. Using the radar definition as defined above, it is obvious that $O$ concludes that the two light beams hit their respective mirrors simultaneously. However, it is also clear from the diagram that the first light beam reaches $O'$ before the second beam of light does so they can only assign an earlier time of reflection to the first light beam than the second, thus the only conclusion for $O'$ is that the events are not simultaneous at all. So who is right? The answer is they both are and now even the notion of events happening simultaneously is relative as well, this is called the \emph{Relativity of Simultaneity}. We now move on to further consequences and begin to build up a more mathematical representation.
+
+\section{Time Dilation}
+
+Using our new method of measuring distances we are now in a position to begin defining how the space-time coordinates (of two inertial frames of reference in 1-dimension) are related to one another. Let $O$, $O'$ be two observers moving with constant velocities that are different to each other, so at some point their paths cross, when this happens they shall move off in opposite directions. At some time $t$ after this event, $O$ will release a beam of light at $O'$ that they will receive at a time $t' = kt$. Historically, $k$ is known as \emph{Bondi's k-factor} and is constant since it depends only on the relative velocity of $O$ and $O'$ which we have said to be constant. If we imagine $O'$ to be carrying a mirror facing $O$ then the light beam will be reflected back towards $O$ and will be recorded to return at a time $kt'$.
+\begin{center}
+\begin{tikzpicture}
+\draw[thick, ->] (0, 0) -- (0, 5) node[anchor=east] {$O$};
+\draw[thick, ->] (-0.5, 0) -- (2, 5) node[anchor=east] {$O'$};
+\draw (0, 2) -- (1, 3) -- (0, 4);
+\fill (0, 2) circle[radius=2pt] node[anchor=east] {$t$};
+\fill (1, 3) circle[radius=2pt] node[anchor=west] {$t' = kt$};
+\fill (0, 4) circle[radius=2pt] node[anchor=east] {$kt'$};
+\path (current bounding box.south west) +(-1,-1) (current bounding box.north east) +(1,1);
+\end{tikzpicture}
+\end{center}
+In the above diagram, the two thick lines represent the worldlines of $O$ and $O'$ as labelled. Since the beam of light leaves $O$ at $t$ and returns at $kt' = k^2t$, using our operational definitions of time and distance, the time taken for the light beam to reach $O'$ is given by $T = \frac{1}{2}(k^2 + 1)t$ and the distance of $O'$ from $O$ at time $T$ by $D = \frac{c}{2}(k^2 - 1)t$. So, the velocity of $O'$ relative to $O$ is given by,
+$$
+v = \frac{D}{T} = \frac{k^2 - 1}{k^2 + 1}c
+$$
+Rearranging this and taking the positive square root gives us,
+\begin{equation}
+k = \sqrt{\frac{c + v}{c - v}} \label{BKF}
+\end{equation}
+Now, to find the factor that must be multiplied by $t'$ in a coordinate transform we must divide the times from two relatively simultaneous events, we have two such times namely $T$ and $t'$, hence we have,
+$$
+\frac{T}{t'} = \frac{k^2 + 1}{2k}
+$$
+Substituting directly from \eqref{BKF} for $k$ we obtain,
+\begin{equation}
+\gamma(v) = \frac{T}{t'} = \frac{1}{\sqrt{1 - v^2/c^2}}
+\end{equation}
+This is called the \emph{gamma factor} and it is how the rate of time flow changes between reference frames depending on the relative velocity of the two frames $v$.
+
+With this we can explore one of the classical examples of special relativity, namely the inaptly titled \emph{Twin Paradox}.
+\begin{example}
+Consider two twins, the first twin is to remain stationary on Earth while the second twin is to travel in a shuttle at a velocity of $c\sqrt{3}/2$. If $t$ is the time measured by the first twin and $t'$ the time measured by the second twin, then the relationship between the time of both observers is given by,
+$$
+\begin{aligned}
+t & = \gamma\left(c\sqrt{3}/2\right)t'\\
+& = 2t'
+\end{aligned}
+$$
+In other words, for every two years that pass for the twin on Earth, only one year passes for the twin on the shuttle. So if the second twin were to travel five years into space and then spend another five years returning to Earth, they will have aged ten years while the twin on Earth will have aged twenty. While this seems to contradict intuition, it does not deserve the title of a paradox as it is a simple consequence of time dilation, an effect that has been experimentally tested many times before producing positive results.
+\end{example}
+
+\section{Length Contraction}
+
+In this section we will finally derive the coordinate transformation between two inertial frames of reference $\mathcal{F}$ and $\mathcal{F'}$, at least in the case of 1 spacial dimension and 1 dimension of time. Consider 2 observers $O$ and $O'$ moving relative to one another with constant velocity along the $x$-axis. Some time $T$ after they coincide, $O$ emits a light beam that is reflected off a mirror at $B$ and returned back to $O$ passing $O'$ at time $T'$ on the way,
+\begin{center}
+\begin{tikzpicture}
+\draw[thick, ->] (0, 0) -- (0, 5) node[anchor=east] {$O$};
+\draw[thick, ->] (-0.5, 0) -- (2, 5) node[anchor=east] {$O'$};
+\draw (0, 1.5) -- (1.5, 3) -- (0, 4.5);
+\fill (0, 1.5) circle[radius=2pt] node[anchor=east] {$T$};
+\fill (0.5, 2) circle[radius=2pt] node[anchor=west] {$kT$};
+\fill (1.5, 3) circle[radius=2pt] node[anchor=west] {$B$};
+\fill (1.1666, 3.333) circle[radius=2pt] node[anchor=east] {$T'$};
+\fill (0, 4.5) circle[radius=2pt] node[anchor=east] {$kT'$};
+\path (current bounding box.south west) +(-1,-1) (current bounding box.north east) +(1,1);
+\end{tikzpicture}
+\end{center}
+Using the radar definition of simultaneity and Bondi's $k$-factor we have that relative to $O$ the coordinates of $B$ are given by,
+$$
+t = \frac{1}{2}\left(kT' + T\right)
+$$
+$$
+x = \frac{c}{2}\left(kT' - T\right)
+$$
+or in matrix form,
+\begin{equation}
+\begin{pmatrix}ct\\x\end{pmatrix} = \frac{c}{2}
+\begin{pmatrix}
+1 & k\\
+-1 & k
+\end{pmatrix}
+\begin{pmatrix}T\\T'\end{pmatrix} \label{BRtO}
+\end{equation}
+Similarly, relative to $O'$ the coordinates of $B$ are given by,
+$$
+t' = \frac{1}{2}\left(T' + kT\right)
+$$
+$$
+x' = \frac{c}{2}\left(T' - kT\right)
+$$
+again in matrix form,
+$$
+\begin{pmatrix}ct'\\x'\end{pmatrix} = \frac{c}{2}
+\begin{pmatrix}
+k & 1\\
+-k & 1
+\end{pmatrix}
+\begin{pmatrix}T\\T'\end{pmatrix}
+$$
+We can invert the 2x2 matrix above to give,
+$$
+\begin{pmatrix}T\\T'\end{pmatrix} = \frac{1}{ck}
+\begin{pmatrix}
+1 & -1\\
+k & k
+\end{pmatrix}
+\begin{pmatrix}ct'\\x'\end{pmatrix}
+$$
+Sustituting this into \eqref{BRtO} we obtain,
+$$
+\begin{aligned}
+\begin{pmatrix}ct\\x\end{pmatrix} & = \frac{1}{2k}
+\begin{pmatrix}
+1 & k\\
+-1 & k
+\end{pmatrix}
+\begin{pmatrix}
+1 & -1\\
+k & k
+\end{pmatrix}
+\begin{pmatrix}ct'\\x'\end{pmatrix}\\
+& = \frac{1}{2}
+\begin{pmatrix}
+k + k^{-1} & k - k^{-1}\\
+k - k^{-1} & k + k^{-1}
+\end{pmatrix}
+\begin{pmatrix}ct'\\x'\end{pmatrix}\\
+& = \frac{1}{2}
+\begin{pmatrix}
+2\gamma(v) & 2\frac{v}{c}\gamma(v)\\
+2\frac{v}{c}\gamma(v) & 2\gamma(v)
+\end{pmatrix}
+\begin{pmatrix}ct'\\x'\end{pmatrix}
+\end{aligned}
+$$
+This is achieved by remembering our derived value of Bondi's $k$-factor where $v$ is the velocity of the frames relative to each other. We now finish with the 2-dimensional \emph{Lorentz Transformation},
+$$
+\begin{pmatrix}ct\\x\end{pmatrix} = \gamma(v)
+\begin{pmatrix}
+1 & v/c\\
+v/c & 1
+\end{pmatrix}
+\begin{pmatrix}ct'\\x'\end{pmatrix}
+$$
+
+We now use this to show another consequence of accepting this to be the transformation between two inertial frames over the classical Galilean transfomation.
+
+\begin{example}
+Consider $O$ and $O'$ to be as above, we want to see what happens to objects as they travel. Let a rod be at rest relative to $O'$ on the $x'$-axis such that the ends of the rod coincide with $x' = 0$ and $x' = L$, then according to $O'$ the length of the rod is $L$. What is the length of the rod according to $O$?
+
+The two coordinates of the ends of the rod relative to $O$ are given by,
+$$
+\begin{pmatrix}ct\\x\end{pmatrix} = \gamma(v)
+\begin{pmatrix}
+1 & v/c\\
+v/c & 1
+\end{pmatrix}
+\begin{pmatrix}ct'\\0\end{pmatrix}
+= \gamma(v)\begin{pmatrix}ct'\\vt'\end{pmatrix}
+$$
+$$
+\begin{pmatrix}ct\\x\end{pmatrix} = \gamma(v)
+\begin{pmatrix}
+1 & v/c\\
+v/c & 1
+\end{pmatrix}
+\begin{pmatrix}ct'\\L\end{pmatrix}
+= \gamma(v)\begin{pmatrix}ct' + Lv/c\\vt' + L\end{pmatrix}
+$$
+We will choose $t = 0$ for simplicity, then $t' = -Lu/c^2$ in order to make the events relatively simultaneous, then the $x$ coordinate for the end of the rod is given by,
+$$
+x = \gamma(v)\left(-Lu^2/c^2 + L\right) = L\sqrt{1 - v^2/c^2}
+$$
+\end{example}
+In other words, this example shows that lengths contract by a factor of $1/\gamma(v)$ as viewed by a different observer. We now present another classical example of special relativity modified from \emph{Rindler} \cite{WR} chapter 2, again wrongly labelled as a paradox.
+
+\begin{example}
+Consider an athlete carrying a ladder whilst running in a direction parallel to the ladder into a garage. The runner is travelling at a speed of $c\sqrt{3}/2$ and in the rest frame of the ladder, its length is measured to be 20ft. The garage is only 10ft so taking into the effects of length contraction, can the ladder fit into the garage?
+
+In the frame of the stationary garage, we know that the length of the ladder will be contracted by a factor of $1/\gamma(c\sqrt{3}/2) = 1/2$, i.e. the ladder is of length 10ft measured relative to to a stationary observer in the garage. From this quick calculation it appears to be a simple problem and the ladder can indeed fit into the garage, however, we have not considered the problem from the perspective of the ladder/athlete.
+
+In the frame of the athlete we can consider the problem to be equivalent to the barn approaching the athlete at a speed of $c\sqrt{3}/2$ and we now have that the barn contracts by a factor of $1/\gamma(c\sqrt{3}/2) = 1/2$ measured in the athlete's frame. Now the problem involves fitting a 20ft ladder into a 5ft garage, which initially appears to be an impossibility even though the problem has an easy solution viewed from the garage's frame of reference. So which viewpoint is correct?
+
+The resolution of this apparent paradox lies with the relativity of simultaneity. In the frame of the athlete the garage is travelling at a blinding speed towards the front of the ladder, when the back of the garage hits the ladder it begins to push the ladder with it, although only the front of the ladder `knows' that it is being pushed at that instant. The shock wave that will signal the rest of the ladder to move with the garage cannot travel faster than the speed of light, so the rest of the ladder is remaining stationary for a certain amount of time awaiting the instruction to accelerate as the walls of the garage close around it, thus enabling the ladder to fit.
+\end{example}
+
+After developing a strong theory in 1-dimensional situations we now move on to a more general physical setting.
+
+
+\chapter{4-Dimensional Space-Time}
+
+\section{4-Dimensional Lorentz Transformation}
+
+Before deriving any formulae for mechanics in 4-dimensional space-time, we must first define what is known as the \emph{Standard Lorentz Transformation}:
+
+\begin{definition}
+Let 2 frames of reference $\mathcal{F}$ and $\mathcal{F'}$ be described by the coordinates $t(t, x, y, z)$ and $(t', x', y', z')$ respectively. The $y$ and $z$ coordinates can be rotated without loss of generality so that the 2 frames are moving with relative velocity $v$ along the $x$-axis relative to one another, then the relationship between the two frames is given by the Standard Lorentz Transformation,
+$$
+\begin{pmatrix}ct\\x\\y\\z\end{pmatrix} = \gamma(v)
+\begin{pmatrix}
+1 & v/c & 0 & 0\\
+v/c & 1 & 0 & 0\\
+0 & 0 & 1/\gamma(v) & 0\\
+0 & 0 & 0 & 1/\gamma(v)
+\end{pmatrix}
+\begin{pmatrix}ct'\\x'\\y'\\z'\end{pmatrix} + \begin{pmatrix}C_1\\C_2\\C_3\\C_4\end{pmatrix}
+$$
+where, $\gamma(v)$ is defined as before and $C_i$, $i = 1, 2, 3, 4$ are constant.
+\end{definition}
+It is worth noting that as $c \rightarrow \infty$, the Lorentz transfomation takes on the form of the familiar Galilean transformation. This is interesting as it gives an obvious explanation as to why Galilean relativity was considered correct for hundreds of years, no speeds even remotely close to the speed of light were experienced by man or his inventions. Also to any observer casual or not the speed of light would appear to be infinite, just imagine flicking on a light switch and trying to measure how long it takes light to fill the room, it appears instantaneous.
+
+It is also important to note that $\gamma(v) \approx 1$ for everyday velocities and so Galilean relativity is still used today as a very useful and accurate approximation of everyday phenomena, while special relativity is used for relativistic speeds. We continue now, again referencing \emph{Woodhouse} \cite{NMJW} chapters 5 and 6.
+
+\section{Time-Like and Space-Like Vectors}
+
+For simplicity of diagrams and understanding we will briefly revert back to a 2-dimensional situation (1 spacial and 1 time dimension), let us consider an observer at $x = t = 0$ and 2 light beams fired in opposite directions from the observer along the $x$-axis, their worldlines are given by the diagram,
+\begin{center}
+\begin{tikzpicture}
+\draw [thick, ->] (0, -2.5) -- (0, 2.5) node[anchor=east] {$x$};
+\draw [thick, ->] (-2.5, 0) -- (2.5, 0) node[anchor=north] {$t$};
+\draw (2.5, -2.5) -- (0, 0) node[anchor=north east] {$O$} -- (2.5, 2.5);
+\end{tikzpicture}
+\end{center}
+The equations of the 2 beams of light are $ct = x$ and $ct = -x$, or expressed more conveniently, $c^2t^2 = x^2$, keeping in mind $c > 0$, $t \ge 0$. Remembering our radar definition of measuring events it is a surprising fact that only events on the $x$-axis that have coordinates within the 2 worldlines of the light beams (also known as the light cone of the observer) will actually be noticeable by the observer. If an event was outside we would need something faster than light to let us know about the event being there.
+
+So it seems that vectors in special relativity can be classified in different ways. In order to begin classifying them we need to generalise our light beam equation, if we let $r$ be the standard Euclidean distance of the 3 spacial coordinates, \emph{i.e.} $r = \sqrt{x^2 + y^2 + z^2}$, then the worldlines of the beams of light are given by $c^2t^2 = r^2$. Notice that since the only assumption made in these equations is that the speed of light is the same in every reference frame, then this equation must hold under Lorentz transformation. Just like the Euclidean inner product was generalised from a quantity that holds in every frame of reference, we may use our new equations to define an inner product for the setting of special relativity:
+
+\begin{definition}
+The Lorentzian Inner Product of two four-vectors\\$\mathbf{a} = (a_0, a_1, a_2, a_3)$ and $\mathbf{b} = (b_0, b_1, b_2, b_3)$ is given by,
+$$
+\langle\mathbf{a}, \mathbf{b}\rangle = a_0b_0 - a_1b_1 - a_2b_2 - a_3b_3
+$$
+\end{definition}
+
+\begin{remark}
+While this is described as being an inner product, it actually lacks the property of always being non-negative. This is easiest to see if you were to take the Lorentzian inner product of $(0, 1, 0, 0)$ with itself, obtaining $-1$. Although unusual, this property is necessary as we will see.
+\end{remark}
+
+Now our equation for the worldline of a beam of light $c^2t^2 - r^2 = 0$ becomes the Lorentzian inner product of the light-beam's position four-vector with itself. What about an event within the light cone of the observer? Without knowing the exact coordinates of the event we can deduce at least that $c^2t^2 - r^2 > 0$. Similarly, for an event outside of the observers light cone, $c^2t^2 - r^2 < 0$. We may use this notion to categorise four-vectors in special relativity:
+
+\begin{definition}
+A four-vector $\mathbf{a}$ is classified as being time-like, space-like or null/light-like respectively if:
+\begin{itemize}
+\item $\langle\mathbf{a}, \mathbf{b}\rangle > 0$
+\item $\langle\mathbf{a}, \mathbf{b}\rangle < 0$
+\item $\langle\mathbf{a}, \mathbf{b}\rangle = 0$
+\end{itemize}
+\end{definition}
+
+Using the above definition, time-like vectors lie in the observers light cone, null vectors on the light cone and space-like vectors outside of the light cone. The space $\mathbb{R}^4$ together with the Lorentzian inner product is known as \emph{Minkowski Space} since the geometry of the setting of special relativity was first investigated and described by German mathematician Hermann Minkowski.
+
+\section{Proper Time}
+
+Up until now we have only considered time measured in two arbitrary reference frames, now we will consider something more specific. We will choose our second frame to be at rest relative to a particle we are interested in and define \emph{Proper Time}, usually denoted as $\tau$, to be the time measured in this reference frame. In other words, proper time is the time as measured by a moving particle that we are interested in.
+
+Keeping in mind that $x'$, $y'$ and $z'$ are constants since the particle is at rest in the frame we measure proper time in, we may look at the top line of our standard Lorentz transformation to obtain,
+$$
+t = \gamma(v)\tau + C
+$$
+where, $C$ is a constant and $v$ is the relative velocity of the particle to another frame.
+
+We can use this relation to again derive the rate of change of time between reference frames by differentiating with respect to proper time $\tau$, thus,
+$$
+\frac{dt}{d\tau} = \gamma(v) = \frac{1}{\sqrt{1 - v^2/c^2}}
+$$
+Again, this gives us the time dilation effect that we encountered in the previous chapter.
+
+The most important aspect of the notion of proper time is that along a particle's worldline the position coordinates $x'$, $y'$, $z'$ are functions of $\tau$ compared to Galilean relativity where all position coordinates are functions of absolute time $t$.
+
+\section{Four-Velocity}
+
+Just as in standard Galilean relativity we can figure out the velocity in the setting of special relativity. As previously mentioned, in a frame of reference in which a particle is at rest, its coordinates $(ct, x, y, z)$ are functions of proper time $\tau$. So as always the rate of change of position with respect to time is the velocity. Letting $(v_t, v_x, v_y, v_z)$ denote the \emph{four-velocity} of the particle we have,
+$$
+\begin{aligned}
+(v_t, v_x, v_y, v_z) & = \left(c\frac{dt}{d\tau}, \frac{dx}{d\tau}, \frac{dy}{d\tau}, \frac{dz}{d\tau}\right)\\
+& = \left(c\frac{dt}{d\tau}, \frac{dx}{dt}\frac{dt}{d\tau}, \frac{dy}{dt}\frac{dt}{d\tau}, \frac{dz}{dt}\frac{dt}{d\tau}\right)\\
+& = \gamma(v)\left(c, \frac{dx}{dt}, \frac{dy}{dt}, \frac{dz}{dt}\right)
+\end{aligned}
+$$
+where, $v$ is the norm of the four-velocity and $\gamma(v)$ is as before.
+
+\section{Equivalence of Mass and Energy}
+
+We will now derive arguably the most iconic consequence of special relativity, the relation between mass and energy, taking intuition from \emph{Griffiths} \cite{DJG} chapter 12. Since we have defined the four-velocity of a particle, it is a very simple step to define the \emph{four-momentum} as being,
+$$
+(p_t, p_x, p_y, p_z) = m\gamma(v)\left(c, \mathbf{v}\right)
+$$
+where, $\mathbf{v} = \left(\frac{dx}{dt}, \frac{dy}{dt}, \frac{dz}{dt}\right)$ is the \emph{three-velocity}.
+
+We call $m\gamma(v)$ the \emph{inertial mass} and $m\gamma(v)\mathbf{v}$ the \emph{four-momentum} relative to the inertial reference frame, four-momentum is conserved only if we treat mass and momentum as this. While the three-momentum is familiar to anyone who has studied even basic classical mechanics, the temporal part $p_t = mc\gamma(v)$ is unfamiliar and not immediately understandable. Expanding $\gamma(v)$ as a Taylor series centred at 0,
+$$
+\gamma(v) = 1 + \frac{v^2}{2c^2} + \mathcal{O}\left(\frac{v^4}{c^4}\right)
+$$
+If we consider velocities small enough, we can omit the terms of order 4 and above to obtain,
+$$
+cp_t \approx \gamma(v)\left(mc^2 + \frac{1}{2}mv^2\right)
+$$
+Noticing that we have the standard Newtonian kinetic energy $\frac{1}{2}mv^2$ amd another term in units of energy $mc^2$, then $cp_t$ is a quantity of energy that shall be denoted $E$ (since $\gamma$ is dimensionless). If we consider an inertial frame of reference in which our particle is at rest, then $v = 0$ and we have the relation,
+$$
+E = mc^2
+$$
+This famous formula gives the energy of a particle at rest.
+
+
+\begin{thebibliography}{99}
+
+\bibitem{NMJW} N.M.J. Woodhouse, \emph{Special Relativity} (Springer)
+
+\bibitem{WR} Wolfgang Rindler, \emph{Introduction to Special Relativity} (Springer-Verlag)
+
+\bibitem{DJG} David J. Griffiths, \emph{Introduction to Electrodynamics} (Pearson: Benjamin Cummings)
+
+\bibitem{ADN} A. D. Neate, \emph{Electrostatics and Potential Theory Notes} (Swansea University)
+
+\end{thebibliography}
+
+
+\end{document}
